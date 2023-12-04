@@ -21,13 +21,13 @@ fun main()
     ////////////////////
     // var - val
 
-    var sayi1 = 15
-    sayi1 = 16
-    var isim1 = "oguzhan"
+    var number1 = 15
+    number1 = 16
+    var name1 = "oguzhan"
 
-    val sehir1 = "hatay"
+    val city1 = "hatay"
     // val degiskenlerin degeri daha sonra degistirilemez.
-    //sehir1 = "maras"
+    //city1 = "maras"
 
     ////////////////////////
     // int float double
@@ -39,8 +39,70 @@ fun main()
     val b2:Float = 6F
     val c:Double = 7.567
 
-    var today: String
-    today = "Sunday"
+    /////////////////////
+
+    var today: String  // declaration
+    today = "Sunday"  // initialization
+    var tomorrow: String = "Monday"  // declaration and initializaton
+
+    /////////////////////
+    // type inferance
+
+    var name2 = "Aziz Vefa"  ///String
+    var age2 = 39            ///Int
+    var maritalStatus = true ///Boolean
+
+    /////////////////////
+    // string templates
+
+    val plant = "orchid"
+    val potSize = 6 // in inches
+    val dayNum = 7
+
+    println("An $plant in a $potSize inch pot must be watered every $dayNum days.")
+
+    //////////////////
+    // variableName.capitalize() function
+
+    var word = "supercalifragilisticexpialidocious"
+
+    word = word.capitalize()
+
+    // .length property
+
+    var wordSize = word.length
+
+    println("$word has $wordSize letters.")
+
+    ////////////////////////////
+    // character escape sequences
+
+    println("Soylenir turkumuz \ndaglardan daglara")
+    println("Benim adim \"Ersan Kuneri\"")
+
+    ///////////////////////
+    // Math library
+
+    // ussunu alir (power=kuvvet)
+    Math.pow(5.0, 3.0)  ///125.0
+    // iki deger arasindan min olan degeri dondurur
+    Math.min(5, 3)      ///3
+    // tam tersi
+    Math.max(5, 3)      ///5
+    // 0 ile 1 arasinda random bir sayi uretir
+    Math.random()       ///0.3335735290527727
+    // en yakin integer degere yuvarlar. asagi ya da yukari. (round up=yuvarlamak)
+    Math.round(15.7)    ///16
+    // tavana yuvarla (ceil)
+    Math.ceil(3.5)      ///4.0
+    // tabana yuvarla (floor)
+    Math.floor(6.9)     ///6.0
+    // karekokunu al (square root)
+    Math.sqrt(25.0)     ///5.0
+    // mutlak degerini al (absolute value)
+    Math.abs(-20)       ///20
+
+
 
 
 
