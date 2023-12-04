@@ -1,5 +1,4 @@
-fun main()
-{
+fun main () {
     println("Hello World!")
 
     print("Learn ")
@@ -102,7 +101,44 @@ fun main()
     // mutlak degerini al (absolute value)
     Math.abs(-20)       ///20
 
+    ///////////////////
+    // when expression
 
+    var lightColor = "red"
+
+    when (lightColor) {
+        "green" -> println("Go.")
+        "yellow" -> println("Slow down.")
+        "red" -> println("Stop.")
+        else -> println("Not a valid traffic light color.")
+    }
+
+    // baska bir ornek:
+    var num = 19
+    when {
+        num < 0 -> println("$num is negative.")
+        num == 0 -> println("$num is zero.")
+        num > 0 -> println("$num is positive.")
+        else -> println("Not a valid number.")
+    }
+
+    ///////////////////
+    // range (aralik)
+
+    var num_ = 5
+
+    if (num_ in 1..10) {
+        println("This value is between 1 and 10.")
+    }
+
+    // baska bir ornek:
+    var letter = 'c'
+
+    when (letter) {
+        in 'a'..'m' -> println("Letter is in 1st half of alphabet.")
+        in 'n'..'z' -> println("Letter is in 2nd half of alphabet.")
+        else -> println("Not a valid value")
+    }
 
 
 
