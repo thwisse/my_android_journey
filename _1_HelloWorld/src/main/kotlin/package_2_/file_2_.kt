@@ -38,6 +38,7 @@ fun main() {
     val majorRivers = listOf("Volga", "Danube", "Loire", "Rhine", "Elbe")
     println(majorRivers.size)
     // string icinde degiskenle bir property birlikte kullanilacaksa bu ifade {} icine alinir
+    // yani tek bir token olsa {} ayraca ihtiyac olmayacakti. birden fazla token var diye kullandik.
     println("There are ${majorRivers.size} major rivers in Europe.")
     // koleksiyonun son elemanina ulasmak istersek:
     println(majorRivers[majorRivers.size - 1])
@@ -79,15 +80,15 @@ fun main() {
     var nonEndangered = setOf("Louisiana Black Bear", "Northern Brown Kiwi", "Gray Wolf", "Arabian Oryx")
     nonEndangered.elementAt(2) ///Gray Wolf
     //nonEndangered.elementAt(5) // Exception error alirsin
-    // eger set icinde aradigin indexte eleman yoksa NullPointerException hatasi
-    // almak istemiyorsan elementAt yerine elementAtOrNull prop'unu kullanmalisin
+    // eger set icinde aradigin indexte eleman yoksa NullPointerException hatasi alirsin
+    // hatayi almak istemiyorsan elementAt yerine elementAtOrNull prop'unu kullanmalisin
     nonEndangered.elementAtOrNull(5) ///null  // hata vermez, geriye null doner
 
     //////////////////////
     // koleksiyonlar icin bazi fonksiyonlar
 
     var participants = listOf("elePHPant", "Gopher", "Lenny", "Moby Dock", "Codey", "Gopher")
-    var uniqueParticipants = mutableSetOf<String>()
+    var uniqueParticipants = mutableSetOf<String>() // bos set olusturmak
     // bir listenin elemanlarini baska bir listeye eklemek
     // uniqueParticipants mutableSetOf oldugu icin ayni olan degerler tekillestirildi
     uniqueParticipants.addAll(participants)
@@ -101,7 +102,7 @@ fun main() {
     numbers.sum() ///70
 
     ////////////////////////
-    // maps
+    // maps (key to value) (key and value cifletine entry denir)
 
     // mapOf
     var leadSingers = mapOf("The Rolling Stones" to "Mick Jagger",
@@ -119,7 +120,7 @@ fun main() {
 
     val uniqueTransport = mapOf("India" to "Tuktuk", "Egypt" to "Felucca",
         "Peru" to "Totora Boat", "Hong Kong" to "Junk Boat")
-    // mapin icindeki bir degere keyini cagirarak eristik ve print icinde kullandik.
+    // mapteki bir degere keyini cagirarak erismek ve print icinde kullanmak
     println("A unique mode of transportation that exists in Peru is ${uniqueTransport["Peru"]}.")
 
     // mutableMapOf
@@ -141,4 +142,9 @@ fun main() {
         momaPaintings.put("Water Lillies", "Claude Monet")
     }
     println(momaPaintings)
+
+    // map icinde key ya da value'nun varligini ogrenmek icin fonksiyonlar
+    println(momaPaintings.containsKey("The Starry Night")) ///true
+    println(momaPaintings.containsValue("Vincent Van Gogh")) ///true
+
 }

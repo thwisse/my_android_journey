@@ -60,7 +60,7 @@ fun main() {
 
     var word = "supercalifragilisticexpialidocious"
 
-    word = word.capitalize()
+    word = word.capitalize() // stringin ilk harfini buyuk harfe donusturur.
 
     // .length property
 
@@ -97,7 +97,7 @@ fun main() {
     Math.abs(-20)       ///20
 
     ///////////////////
-    // when expression
+    // when expression (switch case gibi)
 
     var lightColor = "red"
 
