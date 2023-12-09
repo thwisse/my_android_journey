@@ -128,4 +128,12 @@ fun main() {
     //Maxie participated in AKC National Championship.
     maxie.speak()
     //Maxie says: Woof!
+
+    ////////////////////////////////////////////////
+    /* codecademy learn kotlin kursu bitti. ilk 5 file dosyasi bu kurstan alinan
+    notlardan olusmaktadir. bundan sonraki notlar udemydeki kasim adalan kotlin kursundan
+    alinan notlardan olusacaktir. codecademy kursunu hizlica bitirmeme sebep olan yazilim gecmisim
+    buraya daha az not almama sebep oldu. simdi hem yine yazilim gecmisim hem de codecademy kursundan
+    oturu bundan sonraki kursta da bildigim seyleri degil yeni ogrendigim seyleri not alacagim. bunlari
+    buraya niye yaziyorum bilmiyorum sanki birisi okuyacak... canim sikildi sanirim... */
 }

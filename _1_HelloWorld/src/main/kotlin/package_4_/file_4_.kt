@@ -45,7 +45,7 @@ fun pyramidVolume(l: Int, w: Int, h: Int) = (l * w * h) / 3
 ///    return (l * w * h) / 3
 ///    }
 
-fun main () {
+fun main() {
     // func 1 (calculateForce())
 
     calculateForce(5, 12)
@@ -105,7 +105,8 @@ fun main () {
     val quotient2 = { num1: Int, num2: Int -> num1.toDouble() / num2.toDouble() }
     println(quotient2(12, 5)) ///2.4
 
-
+    // kotlinde fonksiyonlara sadece fonksiyon deniyor. metotlar vs kullanilmiyor.
+    // classlar icinde tanimli olan fonklara ise member functions yani uye fonksiyonlar deniyor.
 
 
 }

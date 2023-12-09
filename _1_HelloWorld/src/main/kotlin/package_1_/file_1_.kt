@@ -1,6 +1,6 @@
 package package_1_
 
-fun main () {
+fun main() {
     println("Hello World!")
 
     print("Learn ")
@@ -14,6 +14,8 @@ fun main () {
 
     ////////////////////
     // var - val
+    // var: degisen degisken (mutable)
+    // val: degismeyen degisken (immutable)
 
     var number1 = 15
     number1 = 16
@@ -32,6 +34,7 @@ fun main () {
     // float double'in aksine kusuratli olmak zorunda degildir.
     val b2:Float = 6F
     val c:Double = 7.567
+    // double floattan daha hassas degerleri tutmak icin vardir.
 
     /////////////////////
 
@@ -42,6 +45,7 @@ fun main () {
     /////////////////////
     // type inferance
 
+    // degiskenden sonra degiskenin tipini yazmasak da kotlin o degerin hangi tipte oldugunu anlayabilir.
     var name2 = "Aziz Vefa"  ///String
     var age2 = 39            ///Int
     var maritalStatus = true ///Boolean
@@ -53,6 +57,7 @@ fun main () {
     val potSize = 6 // in inches
     val dayNum = 7
 
+    // $ isareti ile o stringin icine bir degiskeni inject etmesini sagladik.
     println("An $plant in a $potSize inch pot must be watered every $dayNum days.")
 
     //////////////////
@@ -97,7 +102,8 @@ fun main () {
     Math.abs(-20)       ///20
 
     ///////////////////
-    // when expression (switch case gibi)
+    // when expression
+    // switch case'e benziyor. zaten kotlinde switch case yok. onun yerine kullaniliyor.
 
     var lightColor = "red"
 
@@ -129,6 +135,7 @@ fun main () {
     // baska bir ornek:
     var letter = 'c'
 
+    // boyle karakterlerde de araliga bakilabiliyor. ascii siralamasina gore bakiliyor
     when (letter) {
         in 'a'..'m' -> println("Letter is in 1st half of alphabet.")
         in 'n'..'z' -> println("Letter is in 2nd half of alphabet.")

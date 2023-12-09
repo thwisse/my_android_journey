@@ -1,6 +1,6 @@
 package package_3_
 
-fun main () {
+fun main() {
     // donguler
 
     //for dongusu
