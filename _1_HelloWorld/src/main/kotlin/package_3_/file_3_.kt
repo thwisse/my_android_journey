@@ -1,6 +1,6 @@
 package package_3_
 
-fun main() {
+fun main () {
     // donguler
 
     //for dongusu
@@ -200,6 +200,82 @@ fun main() {
     ///33.0C = 91.4F
     ///100.0C = 212.0F
 
+    // ic ice donguler
 
+    for (i in 1..2) {
+        for (j in 'A'..'C') {
+            println("Outer loop: $i - Inner loop: $j")
+        }
+    }
+    ///Outer loop: 1 - Inner loop: A
+    ///Outer loop: 1 - Inner loop: B
+    ///Outer loop: 1 - Inner loop: C
+    ///Outer loop: 2 - Inner loop: A
+    ///Outer loop: 2 - Inner loop: B
+    ///Outer loop: 2 - Inner loop: C
+
+    /////////////////
+    // jump expresions (break & continue)
+
+    // break donguyu istenen yerde durdurur ve kodu dongunun disina ziplatir
+    // continue dongude bulundugu yeri ve sonrasini calistirmaz, donguyu bir sonraki donuse goturur
+
+    // break ornek:
+    val rooms = listOf("Kitchen", "Living Room", "Basement", "Bathroom")
+    println("-- Room Search --")
+    for (room in rooms) {
+        print("$room: ")
+        if (room == "Living Room") {
+            println("Found It!")
+            break
+        }
+        println("Found Nothing.")
+    }
+    ///-- Room Search --
+    ///Kitchen: Found Nothing.
+    ///Living Room: Found It!
+
+    // continue ornek:
+    println("\n-- Divide By Zero --")
+    for (number in 12 downTo -12 step 4) {
+        if (number == 0) {
+            continue
+        }
+        println("120/number = ${120/number}")
+    }
+    ///-- Divide By Zero --
+    ///120/number = 10
+    ///120/number = 15
+    ///120/number = 30
+    ///120/number = -30
+    ///120/number = -15
+    ///120/number = -10
+
+    // Labeled Jump Expressions (etiketli jump ifadeleri)
+
+    for (i in 1..6) {
+        for (j in 'A'..'F') {
+            print("$j$i ")
+        }
+        println()
+    }
+    ///A1 B1 C1 D1 E1 F1
+    ///A2 B2 C2 D2 E2 F2
+    ///A3 B3 C3 D3 E3 F3
+    ///A4 B4 C4 D4 E4 F4
+    ///A5 B5 C5 D5 E5 F5
+    ///A6 B6 C6 D6 E6 F6
+
+    // grid gibi rastgele bi isim vererek ve @ kullanarak herhangi bir donguyu etiketledik
+    grid@ for (i in 1..6) {
+        for (j in 'A'..'F') {
+            if (j == 'C') {
+                continue@grid  // etiketli olan donguyu continue etmesini sagladik
+            }
+            print("$j$i ")
+        }
+        println()
+    }
+    ///A1 B1 A2 B2 A3 B3 A4 B4 A5 B5 A6 B6
 
 }

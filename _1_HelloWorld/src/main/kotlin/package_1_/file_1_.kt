@@ -1,6 +1,6 @@
 package package_1_
 
-fun main() {
+fun main () {
     println("Hello World!")
 
     print("Learn ")

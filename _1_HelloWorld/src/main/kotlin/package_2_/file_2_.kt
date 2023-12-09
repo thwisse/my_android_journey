@@ -1,6 +1,6 @@
 package package_2_
 
-fun main() {
+fun main () {
     // collections (lists, sets, maps)
 
     // lists
