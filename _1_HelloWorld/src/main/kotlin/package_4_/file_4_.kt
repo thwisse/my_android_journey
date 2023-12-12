@@ -18,8 +18,7 @@ fun getPrice(price: Double, couponCode: String = "None") {
 
     if (couponCode == "save15") {
         finalPrice = price * .85
-    }
-    else {
+    } else {
         finalPrice = price
     }
     println("The total price is $finalPrice.")
@@ -107,7 +106,5 @@ fun main() {
 
     // kotlinde fonksiyonlara sadece fonksiyon deniyor. metotlar vs kullanilmiyor.
     // classlar icinde tanimli olan fonklara ise member functions yani uye fonksiyonlar deniyor.
-
-
 }
 

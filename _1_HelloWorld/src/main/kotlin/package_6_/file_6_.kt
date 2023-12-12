@@ -1,6 +1,7 @@
 package package_6_
 
 import java.util.Scanner
+import kotlin.random.Random
 
 class islem {
     var x = 5
@@ -113,13 +114,13 @@ fun main () {
     // kullanabiliriz. cunku performans acisindan arrays daha iyidir. ama genelde collections kullanilir.
 
     // 1- Array<Type>(size)(values) seklinde dizi olusturulabilir.
-    // ayni zamanda bu bos dizi olusturmanin bir yolu
-    val array1 = Array<Int>(5) {0}
+    // ayni zamanda bu bos dizi olusturmanin bir yolu:
+    val array1 = Array<Int>(5) {0} // bos int dizi
+    val array1_ = Array<String>(5) {""} ///["","","","",""] // bos string dizi
     // dizi icerigini ogrenmek icin:
     println(array1.contentToString()) ///[0,0,0,0,0]
     val array2 = Array<Int>(5) { index -> index + 1 }
-    println(array2.contentToString())
-    ///[1,2,3,4,5]
+    println(array2.contentToString()) ///[1,2,3,4,5]
 
     // 2- arrayOf
     val array3 = arrayOf(1,5,9)
@@ -129,10 +130,56 @@ fun main () {
 
     // tip belirtmedigimizde sadece tek tip degerler girmek zorunda degiliz
     val array5 = arrayOf(1,5,9,"elma","armut","karpuz")
+    println(array5.contentToString()) ///[1, 5, 9, elma, armut, karpuz]
 
+    // dizideki bir degeri cagirmak
     println(array5[5]) ///karpuz
     // ikisi ayni islevi gorur.
     println(array5.get(5)) ///karpuz
 
-    
+    // dizideki bir degeri degistirmek
+    array5[2] = 10
+    // ikisi ayni islevi gorur.
+    array5.set(3,"muz")
+    println(array5.contentToString()) ///[1, 5, 10, muz, armut, karpuz]
+
+    // dizinin bos olup olmama kontrolu
+    println(array5.isEmpty()) ///false
+    //dizinin boyutunu ogrenme
+    println(array5.count()) ///6
+    // dizi icindeki degerin indexini ogrenme
+    println(array5.indexOf("karpuz")) ///5
+    // dizi icerisinde bir degerin olup olmadigini ogrenme
+    println(array5.contains("portakal")) ///false
+    // dizideki string karakterleri ascii tablosuna gore alfabetik siralamak ve max min ogrenmek
+    val markalar = arrayOf("Huawei", "Apple", "Nokia", "Samsung")
+    println(markalar.max()) ///Samsung
+    println(markalar.min()) ///Apple
+    val puanlar = arrayOf(40, 86, 30, 100, 50)
+    println(puanlar.max()) ///100
+    println(puanlar.min()) ///30
+    // diziyi minden maxa direkt siralayan fonk
+    markalar.sort()
+    println(markalar.contentToString()) ///[Apple, Huawei, Nokia, Samsung]
+    puanlar.sort()
+    println(puanlar.contentToString()) ///[30, 40, 50, 86, 100]
+    // diziyi tersine ceviren fonk
+    markalar.reverse()
+    println(markalar.contentToString()) ///[Samsung, Nokia, Huawei, Apple]
+
+    //destructuring ve withIndex() i hatirlayalim
+    for ((indeks, marka) in markalar.withIndex()) {
+        println("Marka ${indeks + 1}: $marka")
+    }
+    ///Marka 1: Samsung
+    ///Marka 2: Nokia
+    ///Marka 3: Huawei
+    ///Marka 4: Apple
+
+    // rastgele sayi uretme
+    // her seferinde 10 tane rastgele sayi uretecek:
+    for (i in 0..9) { // uretilecek sayi adedi
+        val random = Random.nextInt(0, 10) // sayilarin buyukluk siralamasi
+        println(random)
+    }
 }
