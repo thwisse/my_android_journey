@@ -1,5 +1,7 @@
 package package_6_
 
+import java.util.Scanner
+
 class islem {
     var x = 5
     var y = 15
@@ -84,6 +86,53 @@ fun main () {
     }
     // bunda string int disinda bir sey ise degiskene null atar. hatayi cikti verdirmez.
 
+    ///////////////////////////
+    // konsoldan girdi almak
 
+    /* tekrar ederken ya da kodu calistirmak icin bu yorum seysini silebilirsin
+    print("Adiniz: ")
+    // Scanner yazdiginda java.util.Scanner import edildi
+    // burada Scanner sinifindan bir nesne olustugunun farkinda ol
+    val girdi = Scanner(System.`in`)
+    // Scanner ile alinan veri girdi'ye atanir. girdideki string veriyi .next() ile herhangi
+    // bir degiskene atayabiliriz:
+    val name = girdi.next()
+    println(name)
 
+    print("Yasiniz: ")
+    val girdi2 = Scanner(System.`in`)
+    // simdi de .nextInt() kullandik.
+    val age = girdi2.nextInt()
+    println(age)
+     */
+
+    ///////////////////////
+    // diziler (arrayOf)
+    // boyutlari sabittir. collectionslardan en onemli farki budur.
+    // eger boyutu sabit olacak bi yapiya ihtiyacimiz varsa collections yerine array
+    // kullanabiliriz. cunku performans acisindan arrays daha iyidir. ama genelde collections kullanilir.
+
+    // 1- Array<Type>(size)(values) seklinde dizi olusturulabilir.
+    // ayni zamanda bu bos dizi olusturmanin bir yolu
+    val array1 = Array<Int>(5) {0}
+    // dizi icerigini ogrenmek icin:
+    println(array1.contentToString()) ///[0,0,0,0,0]
+    val array2 = Array<Int>(5) { index -> index + 1 }
+    println(array2.contentToString())
+    ///[1,2,3,4,5]
+
+    // 2- arrayOf
+    val array3 = arrayOf(1,5,9)
+
+    // 3- arrayOf<Type>
+    val array4 = arrayOf<String>("elma","armut","karpuz")
+
+    // tip belirtmedigimizde sadece tek tip degerler girmek zorunda degiliz
+    val array5 = arrayOf(1,5,9,"elma","armut","karpuz")
+
+    println(array5[5]) ///karpuz
+    // ikisi ayni islevi gorur.
+    println(array5.get(5)) ///karpuz
+
+    
 }
