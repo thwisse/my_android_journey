@@ -1,4 +1,4 @@
-package package_2_
+package notes_1_
 
 fun main() {
     // collections (lists, sets, maps)

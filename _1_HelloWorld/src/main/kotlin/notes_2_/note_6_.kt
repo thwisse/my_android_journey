@@ -1,6 +1,5 @@
-package package_6_
+package notes_2_
 
-import java.util.Scanner
 import kotlin.random.Random
 
 class islem {

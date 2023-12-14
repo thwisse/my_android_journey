@@ -1,4 +1,4 @@
-package package_1_
+package notes_1_
 
 fun main() {
     println("Hello World!")

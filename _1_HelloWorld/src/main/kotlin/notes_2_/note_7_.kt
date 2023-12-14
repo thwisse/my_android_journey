@@ -1,13 +1,14 @@
-package package_7_
+package notes_2_
 
 // class 1
-class Car1 {
+class Car3 {
     var color = "Red"
     val brand = "Mercedes"
 }
 
+/*
 // class 2
-class Car2 (var color:String, val brand:String, var running:Boolean) {
+class Car4 (var color:String, val brand:String, var running:Boolean) {
 
     fun ozellikleriYazdir() {
         var durum:String
@@ -18,44 +19,47 @@ class Car2 (var color:String, val brand:String, var running:Boolean) {
         print("Durum: $durum")
     }
 }
+*/
 
 fun main () {
 
-    // class 1 (Car1)
+    // class 1 (Car3)
 
-    var myCar = Car1()
-    myCar.color = "Black"
+    var myCar3 = Car3()
+    myCar3.color = "Black"
     // bu kod calismayacak. cunku brand ozelligini val olarak belirttim ve
     // default degerin degisemeyecegini soyledim.
     //myCar.brand = "Volvo"
-    println(myCar.color) ///Black
+    println(myCar3.color) ///Black
     // brandi degistiremedim. default ve degismez olan degeri getirdi.
-    println(myCar.brand) ///Mercedes
+    println(myCar3.brand) ///Mercedes
 
-    val yourCar = Car1()
+    val yourCar = Car3()
     // bu classtan val ile de nesne uretilebilir.
     // bunu henuz neden yapmamiz gerektigini anlamadim!
 
-    // class 2 (Car2)
+    /* Car4 classini ve ilgili kodlari yorum satirina aliyorum cunku sebepsizce hata aliyorum.
+    // class 2 (Car4)
 
     /* default degeri olmayan class olusturmak (constructors)
     classlari default sekilde olusturdugumuzda bizden icindeki ozellikler icin
     default degerleri girmemizi zorunlu kilar. ancak constructor class olusturdugumuzda
     default deger olmayan ozellikleri classa inject edebiliriz */
 
-    var myCar2 = Car2("Gray","Volkswagen", true)
-    myCar2.color = "Yellow"
+    var myCar4 = notes_1_.Car4("Gray", "Volkswagen", true)
+    myCar4.color = "Yellow"
     // brandi yine val olarak belirledigim icin, nesneyi olustururken ilk degerini atadim ve daha sonra
     // bu degeri degistirmeme izin vermedi. Volkwagen degerini degismez deger olarak kabul etti.
-    //myCar2.brand = "Audi"
-    println(myCar2.color) ///Yellow
-    println(myCar2.brand) ///Volkswagen
-    println(myCar2.running) ///true
+    //myCar4.brand = "Audi"
+    println(myCar4.color) ///Yellow
+    println(myCar4.brand) ///Volkswagen
+    println(myCar4.running) ///true
 
-    myCar2.running = false
+    myCar4.running = false
 
     // yarattigim func ile ozellikleri bu sekilde direkt yazdirabilirim
-    myCar2.ozellikleriYazdir()
+    myCar4.ozellikleriYazdir()
+    */
 
     ///////////////////////
     // null safety ozelligi

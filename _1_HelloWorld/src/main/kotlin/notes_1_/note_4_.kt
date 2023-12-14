@@ -1,4 +1,4 @@
-package package_4_
+package notes_1_
 
 // func 1
 // burada mass'e parametre denirken, main icinde func cagirilinca icine girilen seye arguman denir.

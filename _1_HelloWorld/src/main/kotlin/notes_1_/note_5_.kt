@@ -1,4 +1,4 @@
-package package_5_
+package notes_1_
 
 // class 1
 class Car {
@@ -11,7 +11,7 @@ class Car {
 // class 2
 // primary constructor
 // bu parametrelere val ekledigin zaman birer member (data member) olmus olurlar.
-class Car2(val year: Int, val model: String, val color: String)
+//class Car2(val year: Int, val model: String, val color: String)
 
 /////////////////////////////////////////////
 // data member, bir classa ait olan degiskenlerdir.
@@ -94,12 +94,13 @@ fun main() {
     // primary constructor
     // class Name(val x: String, val y: String)
 
+    /* Car2 classini ve bu kodlari yorum satirina aliyorum cunku sebepsizce hata aliyorum.
     // class 2 (Car2)
-    val yourCar = Car2(2011, "Jeep", "Blue")
-    val friendsCar = Car2(2015, "Mazda", "Red")
-
+    val yourCar = notes_2_.Cars(2011, "Jeep", "Blue")
+    val friendsCar = notes_2_.Cars(2015, "Mazda", "Red")
     println(yourCar.year)      ///2011
     println(friendsCar.year)   ///2015
+    */
 
     // init block
 
