@@ -1,5 +1,8 @@
 package notes_2_
 
+import java.util.Scanner
+import kotlin.math.sin
+
 // class 1
 class Car3 {
     var color = "Red"
@@ -21,8 +24,37 @@ class Car4 (var color:String, val brand:String, var running:Boolean) {
 }
 */
 
-fun main () {
+// class 3
+class kisi (var isim: String, var yas: Int) {
+    init {
+        println("Yeni kisi nesnesi olusturuldu.")
+    }
+}
 
+// class 4
+class sinif_a {
+    companion object {
+        var sayi = 69
+
+        fun func () {
+            println("altmis dokuz")
+        }
+    }
+}
+
+// class 5
+enum class bardaklar {
+    Shot, Kucuk, Orta, Buyuk
+}
+
+// class 6
+class adresBilgisi (var il: String, var ilce: String) {}
+
+// class 7
+class temelBilgiler (var isim: String, var yas: Int, var adres: adresBilgisi) {}
+// adresBilgisi classindan yaratilmis bir nesneyi parametre olarak girmeyi sart kosuyor.
+
+fun main () {
     // class 1 (Car3)
 
     var myCar3 = Car3()
@@ -128,4 +160,72 @@ fun main () {
     // extra olarak infix keywordunu ekledigimizda cok daha pratik kullanabiliriz
     sonuc = 6 carpi 4
     println(sonuc)
+
+    ////////////////////
+    // init blogu ornek
+    // class 3 (kisi)
+
+    // icinde init blogu bulunan classtan bir nesne olusturuldugunda
+    // islem yap ya da yapma init blogu calisacaktir.
+    var kisi1 = kisi("Oguzhan", 23)
+    println(kisi1.isim + " - " + kisi1.yas)
+    ///Yeni kisi nesnesi olusturuldu.
+    ///Oguzhan - 23
+
+    val girdi = Scanner(System.`in`)
+    // java.util.Scanner import edildi. eger java.util.* yaziyor olsaydi bu tum paketin import edildigi
+    // anlamina gelecekti. burada ise sadece scanner ozelligi import edildi.
+
+    //////////////////////
+    // data class
+    // genelde veritabani tablolarinin modelleri icin kullanilir
+
+    ///////////////////
+    // class 4 (sinif_a)
+    // static degisken ve fonksiyonlar (companion object)
+    // bir classtan nesne olusturmadan degisken ve fonksiyonlarina erismek icin kullanilir
+    // cok sik kullanmamak gerekir. performansi etkiler.
+
+    sinif_a.sayi = 46
+    sinif_a.func()
+    // bu sekilde nesne olusturmadan bu static degisken ve fonksiyonlari kullanabildik.
+
+    ////////////////////
+    // class 5 (bardaklar)
+    // enumeration (enum)
+    // parametrelerde kullanilir. verilerin eslestirilmesi sonucunda islem yapilabilir.
+    // yazilimciyi detaydan kurtarir ve verimlilik saglar.
+    // class'in basina enum keywordu getirilerek yapilir.
+
+    fun ucretOgren (boyut: bardaklar): Int {
+        var ucret = 5
+        when (boyut) {
+            bardaklar.Shot -> ucret *= 20
+            bardaklar.Kucuk -> ucret *= 40
+            bardaklar.Orta -> ucret *= 60
+            bardaklar.Buyuk -> ucret *= 70
+        }
+        return ucret
+    }
+    println(ucretOgren(bardaklar.Shot).toString() + " TL") ///100 TL
+
+    /////////////////////////
+    // composition yapisi
+    // class 6 (adresBilgisi) ve class 7 (temelBilgiler)
+
+    // bir classta baska bir classin nesnesini parametre olarak alabiliriz.
+    // bu sekilde ic ice class yapisi kurarak nesnenin nesnesine erisebiliriz.
+    // dependency injection ile composition farkli seylerdir.
+
+    val adres2 = adresBilgisi("Hatay", "Iskenderun")
+    val kisi2 = temelBilgiler("Oguzhan", 23, adres2)
+    // adres2 nesnesini arguman olarak kisi2 nesnesinde kullandik.
+    println(kisi2.isim)
+    println(kisi2.yas)
+    println(kisi2.adres.il)
+    println(kisi2.adres.ilce)
+    ///Oguzhan
+    ///23
+    ///Hatay
+    ///Iskenderun
 }

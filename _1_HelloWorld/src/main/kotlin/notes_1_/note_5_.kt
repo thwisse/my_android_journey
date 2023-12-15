@@ -103,6 +103,7 @@ fun main() {
     */
 
     // init block
+    // init blogu, classtan bir nesne olusturuldugunda calisir.
 
     // class 3 (Mascot)
     val codey = Mascot("Codey", "Codecademy", 2018)

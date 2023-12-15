@@ -137,7 +137,10 @@ fun main() {
 
     // boyle karakterlerde de araliga bakilabiliyor. ascii siralamasina gore bakiliyor
     when (letter) {
-        in 'a'..'m' -> println("Letter is in 1st half of alphabet.")
+        in 'a'..'m' -> {
+            println("Letter is in 1st half of alphabet.")
+            // bla bla bla
+        }
         in 'n'..'z' -> println("Letter is in 2nd half of alphabet.")
         else -> println("Not a valid value")
     }
