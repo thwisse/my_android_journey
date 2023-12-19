@@ -19,6 +19,11 @@ class Tesla (renk: String = "",
     override fun araciCalistir() {
         println("Tesla calisti.")
     }
+
+    fun elektrikliSarj () {
+        println("Sarj ediliyor.")
+    }
+
 }
 
 open class Motorsiklet (renk: String = "",
@@ -53,16 +58,18 @@ fun main () {
     var kawasakiNinja250R = Kawasaki("Siyah", 2, "Beyaz", true)
 
     //////////////////////////
-    // polymorphism (cok bicimlilik) ve overriding
-    /* Polimorfizm, bir nesnenin farklı şekillerde davranabilme yeteneğini ifade eder.
-    Kotlin gibi nesne yönelimli programlama dillerinde, polimorfizm, bir üst sınıfın metotlarının
-    alt sınıflar tarafından farklı şekillerde uygulanabilmesini sağlar.
+    // polymorphism (cok bicimlilik)
+    // Polimorfizm, bir nesnenin farklı şekillerde davranabilme yeteneğini ifade eder.
+    // Kotlin gibi nesne yönelimli programlama dillerinde, polimorfizm, bir üst sınıfın metotlarının
+    // alt sınıflar tarafından farklı şekillerde uygulanabilmesini sağlar.
 
-    Overriding ise bir alt sınıfın, üst sınıfın metotlarını yeniden tanımlayarak kendi
-    ihtiyaçlarına göre uyarlamasını ifade eder. Yani, alt sınıf, üst sınıfın metotlarını
-    aynı isimle ve aynı parametrelerle yeniden tanımlayarak, farklı bir davranış sergileyebilir. */
+    // overriding
 
-    // bir superclasstaki functionu subclassta kullanabilmek icin kullaniriz.
+    // Overriding bir alt sınıfın, üst sınıfın metotlarını yeniden tanımlayarak kendi
+    // ihtiyaçlarına göre uyarlamasını ifade eder. Yani, alt sınıf, üst sınıfın metotlarını
+    // aynı isimle ve aynı parametrelerle yeniden tanımlayarak, farklı bir davranış sergileyebilir.
+
+    // bir superclasstaki functionu subclassta ayni ya da farkli islemler icin kullanabilmek mumkundur.
     // superclasstaki functionu open ettikten sonra subclassta override fun ile olusturabiliriz.
     // function open ile olusturulduysa tum subclasslarda o fonksiyona her turlu erisilir.
 
@@ -71,7 +78,7 @@ fun main () {
     ///Arac calisti.
 
     // func bunlarin icinde tekrar yazilmamis olmasina ragmen erisilebildi.
-    // arac classindaki functionu calistirdilar.
+    // arac classindaki functionu calistirdilar. fonksiyonu override etmis olduk.
     val araba = Araba()
     araba.araciCalistir()
     val motorsiklet = Motorsiklet()
@@ -91,13 +98,43 @@ fun main () {
     // bu da superclasstaki fonksiyonu calistir anlamina geliyor. kontrol amacli var. zaten fonksiyonu
     // olusturmasan da subclass ile fonksiyonu cagirabildigin icin onu kullanmanin geregi yok.
 
-    // superclasslarin subclass ozelligi tasiyan nesnelerinin yaratilmasi:
-    val arac2: Arac = Tesla()
+    //////////////////////////
+    // tip kontrolu (is keywordu)
+    // bir degiskenin hangi siniftan turetildigini ogrenmemize yarar.
+    var degisken = 10
+    if (degisken is Int) { println("Integer.") } else { println("Not integer.") } ///Integer.
+
+    val teslaX = Tesla()
+    println(teslaX is Tesla) ///true
+
+    //////////////////////
+    // upcasting (yukseltme)
+    // subclasstan olusmus bir referansi ya da nesneyi, superclasstan olusan bir referansa atamaya denir.
+    // burada Tesla ve Kawasaki alt classindan olan nesneleri, Arac ust classindan olusmus referanslara atiyoruz.
+    val arac2: Arac = Tesla("Mor", 4, true, true)
     val arac3: Arac = Kawasaki()
+    // alt siniftan olan nesneyi ust sinifa donusturduk!
     arac2.araciCalistir()
     arac3.araciCalistir()
     ///Tesla calisti.
     ///Kawasaki calisti.
     // normalde teslaya ya da kawasakiye ozel olarak override edilmis fonksiyonu superclass ile yaratilmis
-    // bir nesne ile kullandik. bunu superclass ile yaratilmis nesneyi subclass'a esitleyerek yapabildik.
+    // bir nesne ile kullandik.
+
+    /////////////////////////
+    // downcasting (alcaltma) (as keyword)
+    // üst sınıfın referansını alt sınıfın referansına dönüştürerek,
+    // alt sınıfa özgü özelliklere ve işlevlere erişmemizi sağlar.
+    // note_9_ da terfiEttir fonksiyonu icinde ornegi var.
+
+    val yeniArac: Arac = Tesla()
+
+    if (yeniArac is Tesla) {
+        val yeniTesla: Tesla = yeniArac as Tesla
+        yeniTesla.elektrikliSarj()
+    }
+    // normalde burada bunun ornegi yoktu. ama internetten bakarak buna da bi ornek uyarladim ama
+    // ben buradakini anlamadim. ilerde belki anlamli olur diye bu ornegi burada birakiyorum.
+    // note_9_daki ornek biraz daha anlamli geldi. ama onu da tam olarak anladigim soylenemez su an.
+
 }

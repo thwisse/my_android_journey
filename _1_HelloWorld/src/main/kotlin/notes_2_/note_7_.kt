@@ -54,6 +54,22 @@ class adresBilgisi (var il: String, var ilce: String) {}
 class temelBilgiler (var isim: String, var yas: Int, var adres: adresBilgisi) {}
 // adresBilgisi classindan yaratilmis bir nesneyi parametre olarak girmeyi sart kosuyor.
 
+// class 8
+class birClass {
+
+    var id: Int? = null
+
+    var isim: String? = null
+
+    // bu sekilde de constructor olusturulabiliyor. bunu sag tik yapip otomatik de generate edebiliyosun.
+    // hatta istersen bunu da ampul simgesine basarak primary constructor'a cevirebiliyosun.
+    // teknolojinin gozunu seveyim.
+    constructor(id: Int?, isim: String?) {
+        this.id = id
+        this.isim = isim
+    }
+}
+
 fun main () {
     // class 1 (Car3)
 
@@ -228,4 +244,8 @@ fun main () {
     ///23
     ///Hatay
     ///Iskenderun
+
+    ///////////////////////
+    // farkli bir constructor olusturma sekli
+    // class 8 (birClass)'a bak.
 }
