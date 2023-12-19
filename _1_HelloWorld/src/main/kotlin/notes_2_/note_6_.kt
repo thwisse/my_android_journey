@@ -86,7 +86,7 @@ fun main () {
     }
     // bunda string int disinda bir sey ise degiskene null atar. hatayi cikti verdirmez.
 
-    ///////////////////////////
+    ////////////////////////////
     // konsoldan girdi almak
 
     /* tekrar ederken ya da kodu calistirmak icin bu yorum seysini silebilirsin

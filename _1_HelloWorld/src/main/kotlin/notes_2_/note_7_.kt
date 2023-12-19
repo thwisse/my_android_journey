@@ -61,7 +61,7 @@ class birClass {
 
     var isim: String? = null
 
-    // bu sekilde de constructor olusturulabiliyor. bunu sag tik yapip otomatik de generate edebiliyosun.
+    // bu sekilde secondary constructor olusturulabiliyor. bunu sag tik yapip otomatik de generate edebiliyosun.
     // hatta istersen bunu da ampul simgesine basarak primary constructor'a cevirebiliyosun.
     // teknolojinin gozunu seveyim.
     constructor(id: Int?, isim: String?) {
@@ -246,6 +246,6 @@ fun main () {
     ///Iskenderun
 
     ///////////////////////
-    // farkli bir constructor olusturma sekli
+    // farkli bir constructor (secondary cons) olusturma sekli
     // class 8 (birClass)'a bak.
 }

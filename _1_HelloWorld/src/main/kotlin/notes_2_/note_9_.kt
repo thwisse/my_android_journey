@@ -64,6 +64,16 @@ fun main () {
     val ustabasi1: Personel = Ustabasi("Ezel Bayraktar", 10000)
     // ustabasi icin ozelOda ve terfiDuzeyi argumanlarini doldurmadim cunku default degerleri var.
 
+    //val ustabasi1 = Ustabasi()
+    // ustabasi1 tanımlamasının türü belirtilmemiştir ve Ustabasi sınıfından
+    // nesne ogretmen tanımlamasına aktarılmıştır, standart bir nesne oluşturulmuştur.
+
+    //val ustabasi1: Personel = Ustabasi()
+    // ustabasi1 tanımlamasının türü Personel sınıfıdır ve Ustabasi sınıfından
+    // nesne ogretmen tanımlamasına aktarılmıştır , polymorphism yapılmıştır.
+
+    // Polymorfism kullanım amacı sınıf dönüşümleri yaparak kullanım alanlarını genişletmektir.
+
     val d_isci1: Personel = DeneyimliIsci("Eser Yenenler", 1000)
     val isci1: Personel = Isci("Ekber Habesi", 500)
     val isci2: Personel = Isci("Roberto Carlos", 600)

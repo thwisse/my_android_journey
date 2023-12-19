@@ -42,7 +42,7 @@ fun pyramidVolume(l: Int, w: Int, h: Int) = (l * w * h) / 3
 // su alttaki fonksiyonu kisaltip ustteki gibi yazabildik.
 ///fun pyramidVolume(l: Int, w: Int, h: Int){
 ///    return (l * w * h) / 3
-///    }
+///}
 
 fun main() {
     // func 1 (calculateForce())

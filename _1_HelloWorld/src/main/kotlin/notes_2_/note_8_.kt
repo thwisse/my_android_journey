@@ -108,7 +108,7 @@ fun main () {
     println(teslaX is Tesla) ///true
 
     //////////////////////
-    // upcasting (yukseltme)
+    // upcasting (yukseltme) (yazimi polimorfizme cok benziyor, ancak farkli seyler)
     // subclasstan olusmus bir referansi ya da nesneyi, superclasstan olusan bir referansa atamaya denir.
     // burada Tesla ve Kawasaki alt classindan olan nesneleri, Arac ust classindan olusmus referanslara atiyoruz.
     val arac2: Arac = Tesla("Mor", 4, true, true)

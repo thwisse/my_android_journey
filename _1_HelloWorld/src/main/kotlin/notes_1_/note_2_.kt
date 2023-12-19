@@ -59,6 +59,10 @@ fun main() {
     primeNumbers.add(17)
     // listeden eleman cikarmak
     primeNumbers.remove(4)
+    // listede herhangi bir indekse eleman eklemek (o indexteki elemani ve sonrakileri saga kaydirir):
+    println(primeNumbers.toString())
+    primeNumbers.add(2, 9)
+    println(primeNumbers.toString())
 
     ////////////////
     // sets
