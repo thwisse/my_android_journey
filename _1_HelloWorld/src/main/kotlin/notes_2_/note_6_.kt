@@ -152,7 +152,7 @@ fun main () {
     println(array5.contains("portakal")) ///false
     // dizideki string karakterleri ascii tablosuna gore alfabetik siralamak ve max min ogrenmek
     val markalar = arrayOf("Huawei", "Apple", "Nokia", "Samsung")
-    println(markalar.max()) ///Samsung
+    println(markalar.max()) ///Samsung   // bu iki fonksiyon once sort eder sonra max ya da mini getirir
     println(markalar.min()) ///Apple
     val puanlar = arrayOf(40, 86, 30, 100, 50)
     println(puanlar.max()) ///100

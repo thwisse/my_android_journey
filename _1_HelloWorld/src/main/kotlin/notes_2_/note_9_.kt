@@ -73,6 +73,11 @@ fun main () {
     // nesne ogretmen tanımlamasına aktarılmıştır , polymorphism yapılmıştır.
 
     // Polymorfism kullanım amacı sınıf dönüşümleri yaparak kullanım alanlarını genişletmektir.
+    // kullanim alani genisletme mevzusunu tam anlamadigim icin hocaya sordum o da bunu yazdi:
+    /* Bazı durumlarda size sunulan metodların veya sınıfların parametrelerinde elinizde
+    bulunan sınıfın super classı istenebilir, bu durumda elinizdeki nesnenin görünümünü
+    polymorphism ile değiştirebilirsiniz. Çok yaygın olmasada bu durumlar ile karşılaşabilirsiniz,
+    bu kullanımlar duruma göre değişebilir ve android tarafında karşınıza çıktıkça daha anlaşılır olacaktır. */
 
     val d_isci1: Personel = DeneyimliIsci("Eser Yenenler", 1000)
     val isci1: Personel = Isci("Ekber Habesi", 500)
