@@ -144,3 +144,122 @@ fun main () {
     println(ayakkabi1.indirim)
 
 }
+
+/*
+
+package projects_1_
+
+import java.util.Scanner
+import kotlin.random.Random
+
+// Bir okul kayit uygulamasi yap. Ogrencinin isimSoyisim'ni kullanici girsin. Ogrencinin okulNo'sunu
+// 100 ile 1000 arasindaki degerlerden sen rastgele olarak belirle.
+
+class Ogrenci (var isimSoyisim: String, var okulNo: Int) {}
+
+fun main() {
+    var secim: Int
+
+    val ogrenciList = ArrayList<Ogrenci>()
+
+    fun okulNoYarat (): Int {
+        val yeniNo = Random.nextInt(100, 1000)
+        return yeniNo
+    }
+
+    println("Yeni ogrenci kaydi programina hosgeldiniz.")
+
+    do {
+
+        println("1- Yeni Kayit\n2- Ogrencileri Sirala\n3- Okul Mevcudunu Goruntule\n4- Ogrenci Sil\n5- Cikis Yap")
+        print("Yapmak istediginiz secimi giriniz: ")
+        val girdi = Scanner(System.`in`)
+
+        try {
+            secim = girdi.next().toInt()
+        } catch (e: NumberFormatException) {
+            println("Bir hata oldu. Lutfen tekrar girin.")
+            continue
+        }
+
+        girdi.nextLine() // fflush islemi
+
+        when (secim) {
+            1 -> {
+                var isimSoyisim = "isim soyisim"
+
+                do {
+                    print("Kaydi yapilacak ogrencinin adi soyadi: ")
+                    val girdi2 = Scanner(System.`in`)
+                    // useDelimeter fonksiyonu ile string icindeki bosluklari da stringe dahil etmesini istedik.
+                    // aksi taktirde girdiyi yazdirdigimda bosluktan sonrasini yazdirmiyordu.
+                    girdi2.useDelimiter("\n")
+
+                    try {
+                        isimSoyisim = girdi2.next().toString()
+
+                        girdi2.nextLine()  // fflush islemi
+                    } catch (e: NumberFormatException) {
+                        println("Bir hata oldu. Lutfen tekrar girin.")
+                        continue
+                    }
+                    break
+                } while (true)
+
+                val okulNo = okulNoYarat()
+                println("Ogrenci kaydi basariyla yapildi. Yeni okul numarasi belirlendi: $okulNo")
+                ogrenciList.add(Ogrenci(isimSoyisim, okulNo))
+            }
+            2 -> {
+                //TODO ogrenci listesini okul numarasina gore mi yoksa isme gore mi sirala diye sor
+
+                println("----------- Ogrenci Listesi -----------\n")
+                for (i in ogrenciList) {
+                    println("Okul No: ${i.okulNo}")
+                    println("Ogrenci adi soyadi: ${i.isimSoyisim}")
+                }
+            }
+            3 -> {
+                println("Okul mevcudu: ${ogrenciList.size}")
+            }
+            4 -> {
+                //TODO burayi yarim biraktim. tamamlanmali. bide ogrenci nolari ayni olan ogrenci olusmasini engelle
+
+                var silNo = 0
+
+                do {
+                    print("Silinmesini istediginiz ogrencinin numarasini giriniz: ")
+                    var girdi3 = Scanner(System.`in`)
+
+                    try {
+                        silNo = girdi3.next().toInt()
+
+                        girdi3.nextLine()  // fflush islemi
+
+                        for (nesne in ogrenciList) {
+                            if (nesne.okulNo == silNo) {
+                                ogrenciList.remove(nesne)
+                                break
+                            }
+                        }
+                        println("Ogrenci basariyla silindi.")
+
+                    } catch (e: NumberFormatException) {
+                        println("Bir hata oldu. Lutfen tekrar girin.")
+                        continue
+                    }
+                    break
+                } while (true)
+            }
+            5 -> {
+                println("Cikis yapiliyor...")
+                break
+            }
+            else -> {
+                println("Hatali giris. Tekrar deneyin.")
+            }
+        }
+    } while (true)
+}
+
+ */

@@ -84,7 +84,7 @@ fun main () {
 
     val yourCar = Car3()
     // bu classtan val ile de nesne uretilebilir.
-    // bunu henuz neden yapmamiz gerektigini anlamadim!
+    //TODO bunu henuz neden yapmamiz gerektigini anlamadim!
 
     /* Car4 classini ve ilgili kodlari yorum satirina aliyorum cunku sebepsizce hata aliyorum.
     // class 2 (Car4)

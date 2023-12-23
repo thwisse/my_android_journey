@@ -42,14 +42,15 @@ fun main () {
     meyveler.clear()
     println(meyveler.toString()) ///[]  // dizi icerigi temizlendi.
 
-    ////////////////
+    ///////////////////////////////////////
+
     // nesnelerden olusan diziler
 
     val urun1 = Urun(1, "Asus TUF FX506LI", 26999.0)
     val urun2 = Urun(2,"Logitech MX Keys Eng Q Keyboard", 4427.72)
     val urun3 = Urun(3, "Logitech G305 Lightspeed Mouse", 1049.0)
     val urun4 = Urun(4, "OneOdio A70 Headset", 1827.90)
-    val urun5 = Urun(5, "Samsung Galaxy S20 128 GB", 23999.0)
+    val urun5 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0)
 
     val urunler = ArrayList<Urun>()
 
@@ -82,11 +83,11 @@ fun main () {
     println("\nUrun numarasina gore siralama:\n")
     i = 1
 
-    for (n in siralama1) {
+    for (x in siralama1) {
         println("------- $i -------")
-        println("Urun Numarasi: ${n.urunNo}")
-        println("Urun Adi: ${n.urunAd}")
-        println("Urun Fiyati: ${n.urunFiyat}")
+        println("Urun Numarasi: ${x.urunNo}")
+        println("Urun Adi: ${x.urunAd}")
+        println("Urun Fiyati: ${x.urunFiyat}")
         i += 1
     }
 
@@ -96,15 +97,49 @@ fun main () {
     println("\nUrun fiyatina gore siralama:\n")
     i = 1
 
-    for (f in siralama2) {
+    for (x in siralama2) {
         println("------- $i -------")
-        println("Urun Numarasi: ${f.urunNo}")
-        println("Urun Adi: ${f.urunAd}")
-        println("Urun Fiyati: ${f.urunFiyat}")
+        println("Urun Numarasi: ${x.urunNo}")
+        println("Urun Adi: ${x.urunAd}")
+        println("Urun Fiyati: ${x.urunFiyat}")
         i += 1
     }
 
     ////////////////////////////
-    //
+    // filter func
+    // olusturacagim yeni siralamalarda filtreleme islemi yapabilirim.
+
+    // ornegin 3ten buyuk numaraya sahip olan urunleri listeleyelim:
+    val siralama3 = siralama1.filter { it.urunNo > 3 }
+    // urunler listesini kullanmadim cunku urunleri karisik yerlestirmistik. siralama1 ile
+    // onlari duzenledigim icin filtrelemede onu kullandim.
+
+    println("\nNumarasi 3'ten buyuk olan urunleri siralama:\n")
+    i = 1
+
+    for (x in siralama3) {
+        println("------- $i -------")
+        println("Urun Numarasi: ${x.urunNo}")
+        println("Urun Adi: ${x.urunAd}")
+        println("Urun Fiyati: ${x.urunFiyat}")
+        i += 1
+    }
+
+    // urunAd icinde Logitech bulunan urunleri siralayalim
+    val siralama4 = siralama1.filter { (it.urunAd).contains("Logitech") }
+
+    println("\nLogitech urunleri siralama:\n")
+    i = 1
+
+    for (x in siralama4) {
+        println("------- $i -------")
+        println("Urun Numarasi: ${x.urunNo}")
+        println("Urun Adi: ${x.urunAd}")
+        println("Urun Fiyati: ${x.urunFiyat}")
+        i += 1
+    }
+
+
+
 
 }
