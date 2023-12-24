@@ -60,6 +60,9 @@ fun main() {
                 val okulNo = okulNoYarat()
                 println("Ogrenci kaydi basariyla yapildi. Yeni okul numarasi belirlendi: $okulNo")
                 ogrenciList.add(Ogrenci(isimSoyisim, okulNo))
+                // burada var yeniOgrenci adinda bi degisken olusturup da bu Ogrenci nesnesini ilk
+                // ona atayip ondan sonra add yapabilirdim. ben nesneyi direkt isleme soktum.
+                // bu program icin ikisi de yapilabilir. fark etmedi.
             }
             2 -> {
                 //TODO ogrenci listesini okul numarasina gore mi yoksa isme gore mi sirala diye sor

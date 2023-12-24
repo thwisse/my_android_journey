@@ -192,10 +192,6 @@ fun main () {
     // java.util.Scanner import edildi. eger java.util.* yaziyor olsaydi bu tum paketin import edildigi
     // anlamina gelecekti. burada ise sadece scanner ozelligi import edildi.
 
-    //////////////////////
-    // data class
-    // genelde veritabani tablolarinin modelleri icin kullanilir
-
     ///////////////////
     // class 4 (sinif_a)
     // static degisken ve fonksiyonlar (companion object)

@@ -106,7 +106,7 @@ fun main() {
     numbers.sum() ///70
 
     ////////////////////////
-    // maps (key to value) (key and value cifletine entry denir)
+    // maps (key to value) (key and value ciflerine entry denir)
 
     // mapOf
     var leadSingers = mapOf("The Rolling Stones" to "Mick Jagger",
