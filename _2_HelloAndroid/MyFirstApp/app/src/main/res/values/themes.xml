@@ -8,7 +8,9 @@
         <!-- <item name="windowActionBar">false</item>-->
 
         <!-- colorPrimary rengini kendi yarattigim renk yaptim: -->
-        <item name="colorPrimary">@color/myRed</item>
+        <item name="colorPrimary">#BD0D12</item>
+
+
     </style>
 
     <style name="Theme.MyFirstApp" parent="Base.Theme.MyFirstApp" />

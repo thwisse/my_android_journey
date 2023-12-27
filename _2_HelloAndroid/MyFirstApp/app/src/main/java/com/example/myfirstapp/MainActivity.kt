@@ -8,25 +8,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // logcat'te kendimize cikti verebilmek icin bu kullanimi uygulayabiliriz
+        Log.e("cikti", "Hello World!")
     }
-
-    // R ile res yani resources kismindaki kaynaklarima erisebilirim.
-    //R.color.myRed
-    // kaynaklara java, kt, xml uzantili dosyalardan erisebilirim.
-    //R.string.welcome
-
-    val mesaj = "Hello World!"
-
-    //Log.e("cikti", mesaj)
-
-
-
-
-
-
-
-
-
-
-
 }
