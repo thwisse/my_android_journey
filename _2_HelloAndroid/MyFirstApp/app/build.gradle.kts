@@ -7,6 +7,11 @@ android {
     namespace = "com.example.myfirstapp"
     compileSdk = 34
 
+    // viewBinding icin buildFeatures ekledik
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.myfirstapp"
         minSdk = 28

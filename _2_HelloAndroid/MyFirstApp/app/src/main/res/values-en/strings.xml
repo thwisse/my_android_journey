@@ -1,0 +1,13 @@
+<resources>
+    <!--    -->
+    <string name="app_name">MyFirstApp</string>
+    <string name="welcome">Welcome to the Dark Side!</string>
+
+    <!-- English   -->
+    <string name="kullaniciAdi">Nickname</string>
+    <string name="sifre">Password</string>
+    <string name="buton_giris_yap">Login</string>
+    <string name="yardim">Help</string>
+
+
+</resources>

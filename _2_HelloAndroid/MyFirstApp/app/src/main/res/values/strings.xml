@@ -1,4 +1,13 @@
 <resources>
+    <!--    -->
     <string name="app_name">MyFirstApp</string>
-    <string name="welcome">Welcome to the Dark Side!</string>
+    <string name="welcome">Karanlik tarafa hos geldin!</string>
+
+    <!-- Bu strings icin Default (en-us) diyor ama ben turkce yaptim bunu.   -->
+    <string name="kullaniciAdi">Kullanici adi</string>
+    <string name="sifre">Sifre</string>
+    <string name="buton_giris_yap">Giris yap</string>
+    <string name="yardim">Yardim</string>
+
+
 </resources>

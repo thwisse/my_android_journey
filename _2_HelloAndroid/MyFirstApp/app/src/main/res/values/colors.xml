@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="myRed">#A30000</color>
+    <color name="Primary">#DC70086A</color>
+    <color name="kumbela1">#70086A</color>
 </resources>
