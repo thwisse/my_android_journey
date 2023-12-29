@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/baseline_downhill_skiing_24" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/plainText_a_1_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -26,14 +26,14 @@
         android:hint="@string/kullaniciAdi"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/plainText_a_2_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_a_1_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -42,11 +42,12 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/plainText_a_2_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
@@ -55,14 +56,14 @@
         android:hint="@string/sifre"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button9"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_a_1_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/button_a_1_login"
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
@@ -75,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView_a_2_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -84,6 +85,18 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_d_1_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:text="B"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,12 @@
 package com.example.myfirstapp
 
 // bu ikisini default olarak import ediyor:
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+// log kaydi icin bunu import etti:
+import android.util.Log
 // klasik baglanti icin bu ikisini import etti:
-import android.widget.Button
-import android.widget.TextView
 // viewBinding icin bunu import etti:
 import com.example.myfirstapp.databinding.ActivityMainBinding
 // Snackbar icin bunu import etti:
@@ -53,13 +54,79 @@ class MainActivity : AppCompatActivity() {
         // viewBinding icin degistirdik:
         setContentView(binding.root)
 
-        binding.buttonA2.setOnClickListener {
+        binding.buttonA2Tikla2.setOnClickListener {
             Snackbar.make(it, "Afferim buna da guzel tikladin!", Snackbar.LENGTH_SHORT).show()
-            binding.textViewA2.text = "Helaaaaaaal"
+            // it = binding.buttonA2 anlamina gelir. it yerine onu yazsan yine calisir.
+            binding.textViewA2Yazi2.text = "Helaaaaaaal"
         }
 
+        /////////////////////
+        // yasam dongusu
+        // onCreate, onStart, onResume, onPause, onStop, onDestroy, onRestart
+        // isimli AppCombatActivity interface fonksiyonlarini kullanarak uygulamanin
+        // aygittaki (alttaki dokunmatik) tuslarla ya da farkli durumlarla yasam dongusunu
+        // kontrol edebiliriz. MainActivity class'i icine tum bu fonklari giriyorum.
 
+        Log.e("onCreate", "Calisti")
 
+        //////////////////////////
+        // activity'ler (sayfalar) arasi gecis yapmak
+        // sayfalardaki butonlarla activityler arasi gecis yapacagiz.
+        // viewbinding kullanarak yapalim.
+
+        // A
+        //binding ile ilgili kodlari yukarida zaten yazmistik. artik sadece butonlara erismek kaldi.
+        binding.buttonB1GoToLoginActivity.setOnClickListener {
+            val newIntent = Intent(this@MainActivity, LoginPage::class.java)
+            // yeni bir intent olusturduk ve gecis yapilacak olan activity'i belirttik
+            startActivity(newIntent)
+            // butona bastigim anda bu fonksiyon calisacak ve gecis yapacak.
+        }
+        // x activitysinden y activitysine intent ayarladiysak y'deyken geri tusuna bastigimizda
+        // haliyle default olarak geri x'e donecektir.
+        // ancak bunu degistirebiliriz. onBackPressed fonksiyonunu kullanacagiz.
+        // sirasiyla 3. aktivityde (ActivityMenu) bunu yapacagim. ordan bakarsin.
+
+        ///////////////////////
+        // geri tusuna basinca geri gitmek yerine uygulamadan cikmasini saglamak
+        // bu islemi LoginPage isimli activityde yapacagim. ordan bakarsin.
+
+        ///////////////
+        // activiyler arasi veri transferi
+        // bunu LoginPage icinde yaptim. oradan bakarsin.
+        // bununla birlikte nesneleri activityler arasi aktarmayi da yaptim. o da orda var.
+        // Kisiler sinifini bunun icin olusturdum.
+
+        //////////////////////
+        // backstack kontrolu
+        // sayfalar arasi geri tusuyla gecis yaparken istedigimiz sirayla olmasini istedigimizde
+        // bu kontrolu saglamak icin belli kodlar yazmamiz gerekiyor.
+        // ActivityProfile'da bunu yapacagim. ordan bakarsin
 
     }
+    override fun onStart() {
+        super.onStart()
+        Log.e("onStart", "Calisti")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.e("onResume", "Calisti")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.e("onPause", "Calisti")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.e("onStop", "Calisti")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e("onDestroy", "Calisti")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        Log.e("onRestart", "Calisti")
+    }
+
 }
