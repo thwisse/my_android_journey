@@ -102,7 +102,20 @@ class MainActivity : AppCompatActivity() {
         // sayfalar arasi geri tusuyla gecis yaparken istedigimiz sirayla olmasini istedigimizde
         // bu kontrolu saglamak icin belli kodlar yazmamiz gerekiyor.
         // ActivityProfile'da bunu yapacagim. ordan bakarsin
+        //TODO bunu tam anlamadim. daha sonra bakacagim
 
+        ///////////////////////////
+        // finish() metodu ile bir onceki activity'i backstackten kaldirmak
+        // bazi projelerde boyle bir seye ihtiyacin olabilir. o zaman kullanirsin
+        // A B C D projelerinde sirayla D ye kadar geldikten sonra D den direkt B ye atlayacagiz
+        // bunun icin kodu C de yazacagiz. C yi backstackten silip B ye atlayacagiz.
+
+        ///////////////////
+        // context kullanimi
+        // android'in ozelliklerini kullanmak istedigimizde android bize bir sart kosuyor.
+        // bulundugu activity ile ilgili bir ozelligi context olarak belirtmen gerekiyor diyor
+        // bir toast message gosterecegiz ve bunu ornekleyecegiz.
+        // bunu ActivityProfile'da yapiyorum. ordan bakarsin
     }
     override fun onStart() {
         super.onStart()

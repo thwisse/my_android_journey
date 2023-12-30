@@ -26,6 +26,8 @@ class ActivityMenu : AppCompatActivity() {
         val yasBilgisi = intent.getIntExtra("yasBilgisi", 0).toString()
         binding.textViewB2YasBilgisi.text = yasBilgisi
 
+        //TODO serializable icin yeni bir alternatif mi var?
+
         // nesne aktarimi
         val kisi1 = intent.getSerializableExtra("kisi1") as Kisiler
         binding.textViewB1Nickname.text = kisi1.nickname
@@ -33,7 +35,13 @@ class ActivityMenu : AppCompatActivity() {
 
         // C
         binding.buttonA1GoToActivityProfile.setOnClickListener {
-            startActivity(Intent(this@ActivityMenu, ActivityProfile::class.java))
+            val intent = Intent(this@ActivityMenu, ActivityProfile::class.java)
+
+            // backstackten C yi silip D den direkt B ye atlamak icin bunu yaziyorum:
+            finish()
+            // dogru bir sekilde calisiyor.
+
+            startActivity(intent)
         }
     }
 

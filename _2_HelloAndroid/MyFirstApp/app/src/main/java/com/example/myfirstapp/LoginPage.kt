@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myfirstapp.databinding.LoginPageBinding
 
+//TODO login_page xmlinde sorun var. layout-normal turevini olusturmadigim surece calismiyor
+
 class LoginPage : AppCompatActivity() {
 
     private lateinit var binding: LoginPageBinding
