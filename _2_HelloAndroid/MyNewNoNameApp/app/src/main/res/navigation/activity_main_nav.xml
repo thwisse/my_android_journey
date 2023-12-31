@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_goToMenu"
-            app:destination="@id/fragmentMenu" />
+            app:destination="@id/fragmentMenu"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMenu"
@@ -22,8 +26,22 @@
         <action
             android:id="@+id/action_goToCategories"
             app:destination="@id/fragmentCategories"
-            app:popUpTo="@id/fragmentMenu"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="person"
+            app:argType="com.example.mynewnonameapp.Categories" />
+
     </fragment>
     <fragment
         android:id="@+id/fragmentCategories"

@@ -31,5 +31,31 @@ class MainActivity : AppCompatActivity() {
         // donme islemini degistirip B yi backstacten sil anlamina gelen islemi yapiyoruz.
         // popUpTo icin B yi sectik, popUpToinclusive attribute'unu da true yaptik.
         // bu sayede B backstackten silinmis oldu. C den dogruca A ya gecis yapacagiz.
+        // bunu ogrendikten sonra geri kaldirdim. projenin geri kalaninda ihtiyacim olursa
+        // bir yerlerde kullanirim.
+
+        // sayfa gecis animasyonu ekleme
+        // navigation xmlinde gecis animasyonu eklemek istedigimiz actiona tiklayip animations
+        // attributelarini kullanarak giris ve cikis animasyonlarini ekleyebiliriz.
+
+        // sayfalar arasi veri transferi
+        // bu islem icin ...safeargs.kotlin plugininin id'sini gradle module'une ekledik.
+        // plugin:2.7.0 classpath'ini de gradle project'e ekledik.
+        // A fragmentindan B fragmentina veri aktarmak icin, B fragmentindaki arguments kismina
+        // aktarmak istedigim veriyi karsilayacak argumanlari ekliyorum.
+        // argumanlari ekledikten sonra A fragmentinda FragmenNameDirections isimli yapi ve
+        // B fragmentinda FragmentNameArgs yapilari olusacaktir.
+        // A fragmentinda gecis islemini tanimlayip bu yapiyi da kullanarak hem veri aktarimini
+        // hem sayfalar arasi gecis islemini ayni anda yapmis oluyoruz. B fragmentinda da bir
+        // bundle yaratarak gelen verileri karsiliyoruz. daha sonra bu bundle araciligiyla verileri
+        // istedigimiz yerde kullanabiliriz.
+
+        // sayfalar arasi veri transferi (nesnelerle)
+        // Categories isimli bir class olusturdum. data class'a donusturdum. Serializable interface'ini
+        // implement ettim. buradan yarattigim nesneleri de A dan B ye veri olarak aktarmak icin
+        // yine B de arguman olarak (Custom Serializable) ekledim. A da nesneyi yarattim ve
+        // directions yapisina ekledim. B de de bundle ile yakaladim.
+
+
     }
 }
