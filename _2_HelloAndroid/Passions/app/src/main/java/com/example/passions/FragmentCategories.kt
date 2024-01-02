@@ -1,4 +1,4 @@
-package com.example.mynewnonameapp
+package com.example.passions
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +12,6 @@ class FragmentCategories : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val design = inflater.inflate(R.layout.fragment_categories, container, false)
-
-        return design
+        return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 }

@@ -18,6 +18,7 @@ class FragmentMenu : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         //val design = inflater.inflate(R.layout.fragment_menu, container, false)
         binding = FragmentMenuBinding.inflate(inflater, container, false)
 
@@ -46,7 +47,6 @@ class FragmentMenu : Fragment() {
         binding.buttonGoToCategories.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_goToCategories)
         }
-
 
         return binding.root
     }

@@ -9,21 +9,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // design with navigation component
-
+        //
         // olusturdugumuz navigation component icin birkac fragment olusturduk.
         // fragment default FrameLayout olarak geldi. bunlari Constraint'e cevirdik.
         // daha sonra hepsine viewbinding ekledik.
-
-        // fragmentlari navigationa ekledik.
-        // navigation'i MainActivity'e ekledik. Constrait widgetta hepsini kenarlara baglayarak
+        //
+        // fragmentlari navigationa ekledik. navigation'i MainActivity'e ekledik.
+        // bu islem icin NavHostFragment (fragment container view) kullandik.
+        // Constrait widgetta hepsini kenarlara baglayarak
         // uzakliklarini 0 yaptik. layout width ve layout height degerlerini de match constrait
         // olacak sekilde ayarladik.
-
+        //
         // simdi fragmentlari birbirine bagliyoruz. baglayinca bizim icin bir action olusturuyor.
         // bu actionlara anlasilir id'ler tanimliyoruz. daha sonra bu actionlari fragment.kt
         // dosyalarinda butonlara ekliyoruz.
 
         // backstack
+        //
         // Main, Menu ve Categories fragmentlari = A B C
         // C ye kadar geldikten sonra geri tusuna basinca B ye degil A ya donmesini istersek
         // B yi backstackten silmemiz gerekir.
@@ -55,6 +57,14 @@ class MainActivity : AppCompatActivity() {
         // implement ettim. buradan yarattigim nesneleri de A dan B ye veri olarak aktarmak icin
         // yine B de arguman olarak (Custom Serializable) ekledim. A da nesneyi yarattim ve
         // directions yapisina ekledim. B de de bundle ile yakaladim.
+
+        // butonlarla sayfa gecisi islemini yaptiktan sonra bottom navigation ile ayni islemi
+        // yapmaya calistim ve projenin icinden gectim. sikintisiz calisiyordu ancak ikisi bir arada
+        // calismadi. simdi islemleri geri aldim ancak yine eskisi gibi de calismiyor.
+        // yapacak bise yok burayi boyle birakiyorum ve yeni bir proje olusturup bottom navigation'i
+        // orada calisacagim. bb.
+
+        //TODO proje bozuldu. belki daha sonra inceler ve sorunlari cozebilirim. su an bulamiyorum.
 
 
     }

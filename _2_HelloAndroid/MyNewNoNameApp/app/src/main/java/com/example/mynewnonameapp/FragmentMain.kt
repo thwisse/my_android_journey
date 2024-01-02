@@ -43,7 +43,6 @@ class FragmentMain : Fragment() {
             // it keywordu butonu temsil ediyor.
         }
 
-
         return binding.root
         //return design
     }
