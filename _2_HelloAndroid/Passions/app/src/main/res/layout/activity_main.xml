@@ -10,7 +10,7 @@
         android:id="@+id/bottomNavView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:itemBackground="@color/material_dynamic_primary70"
+        app:itemBackground="@color/project_main_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

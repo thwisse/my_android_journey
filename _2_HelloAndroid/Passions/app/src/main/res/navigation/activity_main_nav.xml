@@ -15,4 +15,9 @@
         android:name="com.example.passions.FragmentCategories"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.passions.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activiy_main_nav2"
+    app:startDestination="@id/fragmentMaMe">
+
+    <fragment
+        android:id="@+id/fragmentMaMe"
+        android:name="com.example.passions.forDrawer.FragmentMaMe"
+        android:label="fragment_ma_me"
+        tools:layout="@layout/fragment_ma_me" />
+    <fragment
+        android:id="@+id/fragmentCate"
+        android:name="com.example.passions.forDrawer.FragmentCate"
+        android:label="fragment_cate"
+        tools:layout="@layout/fragment_cate" />
+</navigation>
