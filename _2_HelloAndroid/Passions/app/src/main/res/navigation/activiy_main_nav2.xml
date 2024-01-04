@@ -15,4 +15,9 @@
         android:name="com.example.passions.forDrawer.FragmentCate"
         android:label="fragment_cate"
         tools:layout="@layout/fragment_cate" />
+    <fragment
+        android:id="@+id/fragmentProf"
+        android:name="com.example.passions.forDrawer.FragmentProf"
+        android:label="fragment_prof"
+        tools:layout="@layout/fragment_prof" />
 </navigation>

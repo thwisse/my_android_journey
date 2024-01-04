@@ -13,4 +13,10 @@
         android:layout_height="wrap_content"
         android:icon="@drawable/icon_categories"
         android:title="Kategoriler" />
+    <item
+        android:id="@+id/fragmentProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_profile"
+        android:title="Profil" />
 </menu>

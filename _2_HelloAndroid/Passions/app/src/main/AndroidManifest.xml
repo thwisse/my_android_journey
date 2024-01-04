@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Passions"
         tools:targetApi="31">
         <activity
-            android:name=".forDrawer.ActivityMain2"
+            android:name=".ActivityMain"
             android:exported="false" />
         <activity
-            android:name=".ActivityMain"
+            android:name=".forDrawer.ActivityMain2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
