@@ -20,4 +20,24 @@
         android:name="com.example.passions.forDrawer.FragmentProf"
         android:label="fragment_prof"
         tools:layout="@layout/fragment_prof" />
+    <fragment
+        android:id="@+id/fragmentWebPage"
+        android:name="com.example.passions.forDrawer.FragmentWebPage"
+        android:label="fragment_web_page"
+        tools:layout="@layout/fragment_web_page" />
+    <fragment
+        android:id="@+id/fragmentPictures"
+        android:name="com.example.passions.forDrawer.FragmentPictures"
+        android:label="fragment_pictures"
+        tools:layout="@layout/fragment_pictures" />
+    <fragment
+        android:id="@+id/fragmentVideo"
+        android:name="com.example.passions.forDrawer.FragmentVideo"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/fragmentScroll"
+        android:name="com.example.passions.forDrawer.FragmentScroll"
+        android:label="fragment_scroll"
+        tools:layout="@layout/fragment_scroll" />
 </navigation>

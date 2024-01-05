@@ -103,6 +103,36 @@ class ActivityMain : AppCompatActivity() {
         // toggle button ve switch
         // bir seyleri true false sekilde belirlemeye yarayan gorsel yapilar.
         // simdi FragmentCategories kisminda bunla ilgili ornek yapiyorum.
+        //
+        // radioButton ve checkBox
+        // fragment_prof xmlinde bununla ilgili ornek yaptim.
+        //
+        // ProgressBar, Slider (SeekBar), RatingBar
+        // fragment_cate xmlinde bununla ilgili ornek yapiyorum.
+        // progressbar ilk acilista invisible olsun. bunu ayarladim. Basla tusuna basinca visible olsun.
+        // sonra Dur tusuna basinca da yine invisible olsun istiyoruz.
+        //
+        // webView kullanimi
+        // uygulama icinde internet sitesi acmaya yarar. fragment_web_page icinde ornegini yaptim.
+        // bunun icin manifest dosyasinda internet izni aliyorum.
+        //<uses-permission android:name="android.permission.INTERNET"/>
+        // bunun icin ozel bi fragment olusturuyorum. artik bundan sonra deneyecegim yeni
+        // feature'lar icin de fragment olusturacagim. bunu da drawer olan activity'de sergileyecegim.
+        //
+        // imageView
+        // bir resmi uygulama icinde gostermeye yarar. fragment_pictures icinde ornegini yaptim.
+        //
+        // videoView
+        // bir videoyu uygulamada kullanmaya yarar.
+        // bunun icin res icine raw isimli resource directory olusturuyoruz.
+        // raw klasorunde ses ve videolari barindiririz.
+        // ornegini fragment_video xmlinde yaptim.
+        //
+        // scrollView
+        // sayfayi asagi yukari kaydirma islemini yapar.
+        // eger sayfa gozuken sayfaya sigmayacak kadar buyukse otomatik devreye girer. buyuk degilse
+        // haliyle kaydirma islemi gerceklesmez.
+        // bunun ornegini fragment_scroll xmlinde yaptim. kod gerekmedi.
 
 
     }

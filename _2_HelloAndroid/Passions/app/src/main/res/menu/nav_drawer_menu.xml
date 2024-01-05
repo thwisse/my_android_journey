@@ -19,4 +19,28 @@
         android:layout_height="wrap_content"
         android:icon="@drawable/icon_profile"
         android:title="Profil" />
+    <item
+        android:id="@+id/fragmentWebPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_webpage"
+        android:title="Web Sayfamiz" />
+    <item
+        android:id="@+id/fragmentPictures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_pictures"
+        android:title="Gorseller" />
+    <item
+        android:id="@+id/fragmentVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_video"
+        android:title="Video" />
+    <item
+        android:id="@+id/fragmentScroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_scroll"
+        android:title="Kaydir" />
 </menu>
