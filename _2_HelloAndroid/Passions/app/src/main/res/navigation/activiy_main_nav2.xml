@@ -40,4 +40,14 @@
         android:name="com.example.passions.forDrawer.FragmentScroll"
         android:label="fragment_scroll"
         tools:layout="@layout/fragment_scroll" />
+    <fragment
+        android:id="@+id/fragmentSetTheDate"
+        android:name="com.example.passions.forDrawer.FragmentSetTheDate"
+        android:label="fragment_set_the_date"
+        tools:layout="@layout/fragment_set_the_date" />
+    <fragment
+        android:id="@+id/fragmentSpinner"
+        android:name="com.example.passions.forDrawer.FragmentSpinner"
+        android:label="fragment_spinner"
+        tools:layout="@layout/fragment_spinner" />
 </navigation>

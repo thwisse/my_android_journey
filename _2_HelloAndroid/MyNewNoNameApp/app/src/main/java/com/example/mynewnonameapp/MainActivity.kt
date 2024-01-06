@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         // calismadi. simdi islemleri geri aldim ancak yine eskisi gibi de calismiyor.
         // yapacak bise yok burayi boyle birakiyorum ve yeni bir proje olusturup bottom navigation'i
         // orada calisacagim. bb.
-        
+
 
     }
 }

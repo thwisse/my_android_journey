@@ -133,6 +133,21 @@ class ActivityMain : AppCompatActivity() {
         // eger sayfa gozuken sayfaya sigmayacak kadar buyukse otomatik devreye girer. buyuk degilse
         // haliyle kaydirma islemi gerceklesmez.
         // bunun ornegini fragment_scroll xmlinde yaptim. kod gerekmedi.
+        //
+        // DatePicker/TimePicker
+        // tarih secme islemi icin kullanilir. fragment_set_the_date xmlinde ornegini yapacagim.
+        //
+        // spinner
+        // c# vs dillerde combobox olarak gecen, icine girilen verileri siralayarak gosteren yapi.
+        // bunun icin bir dizi ve adapter olusturacagiz.
+        // bununla ilgili ornegi fragment_spinner xmlinde yapiyorum.
+
+        // navigation drawer ile tum widgetlari yeni fragmentlarda calistim.
+        // bottom navigation'i da burada calismistim fakat drawer ile bottom'i ayni projede kullanmayi
+        // beceremedigim icin ayri activity olusturup ikisini ayri calistim falan.
+        // bu sebeple activiyler arasi gecis yapiyorum ve drawer/bottom yapilari ile calistigim
+        // fragmentlari tek uygulamada calistirabilmis olacagim. sonra bakarken kafam karismasin
+        // diye not alayim dedim.
 
 
     }

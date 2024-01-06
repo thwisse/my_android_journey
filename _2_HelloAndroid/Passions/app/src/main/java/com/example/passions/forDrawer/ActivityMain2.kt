@@ -61,8 +61,5 @@ class ActivityMain2 : AppCompatActivity() {
             //onBackPressedDispatcher.onBackPressed()
             //TODO hala bu dogru olan kod degil. guncel olanini ogren.
         }
-
-
     }
-
 }

@@ -43,4 +43,16 @@
         android:layout_height="wrap_content"
         android:icon="@drawable/icon_scroll"
         android:title="Kaydir" />
+    <item
+        android:id="@+id/fragmentSetTheDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_setthedate"
+        android:title="Tarih Belirle" />
+    <item
+        android:id="@+id/fragmentSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_spinner"
+        android:title="Spinner" />
 </menu>
