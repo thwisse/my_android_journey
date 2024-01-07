@@ -13,7 +13,13 @@
         android:theme="@style/Theme.TahminEt"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityGuess"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityFinish"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMain"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,6 +7,10 @@ android {
     namespace = "com.example.tahminet"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.tahminet"
         minSdk = 28
