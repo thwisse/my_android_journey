@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentOne">
+    tools:context=".ActivityTwo">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="285dp"
-        android:layout_marginTop="292dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="348dp"
-        android:text="A"
-        android:textSize="24sp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="401dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
