@@ -53,7 +53,7 @@ class ActivityMain : AppCompatActivity() {
 
         ////////////////////////
         // navigation drawer
-        // genelde soldan cekince gelen o kayan ekrana deniyor. fragmentlari oradan actirabiliyoruz.
+        // genelde soldan cekince/tusla gelen o kayan ekrana deniyor. fragmentlari oradan actirabiliyoruz.
         // bu islem icin yeni bir activity, yeni bir nav dosyasi, yeni fragmentlar ve yeni menu olusturacagim.
         // hepsini de bu projenin icinde yapiyorum.
         // yeni 2 menu item ekledim ve idlerini fragmentlarla eslestirdim.
@@ -64,7 +64,8 @@ class ActivityMain : AppCompatActivity() {
         // ekledim ve olusturdugum yeni activity_main_nav2 xmlini yerlestirdim. tasarim ayarlarini yaptim.
         // idsini navHostFragment2 yaptim. simdi bir navigationView ekliyorum ancak constraint altina
         // degil drawer altina ekliyorum. idsini navView yaptim (api 34 iken render problem hatasi aldim.
-        // apiyi 34ten 32ye dusurunce calisti). width degerini wrap content yaptik.
+        // apiyi 34ten 32ye dusurunce calisti). width degerini wrap content yaptik. attributes
+        // kismindan menu degerine olusturdugum menuyu ekliyorum.
         //
         // simdi xml code icinde navigationView'e layout gravity ozelligi verdik ve start degerini girdik.
         // xmlde yukarida drawer'a da open drawer ozelligi verdik ve ona da start degerini girdik.
@@ -85,6 +86,7 @@ class ActivityMain : AppCompatActivity() {
         // calistirdigimda sorunsuz calisiyor. su an hem bottom navigation'a hem drawer'a ihtiyacim
         // olmadigi icin ikisini bir kullanacagim sekilde tek activityde yapmaya calismadim.
         // gerekirse yaparim. simdilik boyle calistigi icin problem yok.
+        // guncelleme: bu iptal oldu. ikisi bir kullanilabiliyor artik. butonla gecis.
 
         ////////////////////////////
         // material design 3 - buton tasarimlari
