@@ -13,6 +13,11 @@
         android:theme="@style/Theme.TahminEt"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityWinLose"
+            android:exported="false"
+            android:label="@string/title_activity_win_lose"
+            android:theme="@style/Theme.TahminEt" />
+        <activity
             android:name=".ActivityGuess"
             android:exported="false" />
         <activity

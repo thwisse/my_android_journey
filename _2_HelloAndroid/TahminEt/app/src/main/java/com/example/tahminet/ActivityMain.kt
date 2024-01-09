@@ -23,6 +23,8 @@ class ActivityMain : AppCompatActivity() {
             startActivity(Intent(this, ActivityGuess::class.java))
         }
 
+        //TODO dark tema icin de tasarimini yap
+
 
     }
 }
