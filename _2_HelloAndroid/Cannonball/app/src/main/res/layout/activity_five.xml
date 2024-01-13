@@ -4,38 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityMain">
+    tools:context=".ActivityFive">
 
     <Button
-        android:id="@+id/buttonToast1"
+        android:id="@+id/buttonLightMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Toast1"
+        android:backgroundTint="@color/buttonBackgroundTint"
+        android:text="Aydinlik Tema"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonToast2"
+        android:id="@+id/buttonDarkMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Toast2"
+        android:backgroundTint="@color/buttonBackgroundTint"
+        android:text="Karanlik Tema"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonToast1" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLightMode" />
 
     <Button
-        android:id="@+id/buttonGoToActivityTwo"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:text="Diger Activity'e Gec"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDarkMode"
+        app:srcCompat="@drawable/icon_theatre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

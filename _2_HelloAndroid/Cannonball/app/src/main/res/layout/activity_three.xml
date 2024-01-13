@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityMain">
+    tools:context=".ActivityThree">
 
     <Button
-        android:id="@+id/buttonToast1"
+        android:id="@+id/buttonKlasikAlertView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Toast1"
+        android:text="Klasik Alert View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonToast2"
+        android:id="@+id/buttonOzelAlertView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Toast2"
+        android:text="Ozel Alert View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonToast1" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonKlasikAlertView" />
 
     <Button
-        android:id="@+id/buttonGoToActivityTwo"
+        android:id="@+id/buttonGoToActivityFour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"

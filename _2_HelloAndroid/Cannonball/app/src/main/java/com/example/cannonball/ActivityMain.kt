@@ -28,7 +28,7 @@ class ActivityMain : AppCompatActivity() {
 
         binding.buttonToast1.setOnClickListener {
 
-            Toast.makeText(this, "Merhaba", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityMain, "Merhaba", Toast.LENGTH_SHORT).show()
         }
 
         // ozel toast message olusturmak ve gostermek:
@@ -49,7 +49,7 @@ class ActivityMain : AppCompatActivity() {
             message.text = "Horse washing in and out!"
 
             // deprecated olmus. toast mesaji bir design ile gostermek artik desteklenmiyor.
-            val toastMessage = Toast(this)
+            val toastMessage = Toast(this@ActivityMain)
             toastMessage.view = toastDesign
 
             // design'i konumlandiralim
@@ -64,8 +64,33 @@ class ActivityMain : AppCompatActivity() {
             toastMessage.show()
         }
 
-        binding.buttongoToActivityTwo.setOnClickListener {
-            startActivity(Intent(this, ActivityTwo::class.java))
+        binding.buttonGoToActivityTwo.setOnClickListener {
+            startActivity(Intent(this@ActivityMain, ActivityTwo::class.java))
         }
+
+        //////////////////////////////
+        // pop up menu olusturma
+        // bununla ilgili ornegi ActivityTwo'da yapiyorum.
+
+        ///////////////////////////
+        // alertview olusturma
+        // kullaniciya uyari mesaji veren bir yapidir.
+        // alertview uzerinden veri de alabiliriz. butonlari ozellestirebiliriz vs.
+        // bununla ilgili ornegi ActivityThree'de yapiyorum.
+
+        ///////////////////////////
+        // snackbar olusturma
+        // ekranin altinda cikan bir bildirim seklidir. kullanici etkilesimli olabilir.
+        // bununla ilgili ornegi ActivityFour'da yapiyorum.
+
+        /////////////////////
+        // aydinlik tema / karanlik tema tasarimlari
+        // night modda baska bir renk paleti kullanmak icin colors xmlini res icindeki values/night
+        // klasorunun icine kopyaliyoruz. project barinda default olarak android dizilimi gorundugu
+        // icin night klasoru gozukmuyor. bunun icin project barindan project dizilimini secip o
+        // klasore ulasabiliriz.
+        // bu konuyla alakali kodlama ve bilgiler ActivityFive'da olacak.
+
+
     }
 }

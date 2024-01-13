@@ -3,10 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#4D4F59</color>
-    <color name="buttonBackgroundTint">#152DA1</color>
-    <color name="buttonTextColor">#FFFFFF</color>
-    <color name="statusBarColor">#CE0000</color>
-
-
-
+    <color name="buttonBackgroundTint">#5F74DA</color>
+    <color name="buttonTextColor">#000000</color>
+    <color name="statusBarColor">#4C0000</color>
 </resources>
