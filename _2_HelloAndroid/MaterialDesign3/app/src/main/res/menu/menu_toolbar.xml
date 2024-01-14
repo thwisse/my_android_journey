@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_info"
+        android:title="Yardim"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_search"
+        android:title="Ara"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+    <item
+        android:id="@+id/action_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Ayarlar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Sifirla"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Cikis yap"
+        app:showAsAction="never" />
+</menu>
