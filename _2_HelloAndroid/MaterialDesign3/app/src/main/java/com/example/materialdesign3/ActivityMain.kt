@@ -1,5 +1,6 @@
 package com.example.materialdesign3
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -107,6 +108,18 @@ class ActivityMain : AppCompatActivity(), SearchView.OnQueryTextListener {
         // simdi onCreateOptionsMenu icinde bu arama isleminin gerceklesmesi icin kodlar yazacagiz.
         // kodlar bitti. simdi arama islemi yapildikca calisacak olan kodlarin kontrolu icin ciktilari
         // logda goruntuleyecegiz. onQueryTextChange ve onQueryTextSubmit icine log kodlarini yaziyorum.
+
+
+        binding.buttonGoToActivityTwo.setOnClickListener {
+            startActivity(Intent(this@ActivityMain, ActivityTwo::class.java))
+        }
+
+        /////////////////////////////
+        // recyclerview ve cardview yapilari
+        // iliskili gorsel nesneleri tek bir cardview yapisinda bir arada toplayip, bu card'lari cogaltarak
+        // bircok card ile verileri listelemek istersek bu yapilara ihtiyacimiz var. ornegin filmler ve ozelliklerini
+        // bu yapilarla gosterebiliriz. ilgili ornegi ActivityTwo'da yapiyorum.
+
     }
 
     // menuyu toolbar'a ekleyelim:
