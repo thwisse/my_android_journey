@@ -23,7 +23,7 @@
         android:id="@+id/textInputLayout"
         android:layout_width="360dp"
         android:layout_height="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,10 +99,21 @@
         android:id="@+id/buttonGoToActivityTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="Diger Activity'e Gec"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="9dp"
+        android:text="Activity 2'e Gec"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGoToActivityThree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoToActivityThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity 3'e Gec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.97" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

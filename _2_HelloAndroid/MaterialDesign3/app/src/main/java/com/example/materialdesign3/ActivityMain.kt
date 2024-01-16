@@ -117,8 +117,16 @@ class ActivityMain : AppCompatActivity(), SearchView.OnQueryTextListener {
         /////////////////////////////
         // recyclerview ve cardview yapilari
         // iliskili gorsel nesneleri tek bir cardview yapisinda bir arada toplayip, bu card'lari cogaltarak
-        // bircok card ile verileri listelemek istersek bu yapilara ihtiyacimiz var. ornegin filmler ve ozelliklerini
-        // bu yapilarla gosterebiliriz. ilgili ornegi ActivityTwo'da yapiyorum.
+        // bircok card ile verileri listelemek istersek bu yapilara ihtiyacimiz var.
+        // ilgili ornegi ActivityTwo'da yapiyorum.
+
+        binding.buttonGoToActivityThree.setOnClickListener {
+            startActivity(Intent(this@ActivityMain, ActivityThree::class.java))
+        }
+
+        ////////////////////////
+        // recyclerview, cardview ve adapter ile ilgili ornek
+        // bununla ilgili 2. ornegi de activityThree'de yapiyorum. orayi incelersin.
 
     }
 
