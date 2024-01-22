@@ -20,7 +20,6 @@ class InterfaceThread: Runnable {
             Thread.sleep(1000)
         }
     }
-
 }
 
 fun main () {

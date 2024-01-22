@@ -69,7 +69,7 @@ fun main () {
     // class 1 (Urun)
 
     val urun1 = Urun(1, "Asus TUF FX506LI", 26999.0)
-    val urun2 = Urun(2,"Logitech MX Keys Eng Q Keyboard", 4427.72)
+    val urun2 = Urun(2, "Logitech MX Keys Eng Q Keyboard", 4427.72)
     val urun3 = Urun(3, "Logitech G305 Lightspeed Mouse", 1049.0)
     val urun4 = Urun(4, "OneOdio A70 Headset", 1827.90)
     val urun5 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0)
@@ -160,7 +160,6 @@ fun main () {
         println("Urun Fiyati: ${x.urunFiyat}")
         i += 1
     }
-
     println("\n")
 
     //////////////////////////////////////////

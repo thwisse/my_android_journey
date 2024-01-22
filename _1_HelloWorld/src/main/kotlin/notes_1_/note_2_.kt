@@ -136,7 +136,6 @@ fun main() {
     // mapten bir degeri kaldirmak
     students.remove("Florence") // keyi belirterek degeri kaldiriyoruz
 
-
     // bir mutableMapOf ornegi:
     var momaPaintings = mutableMapOf("Les Demoiselles d'avignon" to "Pablo Picasso",
         "The Starry Night" to "Vincent Van Gogh", "Mona Lisa" to "Leonardo Da Vinci",
