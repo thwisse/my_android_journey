@@ -117,7 +117,7 @@ fun main() {
     var myInt: Int? = null
     //println(myInt * 5)
     // bu printte de hata aliyorum. null olabilecek bir seyi operand olarak kullanmak tehlikeli diyor.
-    // bunun icin de ya ? ya da !! kullanacagiz.
+    // bunun icin de ya ? ya da !! kullanacagiz. bunun disinda secenekler de var:
 
     // 1) !!
     //myInt = 5
@@ -159,6 +159,8 @@ fun main() {
     }
 
     // bu nullability iyi ogrenmek icin Pomegranate projesinde bir ornek yaptim. oraya bakabilirsin.
+
+    ////////////////////////////////
 
 
 }
