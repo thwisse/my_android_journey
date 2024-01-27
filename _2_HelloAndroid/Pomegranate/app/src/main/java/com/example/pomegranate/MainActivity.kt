@@ -69,12 +69,12 @@ class MainActivity : AppCompatActivity() {
         ////////////////////
         // butona basinca fonksiyon calistirmanin bir baska yolu:
 
-        // butonun attributeslarindan onClick olanina herhangi bir sey yaziyorum (funForButton2).
+        // butonun attributeslarindan onClick olanina herhangi bir sey yaziyorum (funForButtonP).
         // bu fonksiyonun adidir. bu isimle bir fonksiyon yarattigimda o butona basinca o fonskiyon calisacaktir.
-        fun pomegranate (view: View) {
-            Toast.makeText(this@MainActivity, "Hello World!", Toast.LENGTH_SHORT).show()
-        }
-        // nedense bende calismadi bu onClick olayi. findViewById ile viewBinding is goruyor simdilik.
+        // fonskiyonu oncreate'nin disinda hemen altinda yaratiyorum.
+        //
+        // nedense burada calismadi bu onClick olayi. ama daha sonra baska projede denedim calisti.
+        // findViewById ile viewBinding is goruyor simdilik.
         // findViewById kullanacaksan bu arada class basinda her yerden erisilecek sekilde yaratmak
         // daha mantikli. her seferinde findViewById<Button>(R.id.button) yazmana gerek kalmaz, direkt
         // buttonX yazar gecersin.
@@ -137,7 +137,19 @@ class MainActivity : AppCompatActivity() {
             // iki farkli xmlimiz olur. bu ikisi tamamen birbirinden farkli xmllerdir. ikisi icin de ayri
             // tasarimlar yapabilirsin. ancak icinde kullanacagin tasarim nesnelerinin birbirinin kopyasi
             // oldugundan ve idlerinin ayni oldugundan emin ol (eger buna ihtiyacin yoksa sikinti yok).
-            //
+
+            //////////////////////////
+            // shared preferances - storing data
+            // uygulama kapanip acildiginda bile kullanicinin daha once girdigi veriye tekrar
+            // erisebilmesini ogrenecegiz. bunu ActivityFour'da yapacagim.
+
+            //////////////////////
+            // context nedir? alert dialog nedir? uyari mesaji nasil verilir?
+            // bununla ilgili calismayi ActivityFive icinde yapacagim.
+        }
+
+        fun funForButtonP (view: View) {
+            Toast.makeText(this@MainActivity, "Hello World!", Toast.LENGTH_SHORT).show()
         }
     }
 }

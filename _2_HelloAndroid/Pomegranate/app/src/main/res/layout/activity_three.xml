@@ -54,4 +54,15 @@
             app:srcCompat="@drawable/baseline_smart_toy_24" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/buttonGoToActivityFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="18dp"
+        android:text=">"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
