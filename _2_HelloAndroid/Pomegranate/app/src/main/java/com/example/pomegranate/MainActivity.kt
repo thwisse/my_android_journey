@@ -115,7 +115,12 @@ class MainActivity : AppCompatActivity() {
 
 
             binding.buttonGoToActivityTwo.setOnClickListener {
-                startActivity(Intent(this@MainActivity, ActivityTwo::class.java))
+                val intent = Intent(this@MainActivity, ActivityTwo::class.java)
+
+                // value olarak bir degisken de verebiliriz, boyle static bir deger de girebiliriz.
+                intent.putExtra("username", "thwisse")
+
+                startActivity(intent)
             }
 
             ////////////////////////////
@@ -146,10 +151,67 @@ class MainActivity : AppCompatActivity() {
             //////////////////////
             // context nedir? alert dialog nedir? uyari mesaji nasil verilir?
             // bununla ilgili calismayi ActivityFive icinde yapacagim.
+
+            /////////////////////////
+            // Intent ne ise yarar?
+            // aktivite baslatma, veri paylasimi, cihazdaki diger uygulamalari baslatma,
+            // web sayfasi acma, kamera galeri gibi sistem ozelliklerine erisme vs. bircok islem yapilabilir.
+            // activityler arasi gecis islemi icin kullandigimiz intent overloadindaki 2. argumana
+            // ActiviyName::class.java yaziyoruz. burada :: ifadesi ile activityi referans gosteriyoruz.
+            // referans gostermenin farkli bir ornegi:
+            // asagida ornek bir fonk olusturdum. mesela kodda bir yerde "ben hangi fonksiyonu
+            // kullanayim" diye bir sey soracak olsaydi MainActivity::egForRef ya da ::egForRef seklinde
+            // yazarak o fonksiyona referans verebilirdim. su an bende error veriyor neden bilmiyorum
+            // ama derste o sekilde gosterdi hoca.
+            // simdi burada intentle alakali kucuk notlar aliyorum. yukaridaki activity gecis butonu icinde
+            // ve ActivityTwo icinde bununla ilgili notlari bulabilirsin.
+
+            //////////////////////////////
+            // manifest icinde main activitynin eklendigi kisimda android:exported="true" degerini gorursun.
+            // diger activitylerde bu deger false'dur. bunun sebebi, androidin ozellikleri gelisti ve artik
+            // yeni nesil uygulamalar baska uygulamalarin launcher activitylerine erisebiliyor. bu yapilmak
+            // istenirse sikinti olmasin diye bu deger launcer activiylerde default olarak true geliyor, ancak
+            // yeni olusturulan diger activiylerde false oluyor. iste bu islemin yapilabilmesini bu exported
+            // isimli ozellik sagliyor.
+
+            ///////////////////////
+            // lifecyle - yasam dongusu
+
+            // bir x activitysi acildiginda sirasiyla onCreate(), onStart(), onResume() methodlari calisir.
+            // o activityden diger (y) activitiye gecis yaptigimda ise onPause(), onStop() methodlari calisir.
+            // y den x e geri tusuyla geri dondugumde ise tekrar onStart(), onResume() methodlari calisir.
+            // yani onCreate() methodu tekrar calismaz.
+            //
+            // mesela bu sebeple, y den x e donerken x te bir degisiklik yapmak istersem bunu onCreate icine
+            // yazmam sacma olur cunku o method geri tusuyla donunce calismiyor. demek ki bu islemi
+            // onStart() ya da onResume() icinde yapmak gerek.
+            //
+            // kullanici x de iken uygulamayi arka plana atarsa yine onPause(), onStop() methodlari calisir.
+            // arkaplandaki uygulamayi acinca tekrar onStart(), onResume() methodlari calisir.
+            // onCreate() yine burada da tekrar calismadi.
+            //
+            // kullanici x de iken uygulamayi direkt kapatirsa onPause(), onStop(), onDestroy() methodlari calisir.
+            // uygulama kill edilmis olur. onDestroy calistigi icin, uygulama tekrar acilacak olursa onCreate()
+            // methodu calisir, her zamanki lifecycle'a girilmis olur.
+            //
+            // mesela y activitysine bir buton koyup o butona da x'e gitme intenti eklersek, uygulamayi
+            // acinca once x sonra y ye gittikten sonra butona basinca x'e gider evet. ancak bu geri tusuyla
+            // gitmek gibi degildir. back stack farkli bir olay. eger butonla x'e gidecek olursa bir x daha
+            // olusturulmus olacak. yani geri tusuyla geri donunce onCreate cagirilmiyordu ya, butonla x'e
+            // gittiginde onCreate bir daha cagirilir. mainactivity olmasi fark etmez. bunlar hafizada depolanir
+            // ve verimliligi olumsuz etkiler.
+            // iste bu islemle anliyoruz ki activityleri acmak yeterli degil. gereken yerde finish() fonksiyonu
+            // ile kapatmak gerekiyor. her zaman degil tabii, geri tusu cunku cok kullanilan bir sey.
+            // ancak ornegin kayit activitysi var sonra da anasayfa var. kullanici kayit olduysa bunu bir kere
+            // yapacagi icin o activity'i finish edebilirsin. yani anasayfadan ona geri tusuyla donemesin.
+
+
         }
 
         fun funForButtonP (view: View) {
             Toast.makeText(this@MainActivity, "Hello World!", Toast.LENGTH_SHORT).show()
         }
+
+        fun egForRef () {}
     }
 }

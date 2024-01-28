@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Cannonball" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Cannonball" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Cannonball/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/CannonballTown" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/CannonballTown" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/CannonballTown/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Passions" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Passions" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Passions/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Pomegranate" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Pomegranate" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/Pomegranate/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/TahminEt" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/TahminEt" />
+            <option value="$PROJECT_DIR$/_2_HelloAndroid/TahminEt/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

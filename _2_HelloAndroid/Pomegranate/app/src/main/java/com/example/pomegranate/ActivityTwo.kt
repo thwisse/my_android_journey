@@ -25,6 +25,18 @@ class ActivityTwo : AppCompatActivity() {
         //app:layout_column="0"
         //app:layout_row="0"
 
+        ///////////////////////////
+        // intentle ilgili notlar devami:
+        // activity mainden yolladigim intent verisini karsilayayim.
+        val intentFromMain = intent
+        // getIntent() yerine direkt intent kullanabiliriz. adi degismis onceden oyleymis.
+        val username = intentFromMain.getStringExtra("username")
+        // daha once intentFromMain gibi bir degisken uretmeden direkt intent.getStringExtra seklinde
+        // kullanimini gormustum. bu da farkli bir cesit oldu.
+
+
+
+
         binding.buttonGoToActivityThree.setOnClickListener {
             startActivity(Intent(this@ActivityTwo, ActivityThree::class.java))
         }
