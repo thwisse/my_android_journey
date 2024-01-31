@@ -4,40 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityFive">
+    tools:context=".ActivitySix">
 
-    <Button
-        android:id="@+id/buttonClick"
+    <TextView
+        android:id="@+id/textViewLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="clickButton"
-        android:text="Click"
+        android:text="Left: 10"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/buttonGoToActivitySix"
+        android:id="@+id/buttongoToActivitySeven"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="20dp"
         android:text=">"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/buttonDamn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="77dp"
-        android:text="Dammmnnn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

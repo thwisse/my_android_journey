@@ -35,8 +35,6 @@ class ActivityTwo : AppCompatActivity() {
         // kullanimini gormustum. bu da farkli bir cesit oldu.
 
 
-
-
         binding.buttonGoToActivityThree.setOnClickListener {
             startActivity(Intent(this@ActivityTwo, ActivityThree::class.java))
         }

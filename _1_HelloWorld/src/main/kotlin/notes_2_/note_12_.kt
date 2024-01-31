@@ -139,6 +139,10 @@ fun main () {
     // multitasking icin kullaniliyormus. ornek kullanimlar:
     // web sunucular her istek geldiginde yeni bir thread olusturur.
     // mail kutusunu kontrol ederken ayni anda yeni bir mail yazabiliriz. bunun gibi ornekler.
+
+    // timemachine: thread android applerde kullanicinin arayuzunu blocklayabiliyor. o sebeple
+    // arayuz calismalarinda kullanma. main thread'de threading yapilmaz.
+
     // burada ise ornek olarak sleep komutunu kullanmak icin thread kullanacagiz.
     // kalitim yoluyla ya da interface yoluyla thread kullanilabilir. yukarida classlari olusturdum.
     // start komutuyla baslar.

@@ -205,6 +205,14 @@ class MainActivity : AppCompatActivity() {
             // ancak ornegin kayit activitysi var sonra da anasayfa var. kullanici kayit olduysa bunu bir kere
             // yapacagi icin o activity'i finish edebilirsin. yani anasayfadan ona geri tusuyla donemesin.
 
+            ////////////////////////
+            // countdown (sayac, geri sayim)
+            // countdowntimer abstract sinifini kullanarak bir calisma yapacagiz.
+            // bu calismayi activitySix'de yapiyorum.
+
+            //////////////////////////
+            // runnables kullanimi ve kronometre yapimi.
+            // bu calismayi ActivitiSeven'da yapiyorum.
 
         }
 

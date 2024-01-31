@@ -1,6 +1,7 @@
 package com.example.pomegranate
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -63,6 +64,12 @@ class ActivityFive : AppCompatActivity() {
         ////////////////////
         // alert dialog
         // clickButton fonksiyonu icinde yapiyorum.
+
+        val buttonSix = findViewById<Button>(R.id.buttonGoToActivitySix)
+
+        buttonSix.setOnClickListener {
+            startActivity(Intent(this@ActivityFive, ActivitySix::class.java))
+        }
 
     }
 
