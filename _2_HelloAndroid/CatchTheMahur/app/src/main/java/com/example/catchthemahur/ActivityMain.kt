@@ -61,6 +61,18 @@ class ActivityMain : AppCompatActivity() {
             binding.textViewBestScore.text = "En iyi skor: ${bestScore}"
         }
 
+        /////////////////////////
+        // bu projeyi hocanin yaptigi yolla ilgili notlar:
+        //
+        // gorseli View.INVISIBLE ile View.GONE arasindaki fark: invisible kullaninca gorsel nesne
+        // sadece gorunmez olurken, gone kullaninca gorsel hem gorunmez oluyor hem de layouttan
+        // cikariliyor. sanki yokmus gibi. o sebeple ona bagli olan constraintler bozulabilir ya da
+        // sirali bir desen varsa sira kayabilir vs. buna dikkat et.
+        //
+        // hoca play again icin yani oyunu tekrar baslatmak icin mainactivity'i intent ile tekrar
+        // cagiriyor. activity icinde ayni activityi cagiriyor. cagirmadan once de finish() kullanarak
+        // backstack'i temizliyor.
+
     }
 
     fun biasValue(): Float {
