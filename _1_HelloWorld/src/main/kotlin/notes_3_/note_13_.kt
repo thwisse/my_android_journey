@@ -160,7 +160,4 @@ fun main() {
 
     // bu nullability iyi ogrenmek icin Pomegranate projesinde bir ornek yaptim. oraya bakabilirsin.
 
-    ////////////////////////////////
-
-
 }
