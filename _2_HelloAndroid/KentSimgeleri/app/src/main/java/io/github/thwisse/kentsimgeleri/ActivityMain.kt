@@ -86,5 +86,9 @@ class ActivityMain : AppCompatActivity() {
         //////////////////////////
         // recyclerview ile listeleme
         // bununla ilgili notlar ActivityRecyclerView icinde olacak.
+
+        ////////////////////////////
+        // buyuk boyutlu verileri intent kullanmadan iletmek
+        //
     }
 }

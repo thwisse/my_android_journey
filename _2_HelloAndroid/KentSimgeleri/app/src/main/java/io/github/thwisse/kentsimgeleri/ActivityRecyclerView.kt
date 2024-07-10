@@ -45,5 +45,14 @@ class ActivityRecyclerView : AppCompatActivity() {
         // adapter tamamlandi. artik adapter'i rv'ye iletebiliriz.
         binding.recyclerView.adapter = adapterLandmark
 
+        ///////////////////////
+        // sorunsuz calisiyor. ancak buyuk verileri yollamakta intent'ler iyi bir yol degil. su an
+        // sorun yok ama baska bir uygulamada 1mb dan buyuk verileri mesela intent ile yollamaya calissak
+        // uygulama cokebilir.
+        // mesela bitmap kullanarak, bitmapfactory kullanarak bitmape cevrilebilen resimleri intent
+        // ile yollamaya kalksak sikinti olabilir.
+        // bu yuzden baska yollarla activity'ler arasi veri transferi yapmayi ogrenmeliyiz:
+        //
+
     }
 }

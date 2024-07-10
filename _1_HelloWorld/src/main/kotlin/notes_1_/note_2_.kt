@@ -13,7 +13,7 @@ fun main() {
 
     var list1 = mutableListOf(1, 2)
     list1 = mutableListOf(3, 4)     // list1 degiskeni var yani mutable oldugu icin degisim yapilabilir
-    list1.add(5)                    // mutableListOf listesi mutable oldugu icin ekleme yapilabilir
+    list1.add(5)                    // mutableListOf listesi mutable list oldugu icin ekleme yapilabilir
 
     var list2 = listOf(1, 2)
     list2 = listOf(3, 4)            // list2 degiskeni var yani mutable oldugu icin degisim yapilabilir
@@ -54,6 +54,7 @@ fun main() {
     println(vowels.random())
 
     //mutableList only functions:
+
     val primeNumbers = mutableListOf(4, 5, 7, 11, 13)
     // listeye eleman eklemek (sona ekler)
     primeNumbers.add(17)
@@ -76,7 +77,7 @@ fun main() {
     // mutableSetOf
     var nycRadioStations = mutableSetOf(106.7, 101.1, 97.1, 103.5)
 
-    // tipini belirterek bu sekilde olusturulurlar
+    // tipini belirterek bu sekilde olusturulabilirler
     val gs: Set<String> = setOf("sari", "kirmizi", "en buyuk", "cimbom")
     val tr: MutableSet<String> = mutableSetOf("kirmizi", "beyaz", "en buyuk", "turkiye")
 
@@ -92,10 +93,11 @@ fun main() {
     // koleksiyonlar icin bazi fonksiyonlar
 
     var participants = listOf("elePHPant", "Gopher", "Lenny", "Moby Dock", "Codey", "Gopher")
-    var uniqueParticipants = mutableSetOf<String>() // bos set olusturmak
+    // bos set olusturmak
+    var uniqueParticipants = mutableSetOf<String>()
     // bir listenin elemanlarini baska bir listeye eklemek
-    // uniqueParticipants mutableSetOf oldugu icin ayni olan degerler tekillestirildi
     uniqueParticipants.addAll(participants)
+    // uniqueParticipants mutableSetOf oldugu icin ayni olan degerler tekillestirildi
     // listedeki tum elemanlari silmek
     uniqueParticipants.clear()
     println(uniqueParticipants) ///[]

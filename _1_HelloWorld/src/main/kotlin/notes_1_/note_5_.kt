@@ -82,7 +82,7 @@ fun main() {
 
     // class 1 (Car)
 
-    // myCar nesnesini ise var ya da val ile olusturabilirim.
+    // myCar nesnesini var ya da val ile olusturabilirim.
     // bir classtan nesne olusturmak = creating an instance (emsal)
     var myCar = Car()
     println(myCar.year)  ///2011

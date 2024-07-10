@@ -8,7 +8,7 @@ fun calculateForce(mass: Int, acceleration: Int) {
 }
 
 // func 2
-fun greetCustomer(name: String = "Customer") {
+fun greetCustomer(name: String = "Customer") { // Customer = default value (argument)
     println("Hello, $name.")
 }
 
@@ -17,7 +17,7 @@ fun getPrice(price: Double, couponCode: String = "None") {
     var finalPrice: Double
 
     if (couponCode == "save15") {
-        finalPrice = price * .85
+        finalPrice = price * .85  // finalPrice = price - price * 15 / 100    ile ayni seye denk gelir.
     } else {
         finalPrice = price
     }
@@ -40,7 +40,7 @@ fun listSum(myList: List<Int>): Int {
 // sayesinde fonksiyonu bu kadar kisa hale getirebiliriz.
 fun pyramidVolume(l: Int, w: Int, h: Int) = (l * w * h) / 3
 // su alttaki fonksiyonu kisaltip ustteki gibi yazabildik.
-///fun pyramidVolume(l: Int, w: Int, h: Int){
+///fun pyramidVolume(l: Int, w: Int, h: Int) {
 ///    return (l * w * h) / 3
 ///}
 
@@ -55,7 +55,7 @@ fun main() {
     // named and default arguments ornegi:
     greetCustomer("Cynara")
     ///Hello, Cynara.
-    // arguman olarak bir sey girmediginde default argumani girdi olarak aldi.
+    // arguman olarak bir sey girmediginde default argumani girdi olarak alir.
     greetCustomer()
     ///Hello, Customer.
 

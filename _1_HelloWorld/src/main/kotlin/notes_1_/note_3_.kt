@@ -30,7 +30,7 @@ fun main() {
     ///i = 2
     ///i = 1
 
-    // 1 den 4 e kadar don ama 4 dahil degil. bunun until kullanilir
+    // 1 den 4e kadar don (4 dahil degil). bunun icin until kullanilir
     for (i in 1 until 4) {
         println("i = $i")
     }
@@ -38,7 +38,7 @@ fun main() {
     ///i = 2
     ///i = 3
 
-    // 1 den 8e kadar 2 2 artirarak dondur. bunun icin step 2 kullanilir. 3 3 olsa step 3. bu sekilde.
+    // 1 den 8e kadar 2 2 artirarak dondur. bunun icin step 2 kullanilir. 3 3 olsa step 3.
     for (i in 1..8 step 2) {
         println("i = $i")
     }
@@ -51,7 +51,7 @@ fun main() {
     // collection kullanarak olusturulan for donguleri:
     // listOf
     val fruitList = listOf("apples", "oranges", "bananas")
-    // burada dongu degiskeni fruit olur. range yerine de list gelir. list = iterator element
+    // burada dongu degiskeni fruit olur. range yerine de list gelir. liste, iterator element olmus olur.
     for (fruit in fruitList) {
         println("I have $fruit.")
     }
@@ -63,19 +63,21 @@ fun main() {
     val fruitSet = setOf("apples", "oranges", "bananas")
     // setin indislerini for icinde kullanmak icin .indices propunu kullanabiliriz
     for (setIndex in fruitSet.indices) {
-        println("Index = $setIndex")
+        println("Element = ${fruitSet.elementAtOrNull(setIndex)}, Index = $setIndex")
     }
     ///Index = 0
     ///Index = 1
     ///Index = 2
 
     //////////////////////
-    // collection ile olusturulan for dongusunde destructure islemi:
+    // for dongusunde collections icin destructure islemi:
+
     val fruitList2 = listOf("apples", "oranges", "bananas")
-    // koleksiyonun withIndex() fonksiyonunu kullanarak indeksi ve iterator ogeyi ayni anda alabiliriz
+    // koleksiyonun withIndex() fonksiyonunu kullanarak elemani, indeksi ve iterator ogeyi ayni anda alabiliriz
     // destructuring ve withIndex() i de for icinde birlikte kullanarak fruitList2'nin
     // hem elemanini hem de indeksini isleme sokabiliriz
-    // listIndex and fruit = destructured loop variables, fruitList2.withIndex() = iterator element
+    // listIndex (index) and fruit (element) = destructured loop variables
+    // fruitList2.withIndex() = iterator element
     for ((listIndex, fruit) in fruitList2.withIndex()) {
         println("$listIndex is the index of the element $fruit")
     }
@@ -124,13 +126,16 @@ fun main() {
     for (itemEntry in myClothes) {
         // burada string template($) ve curly bracket kullanarak deger cagirdik
         println("I have ${itemEntry.value} ${itemEntry.key}")
-        // istesek map propertylerini kullanarak da istedigimizi yapabilirdik
+        // istesek direkt propertyleri kullanarak da bunu yapabilirdik
         println("I have " + itemEntry.value + " " + itemEntry.key)
     }
 
     // mapOf destructure ornegi:
     for ((itemName, itemCount) in myClothes) {
         println("I have $itemCount $itemName")
+        // destructure islemlerinde bu itemName, itemCount gibi isimleri bizim verdigimizi unutma.
+        // yani bu isimlerde bir ozellik falan yok. virgulden once keyleri veren degisken,
+        // virgulden sonra da value'lari veren degiskenin ismini verip isleme sokuyoruz.
     }
     ///I have 7 Shirts
     ///I have 4 Pairs of Pants
@@ -150,6 +155,7 @@ fun main() {
     ///Shirts
     ///Pairs of Pants
     ///Jackets
+
     // sadece degerleri kullanmak istesek:
     println("VALUES")
     for (itemCount in myClothes.values) {
@@ -241,15 +247,15 @@ fun main() {
         if (number == 0) {
             continue
         }
-        println("120/number = ${120/number}")
+        println("120/${number} = ${120/number}")
     }
     ///-- Divide By Zero --
-    ///120/number = 10
-    ///120/number = 15
-    ///120/number = 30
-    ///120/number = -30
-    ///120/number = -15
-    ///120/number = -10
+    ///120/12 = 10
+    ///120/8 = 15
+    ///120/4 = 30
+    ///120/-4 = -30
+    ///120/-8 = -15
+    ///120/-12 = -10
 
     // Labeled Jump Expressions (etiketli jump ifadeleri)
 

@@ -33,8 +33,8 @@ fun main() {
     val b:Float = 6.14F
     // float double'in aksine kusuratli olmak zorunda degildir.
     val b2:Float = 6F
-    val c:Double = 7.567
     // double floattan daha hassas degerleri tutmak icin vardir.
+    val c:Double = 7.567
 
     /////////////////////
 
@@ -124,7 +124,7 @@ fun main() {
     }
 
     ///////////////////
-    // range (aralik)
+    // range (aralik) (x..y)
 
     var num_ = 5
 
