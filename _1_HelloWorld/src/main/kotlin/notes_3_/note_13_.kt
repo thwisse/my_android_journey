@@ -37,6 +37,8 @@ fun main() {
     prices.put("Toy", 20)
     prices.put("Book", 5)
 
+    // bunlar disinda mapOf ve mutableMapOf da var. onlari da unutma.
+
     /////////////////////////
     // fonskiyonlar
 
@@ -54,14 +56,18 @@ fun main() {
     fun fun2 (a: Int, b: Int) {  // Unit
         println("sum2: " + (a + b))
     }
+
     // bu ciktilarda sorun yok. cunku fonksiyon fonksiyondur. fonk cagirildikca icinde ne varsa
     // calisacak sonucta:
     ///sum1: 8
     ///sum2: 8
+
     val result1 = fun1(3, 5)
     val result2 = fun2(3, 5)
+
     // bu arada fun2'nin return degeri de a+b olmasina ragmen icinde bir print islemi yaptik. cunku return
     // edilecek olan sey ayri, fonk icindeki islemler ayri.
+
     println("result1: " + result1)
     println("result2: " + result2)
     // burada goruyoruz ki return degeri olmadigi icin fun2 fonksiyonunu direkt olarak bir degiskene
@@ -70,8 +76,7 @@ fun main() {
     ///result2: kotlin.Unit
 
     //////////////////////
-    // siniflardaki ozellikler: properties
-    // class 1
+    // siniflardaki ozellikler: properties (class 1)
     //
     // constructor, siniftan her obje olusturuldugunda calisan bir fonskiyondur.
     //
@@ -82,7 +87,7 @@ fun main() {
 
     var jack = User("Homer", 50)
 
-    // secondary constructor cok sik kullanilan bir sey degil. primary daha okunakli ve kullanisli.
+    // secondary constructor artik cok kullanilan bir sey degil. primary daha okunakli ve kullanisli.
     //
     // constructor icine alinan propertyler nesne olustururken girilmesi zorunlu olan propertylerdir.
     // ancak constructor icine koymadigimiz diger propertyler ise opsiyoneldir. nesne olustuktan sonra

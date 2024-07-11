@@ -1,5 +1,7 @@
 package notes_2_
 
+// bu notu tekrar etmeden once packs_for_note_8_ isimli klasordeki notlari tekrar et.
+
 open class Arac (var renk: String = "",
                  var tekerlekSayisi: Int = 0) {
 
@@ -42,15 +44,17 @@ class Kawasaki (renk: String = "",
 fun main () {
     ///////////////////////////
     // inheritence (kalitim)
+
     // bir class baska bir classa miras yoluyla eklenebilir.
     // ust class'a superclass, alt class'a subclass adi verilir.
 
     // yukardaki classlar kalitim icin bir ornektir.
     // Araba ve Motosiklet birer Arac'tir. Tesla bir Araba'dir. Kawasaki bir Motorsiklet'tir.
     // subclasslarda superclasstan gelen parametreler tekrar parametre olarak girilmelidir ancak
-    // var/val ile member yapmayiz. yalnizca ekleriz. bunlarin yanina istersek subclass'a ozel
+    // var/val ile member yapmayiz, yalnizca ekleriz. bunlarin yanina istersek subclass'a ozel
     // yeni parametreler ekleyebiliriz. ancak bunlari member yapmak istersek var/val kullaniriz.
     // bunun disinda, superclasslardan uretilen nesneler subclasslarin ozelliklerine erisemezler.
+
     // not: parametrelere default degerleri bilerek atadim kolaylik olsun diye. zorunlu degil.
 
     var teslaRoadster2025 = Tesla("Kirmizi", 4, true, true)
@@ -59,6 +63,7 @@ fun main () {
 
     //////////////////////////
     // polymorphism (cok bicimlilik)
+
     // Polimorfizm, bir nesnenin farklı şekillerde davranabilme yeteneğini ifade eder.
     // Kotlin gibi nesne yönelimli programlama dillerinde, polimorfizm, bir üst sınıfın metotlarının
     // alt sınıflar tarafından farklı şekillerde uygulanabilmesini sağlar.
@@ -78,7 +83,7 @@ fun main () {
     ///Arac calisti.
 
     // func bunlarin icinde tekrar yazilmamis olmasina ragmen erisilebildi.
-    // arac classindaki functionu calistirdilar. fonksiyonu override etmis olduk.
+    // arac classindaki functionu calistirdilar. fonksiyonu override etmis olduk ama fonkda degisiklik yapmadik.
     val araba = Araba()
     araba.araciCalistir()
     val motorsiklet = Motorsiklet()
@@ -94,12 +99,13 @@ fun main () {
     ///Tesla calisti.
     ///Kawasaki calisti.
 
-    // fonksiyonu override etmeye calistigimda default olarak "super.araciCalistir()" kodu gelmisti.
+    // fonksiyonu override etmeye calistigimda default olarak "super.araciCalistir()" kodu geliyor.
     // bu da superclasstaki fonksiyonu calistir anlamina geliyor. kontrol amacli var. zaten fonksiyonu
     // olusturmasan da subclass ile fonksiyonu cagirabildigin icin onu kullanmanin geregi yok.
 
     //////////////////////////
     // tip kontrolu (is keywordu)
+
     // bir degiskenin hangi siniftan turetildigini ogrenmemize yarar.
     var degisken = 10
     if (degisken is Int) { println("Integer.") } else { println("Not integer.") } ///Integer.
@@ -107,8 +113,18 @@ fun main () {
     val teslaX = Tesla()
     println(teslaX is Tesla) ///true
 
+    val arac31 = Tesla("Mor", 4, true, true)
+    println("-----------")
+    println(arac31 is Arac)
+    println(arac31 is Araba)
+    println(arac31 is Tesla) // hepsine true diyor
+    //println(arac31 is Kawasaki) //TODO bunda false falan vermiyor direkt hata aliyorum incompitable types diye?
+    println("-----------")
+
     //////////////////////
-    // upcasting (yukseltme) (yazimi polimorfizme cok benziyor, ancak farkli seyler)
+    // upcasting (yukseltme)
+    // (yazimi polimorfizme cok benziyor, ancak farkli seyler)
+
     // subclasstan olusmus bir referansi ya da nesneyi, superclasstan olusan bir referansa atamaya denir.
     // burada Tesla ve Kawasaki alt classindan olan nesneleri, Arac ust classindan olusmus referanslara atiyoruz.
     val arac2: Arac = Tesla("Mor", 4, true, true)
@@ -120,6 +136,7 @@ fun main () {
     ///Kawasaki calisti.
     // normalde teslaya ya da kawasakiye ozel olarak override edilmis fonksiyonu superclass ile yaratilmis
     // bir nesne ile kullandik.
+    //TODO upcastingi anladigimi soyleyemem.
 
     /////////////////////////
     // downcasting (alcaltma) (as keyword)
@@ -134,7 +151,8 @@ fun main () {
         yeniTesla.elektrikliSarj()
     }
     // normalde burada bunun ornegi yoktu. ama internetten bakarak buna da bi ornek uyarladim ama
-    // ben buradakini anlamadim. ilerde belki anlamli olur diye bu ornegi burada birakiyorum.
+    //TODO ben buradakini anlamadim.
+    // ilerde belki anlamli olur diye bu ornegi burada birakiyorum.
     // note_9_daki ornek biraz daha anlamli geldi. ama onu da tam olarak anladigim soylenemez su an.
 
 }

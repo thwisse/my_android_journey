@@ -21,13 +21,13 @@ class Car {
 class Foo (x: Int) {
     // bu sekilde tanimlanmis bir parametre main icinde su sekilde kullanilamaz:
     //val foo = Foo()
-    //Foo.x = 5    // bu yapilamaz
+    //foo.x = 5    // bu yapilamaz
 }
 class Koo (val x: Int) {
     // fakat bu sekilde tanimlanmis bir parametre artik bir data member olur ve
     // main icinde su sekilde kullanilabilir:
     //val koo = Koo()
-    //Koo.x = 5    // bu yapilabilir
+    //koo.x = 5    // bu yapilabilir
 }
 //////////////////////////////////////////////////
 
@@ -44,8 +44,8 @@ class Mascot(val name: String, val platform: String, val yearCreated: Int) {
 // class 4
 class Employee(val firstName: String, val lastName: String, val yearsWorked: Int) {
     val fullName = firstName + " " + lastName
-    //val FullName = "$firstName $lastName"
-    // bu sekılde de yazilabilirdi.
+    //val fullName = "$firstName $lastName"
+    // bu sekilde de yazilabilirdi.
     init {
         if (yearsWorked > 1) {
             println("$fullName is eligible for a raise!")
@@ -96,8 +96,8 @@ fun main() {
 
     /* Car2 classini ve bu kodlari yorum satirina aliyorum cunku sebepsizce hata aliyorum.
     // class 2 (Car2)
-    val yourCar = notes_2_.Cars(2011, "Jeep", "Blue")
-    val friendsCar = notes_2_.Cars(2015, "Mazda", "Red")
+    val yourCar = Car2(2011, "Jeep", "Blue")
+    val friendsCar = Car2(2015, "Mazda", "Red")
     println(yourCar.year)      ///2011
     println(friendsCar.year)   ///2015
     */
@@ -108,6 +108,8 @@ fun main() {
     // class 3 (Mascot)
     val codey = Mascot("Codey", "Codecademy", 2018)
     ///Codey is a Codecademy mascot and is 2 years old.
+    // boyle bir komut vermedim ancak classin init'i icinde boyle bir komut oldugu icin nesneyi
+    // olusturdugum gibi bu ciktiyi aldim.
 
     // class 4 (Employee)
     var projectManager = Employee("Maria", "Gonzalez", 2)
@@ -120,7 +122,7 @@ fun main() {
     myCat.speak() ///Meow!
     myCat.mrrrr() ///Mrrrr!!
     // bir sinifin instace i olusturuldugunda, nesne sinif govdesi icinde bulunan tum fonksiyonlara erisebilir.
-    // otomatikcalisan init blogunun aksine, fonksiyonlar icindeki kod yalnizca fonksiyon cagirildiginda calisir.
+    // otomatik calisan init blogunun aksine, fonksiyonlar icindeki kod yalnizca fonksiyon cagirildiginda calisir.
 
     // class 6 (Dog)
     var maxie = Dog("Maxie", "Poodle",

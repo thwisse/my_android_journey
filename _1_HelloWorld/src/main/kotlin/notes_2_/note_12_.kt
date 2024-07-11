@@ -50,7 +50,7 @@ fun main () {
     var nickname = "thwisse"
     println(nickname.subSequence(0,3)) ///thw
     // t-0, h-1, w-2, i-3
-    // ilk indexten basla 3 e kadar (3 dahil degil) olanlari al dedik.
+    // ilk indexten (inclusive) basla 3 e kadar (3 dahil degil - exclusive) olanlari al dedik.
     // boyle de kullanilabilir
     var nickname2 = nickname.subSequence(0,3)
     println(nickname2) ///thw
@@ -72,9 +72,9 @@ fun main () {
 
     // trim
     // string basindaki ve sonundaki whitespaceleri (bosluklari) silerek geri donduren fonksiyon.
-    val siir2 = " her zaman elimi tut diye var olacagim seninle   "
-    println("|" + siir2.trim() + "|")
-    ///|her zaman elimi tut diye var olacagim seninle|
+    val siir2 = "     her zaman elimi tut diye var olacagim seninle     "
+    println(siir2.trim() + "(burda bitti)")
+    ///her zaman elimi tut diye var olacagim seninle(burda bitti)
 
     // string.length-1
     // bize stringin son indexini verir.
@@ -103,8 +103,8 @@ fun main () {
     // bu kullanimla birden fazla catch kullanimi ayni isi gorur.
     // birden fazla farkli hatayi ayni try icinde barindirmak mantiksiz.
     // cunku e ilk neye esitlenirse o if'e giriyor ve digerine hic bakamiyor.
-    // ama bunu da sunun icin kullanabiliriz: eger hata bu ise bu ife gir, bu ise buna gir. digerine bakmadan cik.
-    // boyle bir ihtiyacimiz olursa kullanilabilir.
+    // ama bunu da sunun icin kullanabiliriz: eger hata bu ise bu ife gir, bu ise buna gir.
+    // digerine bakmadan cik. boyle bir ihtiyacimiz olursa kullanilabilir.
     // bunun disinda her bir olasi hata icin farkli try catchler olusturmak en mantiklisi.
     // veya hatanin ne olduguyla ilgilenmiyorsak sadece catchte e: Exception kullaniriz ve hata ne olursa olsun
     // istedigimizi yaptiririz. ama o hatadan sonraki kodlar calismayacaktir. pek efektif olmayabilir.

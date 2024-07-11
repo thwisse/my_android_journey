@@ -7,12 +7,10 @@ open class class_3_{
 
     public var publicDegisken = 2
 
-    // kalitimla dahi private degiskene baska classta erisilemez.
     private var privateDegisken = 3
 
     internal var internalDegisken = 4
 
     // protected degiskene erisilebilmesi icin bu classtan kalitimla turetilmesi gerekir.
     protected var protectedDegisken = 5
-    // bu sinifi diger sinifa kalittigimiz icin artik etisilebiliyor.
 }

@@ -17,6 +17,7 @@ class Mudur (isimSoyisim: String = "Kenan Birkan",
     fun terfiEttir (perX: Personel, zam: Int = 0) {
         perX.terfiDuzeyi += 1
         println("Personelin terfisi gerceklesti. Yeni terfi seviyesi: ${perX.terfiDuzeyi}")
+
         // Ustabasi sinifinin fonksiyonuna erisebilmek icin downcasting yapalim
 
         // if kontrolu yapmiyor olsaydik ve tek bir sinifa bu islemi
@@ -32,7 +33,8 @@ class Mudur (isimSoyisim: String = "Kenan Birkan",
             // simdi burda boyle bi hile yaptim. aslinda iscileri de terfi alabilir olarak tasarlicaktim da
             // cok vakit alacakti her seyi degistirmek istemedim. onun yerine anlatayim.
             // Ustabasi ile Isci arasinda bir kalitim baglantisi olmadigi icin Iscilere bu islemi uygulayamiyorum.
-            // ClassCastException hatasi aliyorum. Bu projenin mantigina gore bu maasArtir fonksiyonunun Ustabasi'nda
+            // ClassCastException hatasi aliyorum. Bu projenin mantigina gore bu maasArtir
+            // fonksiyonunun Ustabasi'nda
             // olmamasi gerekiyordu, o yuzden problem oluyor. ancak sorun yok sonucta mantigini biliyorum.
         }
     }
@@ -66,11 +68,11 @@ fun main () {
 
     //val ustabasi1 = Ustabasi()
     // ustabasi1 tanımlamasının türü belirtilmemiştir ve Ustabasi sınıfından
-    // nesne ogretmen tanımlamasına aktarılmıştır, standart bir nesne oluşturulmuştur.
+    // nesne ustabasi1 tanımlamasına aktarılmıştır, standart bir nesne oluşturulmuştur.
 
     //val ustabasi1: Personel = Ustabasi()
     // ustabasi1 tanımlamasının türü Personel sınıfıdır ve Ustabasi sınıfından
-    // nesne ogretmen tanımlamasına aktarılmıştır , polymorphism yapılmıştır.
+    // nesne ustabasi1 tanımlamasına aktarılmıştır , polymorphism yapılmıştır.
 
     // Polymorfism kullanım amacı sınıf dönüşümleri yaparak kullanım alanlarını genişletmektir.
     // kullanim alani genisletme mevzusunu tam anlamadigim icin hocaya sordum o da bunu yazdi:
@@ -78,6 +80,7 @@ fun main () {
     bulunan sınıfın super classı istenebilir, bu durumda elinizdeki nesnenin görünümünü
     polymorphism ile değiştirebilirsiniz. Çok yaygın olmasada bu durumlar ile karşılaşabilirsiniz,
     bu kullanımlar duruma göre değişebilir ve android tarafında karşınıza çıktıkça daha anlaşılır olacaktır. */
+    //TODO bir gun anlarim herhalde bu poliformizmi
 
     val d_isci1: Personel = DeneyimliIsci("Eser Yenenler", 1000)
     val isci1: Personel = Isci("Ekber Habesi", 500)

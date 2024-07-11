@@ -9,7 +9,6 @@ class Urun (var urunNo: Int, var urunAd: String, var urunFiyat: Double) {
         // burada da bunu ona belirtiyoruz.
         // this burada sinifi temsil ediyor.
     }
-
     // Any? isimli seyi classlarin tanrisi gibi dusun. superclass gorevi var burada.
     // if conditioninda da other as Urun diyerek downcasting yaptik.
     override fun equals(other: Any?): Boolean {
@@ -27,7 +26,7 @@ class Ogrenci (var okulNo: Int, var isimSoyisim: String, var sinif: String) {}
 
 fun main () {
     /////////////////////
-    // arrayList
+    // ArrayList
     // daha once sirasiyla listOf, setOf, mapOf ve arrayOf ogrenmistik. bunu yeni ogreniyorum.
 
     val meyveler = ArrayList<String>()
@@ -43,10 +42,11 @@ fun main () {
     println(meyveler.get(3)) ///Elma
     println(meyveler[3]) ///Elma
 
-    // bi indexe deger eklemek. o indexteki degerin yerine eklemek:
+    // bi indexteki degeri degistirmek. o indexteki degerin yerine eklemek:
     meyveler[3] = "Ananas"
     println(meyveler.toString()) ///[Cilek, Karpuz, Muz, Ananas, Portakal]
-    // bi indexe yeni eleman eklemek. o index ve sonraki degerleri saga kaydirmak:
+
+    // bi indexe yeni eleman eklemek. o indexteki degeri ve sonraki degerleri saga kaydirmak:
     meyveler.add(3, "Kivi")
     println(meyveler.toString()) ///[Cilek, Karpuz, Muz, Kivi, Ananas, Portakal]
 
@@ -81,6 +81,7 @@ fun main () {
     urunler.add(urun5)
     urunler.add(urun4)
     urunler.add(urun2)
+    // kayit sirasi karisik fark ettiysen.
 
     println("\nUrunlerin kayit sirasina gore default ilkel siralama:\n")
     var i = 1
@@ -99,7 +100,7 @@ fun main () {
     // urunNo'ya gore kucukten buyuge sirala ve siralama1 List'ine bu listeyi aktar.
     val siralama1 = urunler.sortedWith(compareBy{ it.urunNo })
     // buradaki it keywordu Urun nesnelerinin atandigi urun1, urun2 gibi degiskenleri ifade eder.
-    // compareBy kucukten buyuge siraliyor.
+    // compareBy kucukten buyuge siralar.
     // buyukten kucuge siralamak icin compareByDescending kullanabilirdik.
 
     println("\nUrun numarasina gore siralama:\n")
@@ -186,7 +187,7 @@ fun main () {
     // eger nesnelerden olusan bir hashset yapisi kullaniyorsak ve ayni argumani iceren nesneler eklersek
     // default olarak sorun cikarmadan nesneleri set'e ekleyecektir. ancak biz belli bir argumani ayni olan
     // nesneleri eklememesini istersek bunu belirtmemiz gerekir. mesela tum argumanlari ayni 2 tane farkli nesneyi
-    // diziye eklersek hep yaptigi gibi bunlar ayni seyler diyip eklememezlik yapmaz. baaam diye ekler.
+    // diziye eklersek hep yaptigi gibi bunlar ayni seyler diyip eklememezlik yapmaz, nesnelerde baaam diye ekler.
     // bu yuzden ornegin biraz asagidaki ornekte urunNo'suna gore ayrim yaptiricaz ve ayni urunNo'dan baska
     // nesne eklemek istedigimizde reddedecek.
 
@@ -198,8 +199,9 @@ fun main () {
     esyalar.add(urun3)
     esyalar.add(urun4)
     esyalar.add(urun5)
-    // ayni nesneden birden fazla ekleyelim/
-    //val urun5 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0)
+
+    // ayni nesneden birden fazla ekleyelim:
+    //val urun5 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0) boyle idi. hatirlatmak icin yazdim.
     val urun6 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0)
     esyalar.add(urun6)
     // hic sikinti cikarmadan ekledi. argumanlari ayni olsa da ekledi.
@@ -208,15 +210,15 @@ fun main () {
 
     // hashCode() ve equals()
     // bu fonksiyonlari class icinde yaratarak nesnenin belli bir argumanina gore HashMap'in bilinen
-    // dogal davranisini yonlendiriyoruz. bunlarla ilgili aciklamalar class icinde var.
+    // dogal davranisini yonlendiriyoruz. bunlarla ilgili aciklamalar class1 icinde var.
 
     val urun7 = Urun(5, "Samsung Galaxy S22 128GB", 23999.0)
     esyalar.add(urun7)
     // urun7 nesnesinin adi farkli olmasina ragmen urunNo'sundan var oldugu icin eklenmedi.
     // urun7 ile birlikte urun6 da listeden cikarildi.
-    // artik bu set'e urunNo'su farkli olan urunler ekledigimde ekleyecek.
+    // artik bu set'e sadece urunNo'su farkli olan urunler ekledigimde ekleyecek.
 
-    //region hashset liste yazdirma kodu. bu region'i istedigin araliga gotur koy.
+    //region hashset liste yazdirma kodu. bu region'i yukarida istedigin araliga gotur koyabilirsin.
     println("\nHashSet Urun Listesi:\n")
     i = 1
 
@@ -289,8 +291,4 @@ fun main () {
     ///1 numarali ogrenci: Fatih Sultan Mehmet, Sinif: 10-B
     ///2 numarali ogrenci: Kanuni Sultan Suleyman, Sinif: 9-C
     ///3 numarali ogrenci: Yavuz Sultan Selim, Sinif: 12-A
-
-
-
-
 }

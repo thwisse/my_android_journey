@@ -75,7 +75,7 @@ fun main () {
 
     var myCar3 = Car3()
     myCar3.color = "Black"
-    // bu kod calismayacak. cunku brand ozelligini val olarak belirttim ve
+    // asagidaki kod calismayacak. cunku brand ozelligini val olarak belirttim ve
     // default degerin degisemeyecegini soyledim.
     //myCar.brand = "Volvo"
     println(myCar3.color) ///Black
@@ -94,7 +94,7 @@ fun main () {
     default degerleri girmemizi zorunlu kilar. ancak constructor class olusturdugumuzda
     default deger olmayan ozellikleri classa inject edebiliriz */
 
-    var myCar4 = notes_1_.Car4("Gray", "Volkswagen", true)
+    var myCar4 = Car4("Gray", "Volkswagen", true)
     myCar4.color = "Yellow"
     // brandi yine val olarak belirledigim icin, nesneyi olustururken ilk degerini atadim ve daha sonra
     // bu degeri degistirmeme izin vermedi. Volkwagen degerini degismez deger olarak kabul etti.
@@ -114,33 +114,38 @@ fun main () {
 
     // null olabilecek bir stringi degiskene atarken "bu null olabilir, bunu kontrol altina al"
     //anlamina gelen ? operatorunu String? seklinde kullaniriz.
-    // ? koyduk ve bu degisken null deger alabilir dedik. ve null deger atadik.
+    // ? koyduk yani bu degisken null deger alabilir dedik. ve null deger atadik.
     var str1:String? = null
+
     // artik degiskene herhangi bir fonk uygulamak istedigimizde bize uyari verecektir
     //str1.trim()
     /* Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type String?
     uyarida bu yaziyor. null degerli bir string degiskene bu fonk uygulanamaz diyor.
     eger kontrol ederek uygula (?) ya da ille uygula (!!) diyorsan bunu belirt diyor. */
-    // simdi degiskene ? ekleyerek diyoruz ki "bu degisken null degilse calistir, null ise bu fonksiyonu calistirma"
+
+    // simdi degiskene ? ekleyerek diyoruz ki "bu degisken null degilse calistir,
+    // null ise bu fonksiyonu calistirma"
     str1?.trim()
-    // degiskenin degeri null oldugu icin fonksiyon calismadi ancak hata da vermedi. null safe olmus.
+    // degiskenin degeri null oldugu icin fonksiyon calismadi ancak hata da vermedi. null safe oldu.
+
     // !! kullandigimizda ise, string null'sa bile ne olursa olsun calistir diyoruz.
     // iste bunda hata aliyoruz. cunku string null. sadece null olmayacagina emin oldugumuzda bunu kullanabiliriz.
     //str1!!.trim()
     // hata: NullPointerException
     // bu null degilse sunu yap null sa sunu yap muhabbetini if ile de kontrol edebilirdik. bu onun kisayolu.
 
-    // kodun icinde ? ve !! olmasini istemiyorsak ve kodumuza guveniyorsak!
-    // lateinit keywordu ile bunu belirtebiliriz.
+    // kodun icinde birsuru ? ve !! olmasini istemiyorsak ve kodumuza/kendimize guveniyorsak
+    // lateinit keywordu ile bunu ayarlayabiliriz.
     var str2:String? = null
     lateinit var str3:String
-    // bu ikisi ayni anlama gelmektedir. ? = null kismini yazmamiza ve degiskeni kullanirken
+    // bu ikisi de ayni anlama gelmektedir. ? = null kismini yazmamiza ve degiskeni kullanirken
     // ? ve !! kullanmamiza gerek kalmaz
     //str3?.trim()
     //str3!!.trim()    // ikisi de hata verecegi icin ikisini de yorum satirina aldim
     // uyari: Unnecessary safe call on a non-null receiver of type String
     // yani bu ? ve !! isaretlerini gereksiz yere kullaniyorsun diyor. zaten lateinit dedin diyor.
-    // eger lateinit kullandiysan zaten String null olmamali ve ? ve !! kullanmana gerek yok diyor
+    // eger lateinit kullandiysan ve salak degilsen zaten String null olmamali
+    // ve ? ve !! kullanmana gerek yok diyor
 
     // overloading
     // fonksiyon adini degistirmeden, farkli parametreler tanimlayarak yeni fonksiyonlar uret.
@@ -168,13 +173,13 @@ fun main () {
     // dizayn etmemizi saglayan fonksiyonlar yaratabiliriz.
 
     // ornegin Int sinifina bir fonksiyon ekledik. artik herhangi int bir degerden sonra .carpi(sayi)
-    // yaparak o sayiyi "sayi" ile carpabiliriz.
+    // yazarak o degeri "sayi" ile carpabiliriz.
     infix fun Int.carpi(sayi: Int): Int {return this * sayi}
     // buradaki this bastaki Int'i yani Int sinifini temsil eder
-    var sonuc = 5.carpi(2)
+    var sonuc = 5.carpi(2) // infixsiz hali
     println(sonuc)
-    // extra olarak infix keywordunu ekledigimizda cok daha pratik kullanabiliriz
-    sonuc = 6 carpi 4
+    // extra olarak infix keywordunu ekledigimizda cok daha pratik kullanabiliriz:
+    sonuc = 6 carpi 4 // infixli hali
     println(sonuc)
 
     ////////////////////
@@ -188,6 +193,7 @@ fun main () {
     ///Yeni kisi nesnesi olusturuldu.
     ///Oguzhan - 23
 
+    //////////////////
     val girdi = Scanner(System.`in`)
     // java.util.Scanner import edildi. eger java.util.* yaziyor olsaydi bu tum paketin import edildigi
     // anlamina gelecekti. burada ise sadece scanner ozelligi import edildi.

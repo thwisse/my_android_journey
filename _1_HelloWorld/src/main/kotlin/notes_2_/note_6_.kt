@@ -22,8 +22,8 @@ fun main () {
     println("$a ve $b nin toplami = ${a + b}")
 
     var c = 200
-    //c = "one hundred"
-    // bu yapilamaz. buna type safety denir
+    //c = "ahmet"
+    // bu yapilamaz. buna type safety denir.
 
     ////////////////////////////
     // global ve local degiskenler
@@ -47,7 +47,7 @@ fun main () {
 
     var i1 = 15
     println(i1 + 10) ///25
-    // i2 degiskenine i1 i stringe donusturerek atadigimiz icin string bir degisken oldu
+    // i2 degiskenine i1 i stringe donusturerek atayalim
     var i2 = i1.toString() + " sayisi"
     println(i2) ///15 sayisi
     var i3 = i1.toDouble()
@@ -107,17 +107,19 @@ fun main () {
      */
 
     ///////////////////////
-    // diziler (arrayOf)
+    // diziler (arrays)
+
     // boyutlari sabittir. collectionslardan en onemli farki budur.
     // eger boyutu sabit olacak bi yapiya ihtiyacimiz varsa collections yerine array
     // kullanabiliriz. cunku performans acisindan arrays daha iyidir. ama genelde collections kullanilir.
 
-    // 1- Array<Type>(size)(values) seklinde dizi olusturulabilir.
+    // 1- Array<Type>(size){value1,value2...} seklinde dizi olusturulabilir.
     // ayni zamanda bu bos dizi olusturmanin bir yolu:
     val array1 = Array<Int>(5) {0} // bos int dizi
     val array1_ = Array<String>(5) {""} ///["","","","",""] // bos string dizi
     // dizi icerigini ogrenmek icin:
     println(array1.contentToString()) ///[0,0,0,0,0]
+    // tamamen fantazi amacli:
     val array2 = Array<Int>(5) { index -> index + 1 }
     println(array2.contentToString()) ///[1,2,3,4,5]
 
@@ -138,7 +140,7 @@ fun main () {
 
     // dizideki bir degeri degistirmek
     array5[2] = 10
-    // ikisi ayni islevi gorur.
+    // ikisi ayni islevi gorur. ikisinde de indisinden degisiklik yapilir
     array5.set(3,"muz")
     println(array5.contentToString()) ///[1, 5, 10, muz, armut, karpuz]
 
@@ -152,7 +154,7 @@ fun main () {
     println(array5.contains("portakal")) ///false
     // dizideki string karakterleri ascii tablosuna gore alfabetik siralamak ve max min ogrenmek
     val markalar = arrayOf("Huawei", "Apple", "Nokia", "Samsung")
-    println(markalar.max()) ///Samsung   // bu iki fonksiyon once sort eder sonra max ya da mini getirir
+    println(markalar.max()) ///Samsung   // bu iki fonksiyon, once sort eder sonra max ya da mini getirir
     println(markalar.min()) ///Apple
     val puanlar = arrayOf(40, 86, 30, 100, 50)
     println(puanlar.max()) ///100

@@ -22,7 +22,7 @@ open class Elma (): Eatable, Squeezable {
 class AmasyaElmasi (): Elma () {
     override fun howToEat() {
         super.howToEat()
-        println("yikamayi unutma")
+        println("yikamayi unutma") //ekstra eklemek istersek ekleriz
     }
 }
 
@@ -78,10 +78,11 @@ fun main () {
     // inheritance islemleri birbirinden farklidir. interfaceler iki siniftan birden ozellik cekebilmemize yarar.
 
     val elma = Elma()
-    // elma tipinden bir AmasyaElmasi nesnesi:
+    // Elma tipinden bir AmasyaElmasi nesnesi:
     val amasyaElmasi: Elma = AmasyaElmasi()
     val aslan = Aslan()
-    // dilersek bu sekilde bir interface tipinden referans olusturabiliriz.
+
+    // dilersek su sekilde bir interface tipinden referans olusturabiliriz.
     // ona da bir Tavuk nesnesi atadim.
     // ilerde kullanabiliriz diye burada boyle bir ornek yaptik.
     val tavuk: Eatable = Tavuk()
@@ -102,21 +103,26 @@ fun main () {
             println("yenmez ya da sikilmaz")
         }
     }
+    // elma:
     ///notes_2_.Elma@5b6f7412
     ///dilimleyerek
     ///blendirdan gecirerek
 
-    // AmasyaElmasi classinda Squeezable interfaceine ait function kullanilmamasina ragmen calisti.
+    // AmasyaElmasi classinda Squeezable interfaceine ait function kullanilmamasina ragmen calisti (A1).
     // cunku AmasyaElmasi classi ile Elma classi arasinda kalitim baglantisi var. o fonksiyon
     // elma classinda var oldugu icin AmasyaElmasi classina da kalitim yoluyla gecmis oldu.
+
+    // amasya elmasi:
     ///notes_2_.AmasyaElmasi@27973e9b
     ///dilimleyerek
     ///yikamayi unutma
-    ///blendirdan gecirerek
+    ///blendirdan gecirerek (A1)
 
+    // aslan:
     ///notes_2_.Aslan@312b1dae
     ///yenmez ya da sikilmaz
 
+    // tavuk:
     ///notes_2_.Tavuk@7530d0a
     ///firinda kizartarak
 
@@ -140,6 +146,7 @@ fun main () {
     println(ayakkabi1.numara)
 
     // indirim ozelliginde de hicbir kontrol yapilmadigi icin istedigimizi yapariz
+    // sanki (set - get) yapilmis gibi.
     ayakkabi1.indirim = false
     println(ayakkabi1.indirim)
 
