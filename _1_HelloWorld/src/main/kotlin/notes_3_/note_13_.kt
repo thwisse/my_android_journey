@@ -104,6 +104,7 @@ fun main() {
     //
     // constructor icinde bir propertyi private yapip, o degiskeni public bir fonksiyonda kullanabilirim.
     // yani propertye nesne aracigiliyla erisemem ama fonksiyonu kullanarak o property ile islem yapabilirim.
+    //TODO bunu not almisim ama tekrar ederken su an ne demek istedigimi anlamadim.
 
     /////////////////////
     // nullability
@@ -112,25 +113,25 @@ fun main() {
 
     var myString: String?
     //println(myString)
-    // println hata veriyor. cunku initialize edilmedi. baslatilmadi. bu degisken null'dir diyor.
+    // println hata veriyor. cunku initialize edilmedi. baslatilmadi.
     var myString2: String? = null
     println(myString2)
     // simdi println hata vermiyor. cunku initialize edildi. ancak simdi de uyari veriyor. diyor ki bu null.
     // zaten burada bir hata vermez. bir degiskenin null olabilmesine onay veriyorsak bunu yapariz ve hata almayiz.
+    // ? nullable isaretini kaldirinca null hata veriyor mesela. ? koyunca onay veriyoruz.
     // burada cok anlamli degil. cunku degeri ben giriyorum. ancak veri databaseden kullanicidan vs geliyor olsa idi
     // o zaman bu hayat kurtaran bir sey olacakti.
+
     var myInt: Int? = null
     //println(myInt * 5)
     // bu printte de hata aliyorum. null olabilecek bir seyi operand olarak kullanmak tehlikeli diyor.
     // bunun icin de ya ? ya da !! kullanacagiz. bunun disinda secenekler de var:
 
     // 1) !!
-    //myInt = 5
     //println(myInt!! * 5) // ben eminim myInt null degil sen isine bak diyoruz.
     // ama null oldugu icin uygulama cokecektir (NullPointerException). burada !! ile inisiyatif almis oluyoruz.
 
     // 2) ? = safe call
-    //myInt = 5
     println(myInt?.minus(10)) // myInt null ise null dondur, null degilse calistir diyoruz
     // null dondu. uygulama da cokmedi. isi garantiye aldik.
     // myInt?.minus(10) ifadesi null dondugu icin, bunu da baska bir yerde isleme soksak yine hata aliriz.
@@ -138,7 +139,6 @@ fun main() {
     // !! ve ? dan daha guvenli ve mantikli bir yontem var:
 
     // 3) if kontrolu.
-    //myInt = 5
     if (myInt != null) {
         println(myInt.minus(10))
         // "Smart cast to kotlin.Int" yaziyor. null gelmeyecegi zaman bana birak islemi yapacagim diyor.
@@ -150,7 +150,6 @@ fun main() {
 
     // 4) elvis operatoru (?:)
     // null degilse islemi yap, null ise null yollama sana verdigimi (burada 0) yolla diyoruz.
-    //myInt = 5
     println(myInt?.minus(10) ?: 0)
     // alternatiflere doyamadik. bir alternatif daha:
 

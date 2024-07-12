@@ -8,12 +8,12 @@ fun main() {
     // zaten bu konulari C# da ve kotlinin onceki kursunda gormustum. o sebeple burada
     // sadece yeni ogrendigim seyleri not alacagim.
     //
-    // User class'ini olusturdum.
+    // (class User)
 
     val user1 = User("Amy Winehouse", 27, "female", false)
     user1.name = "Yildiz Tilbe"
     user1.age = 57
-    // propertyleri var olarak yarattigim icin degerlerini sonradan degistirebiliyorum.
+    // propertyleri "var" olarak yarattigim icin degerlerini sonradan degistirebiliyorum.
     // yani user1'in val olmasiyla ilgisi yok.
 
     println(user1.name + " - " + user1.age)
@@ -28,6 +28,8 @@ fun main() {
 
     ///////////////////////
     // inheritance
+    // (class User & class Character)
+
     // miras alinabilen class = open class
     // miras alinamayan class = final class (default)
     // yani bir class'in basina open ekleyince baska classlar o classi miras olarak alabilir.
@@ -35,9 +37,11 @@ fun main() {
     // miras alan class: subclass
 
     val user3 = Character("Frank Gallagher", 66, "male", false)
-    // subclass'in final methodu: (class Character)
+    // (class Character)
+    // subclass'in final methodu (default fonksiyon iste. fun yani.):
     user3.resuscitate()
-    // superclass'in super methodu: (class User)
+    // (class User)
+    // superclass'in super methodu (open fun):
     user3.drink()
 
     ///////////////////////////
@@ -53,6 +57,7 @@ fun main() {
     println(math.sum(5))
     println(math.sum(5, 6))
     println(math.sum(5, 6, 7))
+    //TODO buna overloading denmiyor muydu ya?
 
     // dynamic polymorphism
     // (class Animal - class Dog)
@@ -68,7 +73,6 @@ fun main() {
     ///animal is walking...
 
     val dog = Dog()
-
     // subclassin kendi metodu:
     dog.bark()
     ///dog is barking...
@@ -78,17 +82,23 @@ fun main() {
     // super class metodunun super keywordu ile cagirildigi metod:
     dog.test()
     ///animal is walking...
+    // yani istersem superclasstaki fonksiyonu subclass icinde istedigim fonksiyonun icinde cagirabilirim.
+    // super.funcionName()
 
     // Dog sinifi icinde Animal superclassindan override ettigimiz fonksiyon Dog ile cagirildigi zaman
     // farkli, animal ile cagirildigi zaman farkli islem yapacak. ancak fonksiyon isimleri ayni.
     // iste dynamic polymorphism boyle bir sey. isim ayni olmasina ragmen superclasstaki fonk
     // override edilip subclassta uzerine farkli seyler yazildigi icin ikisi farkli islem yapiyor.
+    //TODO polimorfizm budur demisim ama valla hic emin degilim bu olduguna. alti ustu fonskiyonu open
+    // edip kalittigim diger classta kullandim. bu da inheritance degil mi zaten. polimorfizm diye bise
+    // olmayabilir mi acaba? kafayi mi yiyorum?
 
     //////////////////////////
     // abstract & interface
     // (abstract class People - class Person)
 
     // abstract
+
     // soyut sinif olusturma yetisi. birbirine benzeyen classlari tekrar tekrar surekli olusturarak
     // vakit ve verim kaybi yasamak yerine, fonksiyonlari bir kereligine tek bir soyut sinifa yazarak, diger
     // classlarda da o soyut sinifi implemente ederek rahatca kullanabilirim.
@@ -111,6 +121,7 @@ fun main() {
 
     // interface
     // (class Piano - interface HouseDecor - interface Instrument)
+
     // bir classa birden fazla class ile inheritance uygulanamiyor. bir class, tek bir classtan miras
     // alabilir. ancak bazen birden fazla classin ozelliklerini tek bir classta kullanma geregi duyulabiliyor
     // bu yuzden birden fazla inheritance yapilamadigi icin birden fazla implementation yapiliyor.
@@ -228,8 +239,4 @@ fun main() {
     }
     // tek satirda:
     registerSomebody(false) { newUser -> println(newUser.name) }
-
-    /////////////////////
-
-
 }

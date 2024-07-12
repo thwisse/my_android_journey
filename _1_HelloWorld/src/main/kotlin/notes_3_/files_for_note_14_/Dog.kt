@@ -1,16 +1,16 @@
 package notes_3_.files_for_note_14_
 
 class Dog : Animal() {
-    fun bark () {
-        println("dog is barking...")
-    }
-
     override fun walk () {
         println("dog is walking...")
     }
 
-    // Redundant overriding method (cunku zaten bu classtan uretilen nesnede superclasstaki
-    // ozellliklere erisilebiliyor.
+    fun bark () {
+        println("dog is barking...")
+    }
+
+    // "Redundant overriding method" hatasi aliyorum (cunku zaten bu classtan uretilen nesnede superclasstaki
+    // ozellliklere erisilebiliyor. gerek yok bunu yazmana diyor yani. yazacaksan degistir diyor.
     //override fun walk() {
     //    super.walk()
     //}

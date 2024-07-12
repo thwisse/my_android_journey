@@ -32,6 +32,4 @@ class Piano(override var roomNumber: Int) : HouseDecor, Instrument {
     override fun pricing() {
         println("piano is so cheap!")
     }
-
-
 }
