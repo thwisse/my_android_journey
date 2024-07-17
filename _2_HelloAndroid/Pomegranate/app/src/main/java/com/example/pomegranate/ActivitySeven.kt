@@ -56,7 +56,7 @@ class ActivitySeven: AppCompatActivity() {
             override fun run() {
                 number += 1
                 binding.textViewTimer.text = "Timer: ${number}"
-                // post delayed = rotarli gecikmeli olarak bu runnable'i gerceklestir
+                // post delayed = rotarli, gecikmeli olarak bu runnable'i gerceklestir
                 handler.postDelayed(runnable, 1000)
                 // burada ilk arguman olarak runnable yazdik ancak this de yazilabilirdi.
                 // bazi kaynaklarda oyle kullaniliyormus. zaten this BURADA activity'ye degil

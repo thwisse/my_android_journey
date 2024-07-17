@@ -17,12 +17,12 @@ class ActivitySix : AppCompatActivity() {
         binding = ActivitySixBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // countdowntimer
+        // countdowntimer (geri sayim)
         // abstract bir sinif oldugu icin, bunu uygulayabilmek icin "object" kullanacagiz.
         // soyut bir sinifi ya da arayuzu vs. uygulayabilmek icin object kullaniriz.
 
         // ilk arguman = kactan geriye sayacagim, ikinci arguman = kacar kacar sayacagim
-        // milisaniye cinsinden yaziyoruz. (10 sn, 1 sn)
+        // milisaniye cinsinden yaziyoruz. (10 sn, 1 sn):
         object : CountDownTimer(10000, 1000) {
             // her bir tick'te yani her bir saniyede ne yapayim:
             // eger 1000 yerine 2000 yazsak her iki saniyede bir ne yapayim anlamina gelecekti.

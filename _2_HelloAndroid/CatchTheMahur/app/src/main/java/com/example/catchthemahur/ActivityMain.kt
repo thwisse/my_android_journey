@@ -64,7 +64,7 @@ class ActivityMain : AppCompatActivity() {
         /////////////////////////
         // bu projeyi hocanin yaptigi yolla ilgili notlar:
         //
-        // gorseli View.INVISIBLE ile View.GONE arasindaki fark: invisible kullaninca gorsel nesne
+        // gorselde View.INVISIBLE ile View.GONE arasindaki fark: invisible kullaninca gorsel nesne
         // sadece gorunmez olurken, gone kullaninca gorsel hem gorunmez oluyor hem de layouttan
         // cikariliyor. sanki yokmus gibi. o sebeple ona bagli olan constraintler bozulabilir ya da
         // sirali bir desen varsa sira kayabilir vs. buna dikkat et.

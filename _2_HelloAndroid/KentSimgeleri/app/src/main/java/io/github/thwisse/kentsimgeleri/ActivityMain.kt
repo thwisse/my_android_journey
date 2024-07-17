@@ -7,6 +7,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import io.github.thwisse.kentsimgeleri.databinding.ActivityMainBinding
 
+//var chosenLandmark: Landmark? = null
+
 class ActivityMain : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -89,6 +91,21 @@ class ActivityMain : AppCompatActivity() {
 
         ////////////////////////////
         // buyuk boyutlu verileri intent kullanmadan iletmek
-        //
+        // pek efektif olmayan 2. yontem: javada static denen, classin disinda olusturulan global (public)
+        // degisken ile veri aktarimi yapmak. yukariya chosenLandmark adinda bir degisken yaratiyorum.
+        // geri kalan islemleri activitydetails ve adapter'imda yapacagim.
+        // nerede olduguna dikkat et. bu degisken her classta her yerden erisilebilir.
+        // bu her zaman iyi bir sey degil. yani guvenli degil. tek basina proje yaparken belki bu problem
+        // cikarmayabilir ama bir projede calisirken bu degiskenin degerini biri degistirse icinden
+        // cikilmaz bir durum olusur.
+
+        ///////////////
+        // singleton
+        // 2. yontemden cok daha guvenilir bir veri aktarim yontemi.
+        // icerisinde tek bir adet obje barindiran siniftir. nereden cagirilirsa cagirilsin tek bir
+        // obje uzerinden islem yapilir. Singleton adinda bir kotlin file olusturuyorum.
+        // yine chosenLandmark2 adinda kendi singleton'umu olusuturuyorum.
+        // simdi tekrar activitydetails ve adapter'daki degisiklikleri yapabiliriz.
+
     }
 }

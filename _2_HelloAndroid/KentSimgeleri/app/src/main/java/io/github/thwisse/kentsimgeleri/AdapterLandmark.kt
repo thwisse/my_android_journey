@@ -38,7 +38,20 @@ class AdapterLandmark (val listLandmark: ArrayList<Landmark>):
 
             // hangi item'a tiklandiysa onunla ilgili verilerin position sayesinde iletilerek
             // details activity'sinde goruntulenmesini sagliyorum:
-            intent.putExtra("landmark", listLandmark.get(position))
+            //intent.putExtra("landmark", listLandmark.get(position))
+
+            /////////
+            // 2
+            // global (public) degisken ile veri aktarimi ornegi kismi (ActivityDetails'tan bak):
+            // (ustteki intentin devre disi birakilmasi gerekir bunun icin)
+            //chosenLandmark = listLandmark.get(position)
+
+            /////////
+            // 3
+            // singleton
+            // (41deki intentin devre disi birakilmasi gerekir bunun icin)
+            MySingleton.chosenLandmark2 = listLandmark.get(position)
+
 
             // startActivity'i de direkt cagiramiyorum. cunku activity'de degiliz. onu da
             // itemview kullanarak cagiracagim:

@@ -29,13 +29,6 @@ class ActivityMain : AppCompatActivity() {
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-
-
-
-
-
-
-
     }
 
     // drawer acikken geri tusuna basmak:

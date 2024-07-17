@@ -51,8 +51,7 @@ class ActivityRecyclerView : AppCompatActivity() {
         // uygulama cokebilir.
         // mesela bitmap kullanarak, bitmapfactory kullanarak bitmape cevrilebilen resimleri intent
         // ile yollamaya kalksak sikinti olabilir.
-        // bu yuzden baska yollarla activity'ler arasi veri transferi yapmayi ogrenmeliyiz:
-        //
+        // bu yuzden baska yollarla activity'ler arasi veri transferi yapmayi ogrenmeliyiz.
 
     }
 }

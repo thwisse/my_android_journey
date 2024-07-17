@@ -22,7 +22,7 @@ class ActivityWinLose : AppCompatActivity() {
 
         if (SharedVariable.winLoseResult) {
 
-            binding.textViewWinLose.text = "Dilber - Evin barkın yok mu? eşliğinde kıvırtan konsomatris kedi.\nBunu hak ettin..."
+            binding.textViewWinLose.text = "Dilber evin barkın yok mu? eşliğinde kıvırtan konsomatris kedi.\nBunu hak ettin..."
             binding.videoViewWinLose.setVideoURI(uri1)
             binding.videoViewWinLose.start()
 

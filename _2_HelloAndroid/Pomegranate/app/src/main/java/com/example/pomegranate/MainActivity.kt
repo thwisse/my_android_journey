@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
             //val newSimpson = Simpson(name, age, job)
             // age string olmadigi icin sikinti cikiyordu. toInt ile cozduk mevzuyu.
-            // ancak soyle bir sikinti var ki, mesela age yerine int yerine string bir deger
+            // ancak soyle bir sikinti var ki, mesela age kismina int yerine string bir deger
             // girerse yani 30 yerine otuz girse mesela bunu int'e ceviremeyecegi icin hata aliriz.
             // hata almamak icin toInt yerine toIntOrNull kullanacagiz. basarili olursa int? deger doner,
             // basarisiz olursa null doner. basarili oldugunda int? donecegi icin bu yine sikinti olacak.
@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
             // activityler arasi gecis islemi icin kullandigimiz intent overloadindaki 2. argumana
             // ActiviyName::class.java yaziyoruz. burada :: ifadesi ile activityi referans gosteriyoruz.
             // referans gostermenin farkli bir ornegi:
-            // asagida ornek bir fonk olusturdum. mesela kodda bir yerde "ben hangi fonksiyonu
+            // asagida ornek bir fonk olusturdum (egForRef). mesela kodda bir yerde "ben hangi fonksiyonu
             // kullanayim" diye bir sey soracak olsaydi MainActivity::egForRef ya da ::egForRef seklinde
             // yazarak o fonksiyona referans verebilirdim. su an bende error veriyor neden bilmiyorum
             // ama derste o sekilde gosterdi hoca.
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
             // isimli ozellik sagliyor.
 
             ///////////////////////
-            // lifecyle - yasam dongusu
+            // lifecycle - yasam dongusu
 
             // bir x activitysi acildiginda sirasiyla onCreate(), onStart(), onResume() methodlari calisir.
             // o activityden diger (y) activitiye gecis yaptigimda ise onPause(), onStop() methodlari calisir.

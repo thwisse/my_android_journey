@@ -88,7 +88,7 @@ class ActivityFive : AppCompatActivity() {
                 // kullanmak zorunda da degiliz. ama orada yazilmak zorunda.
             }
         })
-        // negatif mesaji ile lambda gosterimi yaratarak hazirlayalim.
+        // negatif mesaji da lambda gosterimi yaratarak hazirlayalim.
         alert.setNegativeButton("No") { dialog, which ->
             // { dialog, which -> } kismini kendim yazdim. positive gosterimde de vardi. onclick methodunda
             // olmasi gereken parametreler bunlar. kullanmak zorunda da degiliz. ama orada yazilmak zorunda.
