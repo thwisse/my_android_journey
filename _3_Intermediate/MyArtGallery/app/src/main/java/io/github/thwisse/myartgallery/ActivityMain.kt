@@ -21,6 +21,10 @@ class ActivityMain : AppCompatActivity() {
         // main activity icin bir option menu (menu_add_art.xml) ve menu klasorunu yarattim.
         // option menunun manuel tasarimini yaptim. simdi menuyu main activitye ekleyeme ve
         // tiklama kodlarini yazacagiz. asagida.
+        // ikisini de hallettik. actionbar gozukmuyordu themesden actim.
+
+        // simdi activityart'ta galeri izni ile alakali kodlar yazacagiz.
+        // manifestte uses permission kullandik. gerisini activityde yapacagiz.
     }
 
     // menuyu baglama:

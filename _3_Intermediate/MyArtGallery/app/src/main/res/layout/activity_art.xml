@@ -11,30 +11,27 @@
         android:layout_width="350dp"
         android:layout_height="223dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="21dp"
         android:onClick="imageViewSelect_Clicked"
-        app:layout_constraintBottom_toTopOf="@+id/editTextArtName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_select" />
 
-    <EditText
-        android:id="@+id/editTextArtName"
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="21dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Art Name"
-        app:layout_constraintBottom_toTopOf="@+id/editTextArtistName"
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="46dp"
+        android:onClick="buttonSave_Clicked"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -43,13 +40,28 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:hint="Artist Name"
         android:inputType="text"
-        android:text="Artist Name"
         app:layout_constraintBottom_toTopOf="@+id/editTextYear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextArtName"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Art Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editTextArtistName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -58,26 +70,13 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:hint="Year"
         android:inputType="text"
-        android:text="Year"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="97dp"
-        android:onClick="buttonSave_Clicked"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
