@@ -3,7 +3,9 @@ package io.github.thwisse.myartgallery
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import io.github.thwisse.myartgallery.databinding.ActivityArtBinding
+import java.io.ByteArrayOutputStream
 
 class ActivityArt : AppCompatActivity() {
 
@@ -25,6 +28,8 @@ class ActivityArt : AppCompatActivity() {
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     // bunun String olma sebebi, READ_EXTERNAL_STORAGE vs permission'larin birer string olmasi.
+
+    private lateinit var database: SQLiteDatabase
 
     var selectedBitmap: Bitmap? = null
 
@@ -53,6 +58,53 @@ class ActivityArt : AppCompatActivity() {
         // donusturme kodu bitti. simdi buttonSave_Clicked islemine gecelim.
         // 3 edittext ve gorseli toplamda 4 degiskende tutacak sekilde butonun kodunu da yazdik.
         // artik butona bastikca verileri veritabanina kaydedecek kodu yazacagiz.
+
+        // veritabanina kaydetme islemleri de tamamlandi. artik art'larin main activity'de gosterilme
+        // islemini yapacagiz. main'e donelim.
+
+        ///////
+        database = this.openOrCreateDatabase("MyArtGallery", MODE_PRIVATE, null) // initialize
+
+        // intent old new kontrolu:
+        val intent = intent
+        val info = intent.getStringExtra("info")
+        if (info.equals("new")) {
+            // iclerini bosaltalim ve butonu aktif hale getirelim
+            binding.editTextArtName.setText("")
+            binding.editTextArtistName.setText("")
+            binding.editTextYear.setText("")
+            binding.imageViewSelect.setImageResource(R.drawable.image_select)
+            binding.buttonSave.visibility = View.VISIBLE
+
+        } else if (info.equals("old")) {
+            // bir eseri sergileyecek gibi hepsini dolduralim ve butonu inaktif edelim
+
+            val selectedId = intent.getIntExtra("id", 0)
+            val cursor = database.rawQuery("SELECT * FROM arts WHERE id = ?",
+                arrayOf(selectedId.toString()))
+            // cursorda selectedArgs kismini hep null yazip geciyorduk ancak simdi bir arg istedi ve
+            // onu da string dizisi olarak istedi. id'yi stringe donusturup array icinde verdik.
+
+            val artNameIx = cursor.getColumnIndex("artName")
+            val artistNameIx = cursor.getColumnIndex("artistName")
+            val yearIx = cursor.getColumnIndex("year")
+            val imageIx = cursor.getColumnIndex("image")
+
+            while (cursor.moveToNext()) {
+                binding.editTextArtName.setText(cursor.getString(artNameIx))
+                binding.editTextArtistName.setText(cursor.getString(artistNameIx))
+                binding.editTextYear.setText(cursor.getString(yearIx))
+                //binding.imageViewSelect.setImageResource(cursor.getBlob(imageIx))
+                // yapamiyorum. getBlob bir byteDizisi istedigi icin onu olusturmaliyim.
+                val byteArray = cursor.getBlob(imageIx)
+                val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+                binding.imageViewSelect.setImageBitmap(bitmap)
+            }
+            cursor.close()
+
+            binding.buttonSave.visibility = View.INVISIBLE
+
+        }
     }
 
     private fun makeSmallerBitmap (image: Bitmap, maximumSize: Int) : Bitmap {
@@ -90,12 +142,47 @@ class ActivityArt : AppCompatActivity() {
 
     fun buttonSave_Clicked(view: View) {
 
-        val artName = binding.editTextArtName.toString()
-        val artistName = binding.editTextArtistName.toString()
-        val year = binding.editTextYear.toString()
+        val artName = binding.editTextArtName.text.toString()
+        val artistName = binding.editTextArtistName.text.toString()
+        val year = binding.editTextYear.text.toString()
 
         if (selectedBitmap != null) {
             val smallBitmap = makeSmallerBitmap(selectedBitmap!!, 300)
+            // bitmap'i ya da gorselleri direkt veritabanina kaydetmek yerine byte'a cevirip
+            // kaydetmek daha mantikli. simdi bunu yapalim.
+            val outputStream = ByteArrayOutputStream()
+            smallBitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream)
+            val byteArray = outputStream.toByteArray()
+
+            // verileri veritabanina kaydetme islemi:
+
+            try {
+                //val database = this.openOrCreateDatabase("MyArtGallery", MODE_PRIVATE, null)
+                // database'i birden fazla yerde kullanacagim icin en yukarida tanimladim ve oncreate
+                // icinde initialize ettim.
+                database.execSQL("CREATE TABLE IF NOT EXISTS arts " +
+                        "(id INTEGER PRIMARY KEY, artName VARCHAR, artistName VARCHAR, year VARCHAR, image BLOB)")
+                // image'lar blob ile tutulacak.
+
+                val sqlString = "INSERT INTO arts (artName, artistName, year, image) VALUES (?, ?, ?, ?)"
+                // degiskenleri bu soru isaretlerine baglayacagiz.
+                val statement = database.compileStatement(sqlString)
+                // index 0dan baslamadi fark ettiysen.
+                statement.bindString(1, artName)
+                statement.bindString(2, artistName)
+                statement.bindString(3, year)
+                statement.bindBlob(4, byteArray)
+                statement.execute()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            val intent = Intent(this@ActivityArt, ActivityMain::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            // bu flag, bundan once acilmis ne kadar activity varsa hepsini kapat demek.
+            // verileri kaydedip, activityleri kapatip, mainactivity'e geri donuyoruz.
+            startActivity(intent)
         }
     }
 
