@@ -1,13 +1,17 @@
 package io.github.thwisse.kekodlessonone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         //android uygulamalari 4 ana bilesen uzerinde calisir (app components).
         //- activities
@@ -215,12 +219,50 @@ class MainActivity : AppCompatActivity() {
         // savedInstanceState fonskiyonu conf change yasanmadiysa bile uygulamayi kullanirken bircok yerde
         // zaten calisiyor. ancak onRestoreInstanceState fonskiyonu conf change yasandiysa
         // kesinlikle calisacaktir.
+        // Bundle = bir poset gibi dusun. verilerini icinde tutabilirsin.
 
         // xml'de id'si olan componentler icin bu islemi android otomatik yapar. tabii data sabitse. db'den
         // ya da uzak sunucudan alinan datalar icin bu islem otomatik yapilamaz. bu fonklari kullanarak
         // kendin yapmalisin.
 
         ////////////////////////////////////////
+
+        // kisa kisa notlar
+
+        // onStart - onStop ve onPause - onResume farki
+        // onPause - onResume aninda uygulama focused olmasa bile arayuzu gozukuyor olabilir.
+        // ancak onStart - onStop anlarinda uygulama (activity) arkaplanda gozukmez.
+
+        // performans gerektiren seyleri (surekli animasyonlar vs) onStartta baslatip onStopta
+        // durdurmalisin.
+
+        // onResume'larda backend'e istek atarak veri guncelleme islemi kotu bir lifecycle anlayisi.
+        // bunu yaparsan uygulama arkaplana gidip geldiginde istek atarsin. cok gecerli bir sebebi
+        // yoksa bunu yapma. best practice: bir activity ya da fragment'tan sonrakine gecerken veri
+        // aktarilabildigi gibi geri donerken de veri aktarilabilir. onResume'dan istek atacaksan
+        // en azindan bunu if ile kontrol edebilirsin, ama bu bile kekoca imis.
+
+        // bi uygulamanin ios ile android ui'lari birbirinden farkli olmalidir. dogrusu bu.
+        // tasarimlari da buna gore yapilmali. crossplatform yapiyorsan bu normal ama native
+        // uygulamalar icin ui'lar birbirinden farkli olmali.
+
+        //////////////////////////////////////////
+
+        val btnOpenSecondActivity = findViewById<Button>(R.id.btnOpenSecondActivity)
+        btnOpenSecondActivity.setOnClickListener {
+            // click event'i icin setOnClickListener kullaniriz. bu bir fonksiyon ancak fonksiyon
+            // parantezi yok suslu parantezler var. bunun bir lambda oldugunu anladin. ardindan
+            // bunun java dosyasinin icerisindeki bir interface oldugunu da anlaman gerekir.
+            // classlarin eventleri icin bu interface'leri kullaniyoruz.
+            startActivity(Intent(this, SecondActivity::class.java))
+            // ilk argumanda bizden context istiyor. icinde bulundugumuz activity'nin kendisini
+            // context olarak veriyoruz.
+
+            //finish()
+            // istersek gecisten sonra onceki activity'i kapatabiliriz.
+        }
+        // simdi butonlara bastikca activityler arasi gecislerde calisan lifecycle fonksiyonlarini
+        // gozlemleyelim. bununla ilgili notlar second activityde olacak.
     }
 
     override fun onContentChanged() {

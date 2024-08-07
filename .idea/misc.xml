@@ -4,10 +4,13 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/Cannonball" />
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi" />
+    <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3" />
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp" />
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp" />
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/Passions" />
     <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/Pomegranate" />
+    <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg" />
+    <file type="web" url="file://$PROJECT_DIR$/_2_HelloAndroid/TahminEt" />
   </component>
   <component name="ProjectRootManager">
     <output url="file://$PROJECT_DIR$/out" />
