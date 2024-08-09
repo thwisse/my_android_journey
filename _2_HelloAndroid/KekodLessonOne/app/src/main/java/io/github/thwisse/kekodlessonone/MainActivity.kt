@@ -207,7 +207,7 @@ class MainActivity : AppCompatActivity() {
         // kullanirsin. save ve restore ederek basit veriler kurtarilmis olur. configuration change
         // yasandiginda state'i degisebilecek tum komponentler icin bu islemler yapilmalidir.
         // gerektiginde bunun nasil yapildigini ogrenirsin. simdilik bunun detaylarini not almiyorum.
-        // ders 2: activities - 1.30.00 civari
+        //TODO ders 2: activities - 1.30.00 civari
 
         // onCreate'de (savedInstanceState: Bundle?) yazmasinin sebebi, eger conf change yasanirsa diye
         // savedInstanceState icinde yaptigimiz islemlerin yaninda veri ekleme kismini onCreate icinde
@@ -227,42 +227,56 @@ class MainActivity : AppCompatActivity() {
 
         ////////////////////////////////////////
 
-        // kisa kisa notlar
-
+        // not1:
         // onStart - onStop ve onPause - onResume farki
         // onPause - onResume aninda uygulama focused olmasa bile arayuzu gozukuyor olabilir.
         // ancak onStart - onStop anlarinda uygulama (activity) arkaplanda gozukmez.
 
-        // performans gerektiren seyleri (surekli animasyonlar vs) onStartta baslatip onStopta
+        // not2: performans gerektiren seyleri (surekli animasyonlar vs) onStartta baslatip onStopta
         // durdurmalisin.
 
-        // onResume'larda backend'e istek atarak veri guncelleme islemi kotu bir lifecycle anlayisi.
+        // not3: onResume'larda backend'e istek atarak veri guncelleme islemi kotu bir lifecycle anlayisi.
         // bunu yaparsan uygulama arkaplana gidip geldiginde istek atarsin. cok gecerli bir sebebi
         // yoksa bunu yapma. best practice: bir activity ya da fragment'tan sonrakine gecerken veri
         // aktarilabildigi gibi geri donerken de veri aktarilabilir. onResume'dan istek atacaksan
         // en azindan bunu if ile kontrol edebilirsin, ama bu bile kekoca imis.
 
-        // bi uygulamanin ios ile android ui'lari birbirinden farkli olmalidir. dogrusu bu.
+        // not4: bi uygulamanin ios ile android ui'lari birbirinden farkli olmalidir. dogrusu bu.
         // tasarimlari da buna gore yapilmali. crossplatform yapiyorsan bu normal ama native
         // uygulamalar icin ui'lar birbirinden farkli olmali.
+
+        // not5: uygulama kapandiginda onDestroy her zaman calismayabilir. o yuzden oraya hayati kodlar yazma.
+        // onPause ve onStop fonskiyonlari da kisa sure calistigi icin cok uzun surecek islemleri buralara
+        // yazma. senin yazdigin islemler daha gerceklesmeden bu fonksiyonlar gecilebilir.
 
         //////////////////////////////////////////
 
         val btnOpenSecondActivity = findViewById<Button>(R.id.btnOpenSecondActivity)
+
         btnOpenSecondActivity.setOnClickListener {
             // click event'i icin setOnClickListener kullaniriz. bu bir fonksiyon ancak fonksiyon
             // parantezi yok suslu parantezler var. bunun bir lambda oldugunu anladin. ardindan
             // bunun java dosyasinin icerisindeki bir interface oldugunu da anlaman gerekir.
             // classlarin eventleri icin bu interface'leri kullaniyoruz.
-            startActivity(Intent(this, SecondActivity::class.java))
+            val intent = Intent(this, SecondActivity::class.java)
             // ilk argumanda bizden context istiyor. icinde bulundugumuz activity'nin kendisini
             // context olarak veriyoruz.
+
+            // primitive veri aktarim 1
+            intent.putExtra("key", "value")
+
+            // primitive veri aktarim 2
+            val bundle = Bundle()
+            bundle.putString("keyBundle", "valueBundle")
+            intent.putExtras(bundle)
+
+            startActivity(intent)
 
             //finish()
             // istersek gecisten sonra onceki activity'i kapatabiliriz.
         }
         // simdi butonlara bastikca activityler arasi gecislerde calisan lifecycle fonksiyonlarini
-        // gozlemleyelim. bununla ilgili notlar second activityde olacak.
+        // gozlemleyelim. bununla ilgili ve sonraki notlar second activityde olacak.
     }
 
     override fun onContentChanged() {
@@ -327,6 +341,13 @@ class MainActivity : AppCompatActivity() {
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
         Log.e("MainActivity", "onUserLeaveHint")
+    }
+
+    //TODO bundan sonrasini anlatmadi bunlari kendin arastir ogren
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        Log.e("MainActivity", "onNewIntent")
     }
 
     override fun onLowMemory() {

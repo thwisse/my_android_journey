@@ -106,6 +106,8 @@ class ActivityMain : AppCompatActivity() {
         // obje uzerinden islem yapilir. Singleton adinda bir kotlin file olusturuyorum.
         // yine chosenLandmark2 adinda kendi singleton'umu olusuturuyorum.
         // simdi tekrar activitydetails ve adapter'daki degisiklikleri yapabiliriz.
-
+        // edit: ozgur hoca bununun bir antipattern oldugunu, memory management'in iyi yapilmadiginda
+        // uygulama lifecycle'i boyunca silinmeyen bir alana sahip oldugun icin sikinti cikarabilir
+        // ileriki zamanlarda diyor. alternatif bir cozum varsa onu kullan, yoksa bunu kullan diyor.
     }
 }
