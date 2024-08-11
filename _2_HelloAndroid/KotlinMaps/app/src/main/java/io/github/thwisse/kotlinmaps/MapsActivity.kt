@@ -8,6 +8,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
 import io.github.thwisse.kotlinmaps.databinding.ActivityMapsBinding
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -35,6 +36,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var sharedPreferences: SharedPreferences
     var trackBoolean: Boolean? = null
+
+    private var selectedLatitude: Double? = null
+    private var selectedLongitude: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +53,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         registerLauncher()
 
+        //////////////////////////////////////////
         // son bilinen konum ve konumu kaydetme
+
         // sharedPreferences kullaniyorum.
         sharedPreferences = this.getSharedPreferences("io.github.thwisse.kotlinmaps", MODE_PRIVATE)
         trackBoolean = false
@@ -57,20 +63,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // bir defaya mahsus olmak uzere onLocationChanged fonk calistir, eger true ise calistirma
         // anlamina gelen bir islem yapacagiz.
 
+        ///////////////////////////
+        selectedLatitude = 0.0
+        selectedLongitude = 0.0
     }
 
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * This is where we can add markers or lines, add listeners or move the camera.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.setOnMapLongClickListener(this)
 
+        //////////////////////////////////
         // konum belirle, kamerayi yonlendir, marker ekle:
 
         // lat - latitude - enlem
@@ -81,6 +91,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(micoogullari).title("Micoogullari"))
         */
 
+        ///////////////////////////////////////
         // cihazin konum bilgisini alma:
 
         // locationManager ve locationListener degiskenlerini tanimladim yukarida.
@@ -101,14 +112,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 // bilgisini verecek.
 
                 trackBoolean = sharedPreferences.getBoolean("trackBoolean", false)
-                if (!trackBoolean!!) {
+                if (!trackBoolean!!) { // trackBooleand == null manasina gelir.
                     val userLocation = LatLng(location.latitude, location.longitude)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 20f))
                     sharedPreferences.edit().putBoolean("trackBoolean", true).apply()
                 }
-
-
-
             }
             // burada baska fonksiyonlar da var.
             override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
@@ -145,23 +153,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 // request permission
 
                 permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-
-                // son bilinen konumu alma
-                val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-                // lastLocation degiskeni nullable. cunku daha once bir konum alinmamis olabilir.
-                // o yuzden bir if check yapalim
-                if (lastLocation != null) {
-                    val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 20f))
-                }
-                // bunun sayesinde konum degistikce surekli ekran degismeyecek. ilk basta kullanici
-                // neredeyse orayi gosterecek, ardindan kullanici mapte istedigi yere zoomlayabilecek.
-                // aynisini register launcher icine de ekliyorum.
-
-                mMap.isMyLocationEnabled = true
-                // konumumu etkinlestirdim mi? evet.
             }
-
         } else {
             // permission granted
 
@@ -172,7 +164,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // 0 saniyede bir location bilgisini update et
             // 0f metre yakindaki yerini goster
             // eger 0,0 yaparsan anlik olarak net konumunu gosterecektir.
+
+            // son bilinen konumu alma
+            val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            // lastLocation degiskeni nullable. cunku daha once bir konum alinmamis olabilir.
+            // o yuzden bir if check yapalim
+            if (lastLocation != null) {
+                val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 15f))
+            }
+            // bunun sayesinde konum degistikce surekli ekran degismeyecek. ilk basta kullanici
+            // neredeyse orayi gosterecek, ardindan kullanici mapte istedigi yere zoomlayabilecek.
+            // aynisini register launcher (permission launcher) icinde granted eidlen yere de ekliyorum.
+
+            mMap.isMyLocationEnabled = true
+            // konumumu etkinlestirdim mi? evet.
         }
+
+        ////////////////////////////////////
+        // uzun tiklayarak konum bilgisi alma ve isaretleme
+
+        // MapsActivity'mizin tanimlamasina ekleyebilecegimiz bircok interface var.
+        // GoogleMap.Click yazarak hangi click listenerlarin oldugunu da gorebiliriz.
+        // biz burada GoogleMap.OnMapLongClickListener kullanacagiz. zorunlu olan member'i yani
+        // onMapLongClick fonskiyonunu implement ediyoruz. bu interface'i kullanacagimizi en yukarida
+        // mMap.setOnMapLongClickListener ile bildirmemiz gerekiyor. simdi baslayabiliriz.
+        // ardindan secilen latitude ve longitude bilgisini farkli degiskenlere atayacagiz.
+        // en yukarida yaratiyorum ve onCreate icinde initialize ediyorum. simdi fonksiyona ekliyorum.
+        // bu islem de sona erdi. bundan sonra bu degerleri db'ye ekleme, ui tasarlama islemlerini
+        // yapacagiz. yani root activity'i tasarlayacagiz. bunu mainActivity'de yapacagiz.
     }
 
     private fun registerLauncher() {
@@ -189,7 +209,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
                     if (lastLocation != null) {
                         val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 20f))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 15f))
                     }
                     mMap.isMyLocationEnabled = true
                 }
@@ -199,4 +219,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+    override fun onMapLongClick(p0: LatLng) {
+
+        mMap.clear()
+        // secilmis bir marker varsa onu silecek.
+
+        mMap.addMarker(MarkerOptions().position(p0))
+        // p0 degiskeniyle secilen yerin konumunu alacagiz ve marker ekleyecegiz.
+
+        selectedLatitude = p0.latitude
+        selectedLongitude = p0.longitude
+    }
+
+    fun save(view: View) {
+
+    }
+
+    fun delete(view: View) {
+
+    }
+
 }
