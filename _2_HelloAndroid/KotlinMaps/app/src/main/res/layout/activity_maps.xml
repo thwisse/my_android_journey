@@ -24,39 +24,43 @@
         android:id="@+id/btnDelete"
         android:layout_width="122dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="delete"
         android:text="Delete"
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintHorizontal_bias="0.5"
-        map:layout_constraintStart_toEndOf="@+id/btnSave" />
+        map:layout_constraintStart_toEndOf="@+id/btnSave"
+        map:layout_constraintTop_toBottomOf="@+id/edtPlace" />
 
     <EditText
         android:id="@+id/edtPlace"
         android:layout_width="318dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Place Name"
         android:inputType="text"
         android:textAlignment="center"
-        map:layout_constraintBottom_toTopOf="@+id/btnSave"
         map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintHorizontal_bias="0.5"
-        map:layout_constraintStart_toStartOf="parent" />
+        map:layout_constraintHorizontal_bias="0.494"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/map" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="122dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="save"
         android:text="Save"
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toStartOf="@+id/btnDelete"
         map:layout_constraintHorizontal_bias="0.5"
-        map:layout_constraintStart_toStartOf="parent" />
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/edtPlace" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

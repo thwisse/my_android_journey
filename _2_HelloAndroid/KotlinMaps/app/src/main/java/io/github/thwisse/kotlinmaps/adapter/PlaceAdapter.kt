@@ -24,7 +24,11 @@ class PlaceAdapter(val placeList: List<Place>) : RecyclerView.Adapter<PlaceAdapt
         holder.recyclerRowBinding.tvRvPlace.text = placeList.get(position).name // sadece isimleri goster
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MapsActivity::class.java)
-
+            // burada veriyi yollayalim (serializable):
+            intent.putExtra("selectedPlace", placeList.get(position))
+            // eski bir seyi gostermeye calisiyorum diye belirtmek icin:
+            intent.putExtra("intent_info", "old_place")
+            // mainde bunu new'e cevirecegim.
             holder.itemView.context.startActivity(intent)
         }
     }

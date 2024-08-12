@@ -79,6 +79,10 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.itemAddPlace -> {
                     val intent = Intent(this, MapsActivity::class.java)
+                    // yeni bir seyi gostermeye calisiyorum diye belirtmek icin:
+                    intent.putExtra("intent_info", "new_place")
+                    // yani rv'deki verileri mapte gostereceksem old, yoksa add place'e basip da
+                    // yeni bir konum ekleyeceksem new kismina gidilecek.
                     startActivity(intent)
                     true
                 }
@@ -107,7 +111,14 @@ class MainActivity : AppCompatActivity() {
         // buraya yani main activity'ye donduk. binding ayarladik ve yukarida compositeDisposible
         // yaratiyoruz.
         // burdaki compositeDisposible islemi de bitti. tek kalan verileri recyclerview'de sergilemek.
-        // PlaceAdapter'imizi olusturalim.
+        // PlaceAdapter'imizi olusturalim. adapter yaratildi. simdi mapsactivity'de onmapready
+        // fonksiyonumuzda uygulama intent'den gelen new ya da old degerine gore yonlendirme yapacagiz
+        // son olarak delete fonksiyonumuzu da tamamladik ve uygulamamiz bitti.
+
+        ////////////////////////////////////////////
+
+        // console.cloud.google.com/apis/credentials kismindan map api key'i kisitlamak
+        // key'imizi baskasi kullanmasin diye kisitlayabiliriz.
     }
 
     private fun handleResponse(placeList: List<Place>) {

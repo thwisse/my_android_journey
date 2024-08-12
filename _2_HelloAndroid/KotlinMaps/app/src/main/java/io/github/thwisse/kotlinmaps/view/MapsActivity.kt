@@ -55,6 +55,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
     val compositeDisposable = CompositeDisposable()
 
+    var placeFromMain : Place? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,6 +89,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
             .build()
         // database adimiz Places, table adimiz Place olmus oldu.
         placeDao = db.placeDao()
+
+        binding.btnSave.isEnabled = false
     }
 
     /**
@@ -101,6 +105,137 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         mMap = googleMap
         mMap.setOnMapLongClickListener(this)
 
+        /////////////////////////////////////
+        // intent'e gore islem yapma:
+        // (bu intent if check olayini en son ekledim. onceden yazdigim kodlari icine aktardigim
+        // icin kafa karisikligina sebep olabilir. kg)
+
+        val intent = intent
+        val info = intent.getStringExtra("intent_info")
+
+        if (info == "new_place") {
+
+            // yeni bir konum ekleyecegiz.
+
+            binding.btnSave.visibility = View.VISIBLE
+            binding.btnDelete.visibility = View.GONE
+
+            ///////////////////////////////////////////
+            // cihazin konum bilgisini alma:
+
+            // locationManager ve locationListener degiskenlerini tanimladim yukarida.
+
+            locationManager = this.getSystemService(LOCATION_SERVICE) as LocationManager
+            // as LocationManager kismini yazmayinca hata veriyor. Required: LocationManager, Found: Any!
+            // diyor. yani sen hizmeti LOCATION_SERVICE olarak sectin ancak ben bunun loc manager icin
+            // dogru servis oldugundan emin degilim diyor, Any? yani herhangi bir sey olarak goruyorum diyor.
+            // biz de as ile casting yapiyor ve LocationManager oldugunu belirtiyoruz.
+
+            // requestLocationUpdates ozelligini kullanacagimiz icin locationListener degiskenini yarattik.
+            // simdi onu tanimlayalim ardindan devam edelim.
+
+            locationListener = object : LocationListener {
+                // object kullandim ve onLocationChanged fonksiyonunu direkt implement ettim.
+                override fun onLocationChanged(location: Location) {
+                    //requestLocationUpdates ile benzer islemi yapacak. location degistikce bize location
+                    // bilgisini verecek.
+
+                    trackBoolean = sharedPreferences.getBoolean("trackBoolean", false)
+                    if (!trackBoolean!!) { // trackBooleand == null manasina gelir.
+                        val userLocation = LatLng(location.latitude, location.longitude)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 20f))
+                        sharedPreferences.edit().putBoolean("trackBoolean", true).apply()
+                    }
+                }
+                // burada baska fonksiyonlar da var.
+                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                    super.onStatusChanged(provider, status, extras)
+                }
+            }
+
+            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+            //    1000, 10f, locationListener)
+
+            // bu kodu yazmama ragmen izin almadan calismaz. o yuzden uses permission'i halledelim.
+            // ACCESS_FINE_LOCATION -> gercek konum
+            // ACCESS_COARSE_LOCATION -> yakin konum
+            // izinler icin gerekenleri yaptik.
+
+
+            // ContextCompat kullaniyoruz cunku versiyonlarin uyumlu olabilmesi icin. onceki android
+            // surumlerinde de yeni surumlerde de calisabilsin diye.
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // permission denied
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                    Snackbar.make(binding.root, "Permission needed for location",
+                        Snackbar.LENGTH_INDEFINITE).setAction("Give Permision") {
+                        // request permission
+
+                        permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                    }.show()
+
+                } else {
+                    // request permission
+
+                    permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                }
+            } else {
+                // permission granted
+
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                    0, 0f, locationListener)
+                // konum bilgisi gps'ten degil de wifi'dan vs gelseydi ornegin saglayici olarak
+                // NETWORK_PROVIDER falan secerdik.
+                // 0 saniyede bir location bilgisini update et
+                // 0f metre yakindaki yerini goster
+                // eger 0,0 yaparsan anlik olarak net konumunu gosterecektir.
+
+                // son bilinen konumu alma
+                val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                // lastLocation degiskeni nullable. cunku daha once bir konum alinmamis olabilir.
+                // o yuzden bir if check yapalim
+                if (lastLocation != null) {
+                    val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 15f))
+                }
+                // bunun sayesinde konum degistikce surekli ekran degismeyecek. ilk basta kullanici
+                // neredeyse orayi gosterecek, ardindan kullanici mapte istedigi yere zoomlayabilecek.
+                // aynisini register launcher (permission launcher) icinde granted eidlen yere de ekliyorum.
+
+                mMap.isMyLocationEnabled = true
+                // konumumu etkinlestirdim mi? evet.
+            }
+
+        } else if (info == "old_place") {
+
+            // adapterdan gelecek olan verileri burada yakalayip mapte gosterecegiz.
+            mMap.clear()
+            // placeFromMain adinda place nesnemi olusturdum.
+            placeFromMain = intent.getSerializableExtra("selectedPlace") as? Place
+            // casting yapmazsam Type mismatch. Required: Place? Found: Serializable? hatasi aliyorum.
+            // serializable olarak elde ettigim seyi Place olarak cast edecegim.
+            // burada as Place ya da as? Place kullanilabilir. cokmeleri engellemek icin
+            // as? kullaniyoruz. hala Place nullable.
+            // null degilse sunun icine girecek:
+            placeFromMain?.let {
+                var latlng = LatLng(it.latitude, it.longitude)
+                mMap.addMarker(MarkerOptions().position(latlng).title(it.name))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15f))
+
+                binding.edtPlace.setText(it.name)
+                binding.btnSave.visibility = View.GONE
+                binding.btnDelete.visibility = View.VISIBLE
+            }
+
+        } else {
+            println("GODDAMN IT")
+        }
+
+
         //////////////////////////////////
         // konum belirle, kamerayi yonlendir, marker ekle:
 
@@ -111,96 +246,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(micoogullari, 16f))
         mMap.addMarker(MarkerOptions().position(micoogullari).title("Micoogullari"))
         */
-
-        ///////////////////////////////////////
-        // cihazin konum bilgisini alma:
-
-        // locationManager ve locationListener degiskenlerini tanimladim yukarida.
-
-        locationManager = this.getSystemService(LOCATION_SERVICE) as LocationManager
-        // as LocationManager kismini yazmayinca hata veriyor. Required: LocationManager, Found: Any!
-        // diyor. yani sen hizmeti LOCATION_SERVICE olarak sectin ancak ben bunun loc manager icin
-        // dogru servis oldugundan emin degilim diyor, Any? yani herhangi bir sey olarak goruyorum diyor.
-        // biz de as ile casting yapiyor ve LocationManager oldugunu belirtiyoruz.
-
-        // requestLocationUpdates ozelligini kullanacagimiz icin locationListener degiskenini yarattik.
-        // simdi onu tanimlayalim ardindan devam edelim.
-
-        locationListener = object : LocationListener {
-            // object kullandim ve onLocationChanged fonksiyonunu direkt implement ettim.
-            override fun onLocationChanged(location: Location) {
-                //requestLocationUpdates ile benzer islemi yapacak. location degistikce bize location
-                // bilgisini verecek.
-
-                trackBoolean = sharedPreferences.getBoolean("trackBoolean", false)
-                if (!trackBoolean!!) { // trackBooleand == null manasina gelir.
-                    val userLocation = LatLng(location.latitude, location.longitude)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 20f))
-                    sharedPreferences.edit().putBoolean("trackBoolean", true).apply()
-                }
-            }
-            // burada baska fonksiyonlar da var.
-            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                super.onStatusChanged(provider, status, extras)
-            }
-        }
-
-        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-        //    1000, 10f, locationListener)
-
-        // bu kodu yazmama ragmen izin almadan calismaz. o yuzden uses permission'i halledelim.
-        // ACCESS_FINE_LOCATION -> gercek konum
-        // ACCESS_COARSE_LOCATION -> yakin konum
-        // izinler icin gerekenleri yaptik.
-
-
-        // ContextCompat kullaniyoruz cunku versiyonlarin uyumlu olabilmesi icin. onceki android
-        // surumlerinde de yeni surumlerde de calisabilsin diye.
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // permission denied
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                Snackbar.make(binding.root, "Permission needed for location",
-                    Snackbar.LENGTH_INDEFINITE).setAction("Give Permision") {
-                        // request permission
-
-                        permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-                }.show()
-
-            } else {
-                // request permission
-
-                permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-            }
-        } else {
-            // permission granted
-
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                0, 0f, locationListener)
-            // konum bilgisi gps'ten degil de wifi'dan vs gelseydi ornegin saglayici olarak
-            // NETWORK_PROVIDER falan secerdik.
-            // 0 saniyede bir location bilgisini update et
-            // 0f metre yakindaki yerini goster
-            // eger 0,0 yaparsan anlik olarak net konumunu gosterecektir.
-
-            // son bilinen konumu alma
-            val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            // lastLocation degiskeni nullable. cunku daha once bir konum alinmamis olabilir.
-            // o yuzden bir if check yapalim
-            if (lastLocation != null) {
-                val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 15f))
-            }
-            // bunun sayesinde konum degistikce surekli ekran degismeyecek. ilk basta kullanici
-            // neredeyse orayi gosterecek, ardindan kullanici mapte istedigi yere zoomlayabilecek.
-            // aynisini register launcher (permission launcher) icinde granted eidlen yere de ekliyorum.
-
-            mMap.isMyLocationEnabled = true
-            // konumumu etkinlestirdim mi? evet.
-        }
 
         ////////////////////////////////////
         // uzun tiklayarak konum bilgisi alma ve isaretleme
@@ -251,6 +296,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
         selectedLatitude = p0.latitude
         selectedLongitude = p0.longitude
+
+        binding.btnSave.isEnabled = true
+        // bunu burada true yapiyoruz cunku eger uzun tiklanirsa acilsin.
+        // uzun tiklanmadigi surece false kalacak.
     }
 
     fun save(view: View) {
@@ -299,7 +348,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                 .subscribeOn(Schedulers.io()) // arkaplanda calistir
                 .observeOn(AndroidSchedulers.mainThread()) // androidde gozlemle
                 .subscribe(this::handleResponse) // bitince bu fonksiyonu calistir (referans veriyoruz)
+            // asagida handleResponse fonksiyonunu yarattik.
         )
+    }
+
+    fun delete(view: View) {
+
+        // burada placeFromMain'i silecegiz.
+
+        placeFromMain?.let {
+
+            compositeDisposable.add(
+                placeDao.delete(it)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponse)
+                // yine handleResponse cagirdik. sildikten sonra da yine geri gidecegiz.
+            )
+        }
+
+        // son olarak delete fonskiyonunu da yaptik ve uygulamanin sonuna geldik.
     }
 
     private fun handleResponse() {
@@ -308,13 +376,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         startActivity(intent)
     }
 
-    fun delete(view: View) {
-
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         compositeDisposable.clear()
     }
-
 }

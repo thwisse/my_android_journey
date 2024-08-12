@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="my_first_dp_declaration">100dp</dimen>
+
+</resources>
