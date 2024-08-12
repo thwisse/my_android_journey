@@ -1,6 +1,7 @@
-package io.github.thwisse.kotlinmaps
+package io.github.thwisse.kotlinmaps.view
 
 import android.Manifest
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
@@ -14,6 +15,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,7 +25,14 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
+import io.github.thwisse.kotlinmaps.R
 import io.github.thwisse.kotlinmaps.databinding.ActivityMapsBinding
+import io.github.thwisse.kotlinmaps.model.Place
+import io.github.thwisse.kotlinmaps.roomdb.PlaceDao
+import io.github.thwisse.kotlinmaps.roomdb.PlaceDatabase
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
@@ -39,6 +49,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
     private var selectedLatitude: Double? = null
     private var selectedLongitude: Double? = null
+
+    private lateinit var db: PlaceDatabase
+    private lateinit var placeDao: PlaceDao
+
+    val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +81,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         ///////////////////////////
         selectedLatitude = 0.0
         selectedLongitude = 0.0
+
+        db = Room.databaseBuilder(applicationContext, PlaceDatabase::class.java, "Places")
+            .allowMainThreadQueries()
+            .build()
+        // database adimiz Places, table adimiz Place olmus oldu.
+        placeDao = db.placeDao()
     }
 
     /**
@@ -233,11 +254,67 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
     }
 
     fun save(view: View) {
+        val place = Place(binding.edtPlace.text.toString(), selectedLatitude!!, selectedLongitude!!)
+        // istersen enlem ve boylam icin null kontrolu yapabilirsin. ancak zaten onCreate icinde
+        // biz 0.0 olarak baslatmistik, ordan null gelmez. ancak belki onMapLongClick icinde p0 null
+        // gelebilir. bu yuzden kontrol yapmak istersen yapabilirsin.
 
+        // db ve placeDao nesnelerimizi olusturduk ve initialize ettik. artik placeDao ile
+        // db fonksiyonlarimiza erisebiliriz.
+
+        //placeDao.insert(place)
+        // Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+        // bu sekilde bir hata aldik. diyor ki bu db islemini main thread'de degil arkaplanda yapmalisin.
+        // su an kaydettigimiz verilerden bir zarar gelmez ancak ileride buyuk boyutlu veriler kaydetmek
+        // istersek diye bunu boyle guvenli yapmislar. implemasyonlardaki rxjava ile bunlari asenkron
+        // bir sekilde yapmayi ogrenecegiz.
+
+        // Thread havuzlari
+        // Main Thread UI (burada izin vermedi)
+        // Default Thread (yogun cpu gucu gerektiren isler icin kullanilir)
+        // IO Thread (internetten veri cekmek icin kullanilir) (internet/database)
+        // RxJava (simdi yapicaz)
+        // Coroutines (ilerde gorucez)
+
+        // simdi onCreate icinde db'yi initialize ettigimiz koda .allowMainThreadQueries() ekliyorum.
+        // sadece bunu yaparak uygulama calisir. cunku izin vermis oluyoruz.
+        // ancak boyle yapmayacagiz. biz rxjava kullanacagiz.
+        // rxjava endustride kullanilan open source bir kutuphane.
+        // javada rxjava, kotlinde coroutines tavsiye ediliyormus. ancak biz ikisini de ogrenecegiz.
+
+        // Completable (tamamlanabilir): geriye bir sey dondurmeyenlerde (insert, delete, update)
+        // Flowable: Query'lerde yani SELECT * yaptigimiz yerlerde kullanilir.
+        // ilerde internetle calisacagimiz zaman da Observable ve Single'i da kullanacagiz.
+        // DAO'muzu bunlara gore yeniliyoruz.
+
+        // simdi bu dosyada compositeDisposable objesini yarattim.
+        // disposable: kullan at anlamina gelir
+        // database ile ilgili internete cok fazla call yaptiginda bi zaman sonra hafizada bu call'lar
+        // cok yer ediyormus. bu call'lari bu obje ile kullanip atabiliyormusuz.
+        // simdi asagida compositeDisposable.add islemini ve handleResponse fonksiyonunu yaratalim
+        // ardindan onDestroy'da compositeDisposable.clear() yaparak atma islemini gerceklestiriyoruz.
+
+        compositeDisposable.add(
+            placeDao.insert(place)
+                .subscribeOn(Schedulers.io()) // arkaplanda calistir
+                .observeOn(AndroidSchedulers.mainThread()) // androidde gozlemle
+                .subscribe(this::handleResponse) // bitince bu fonksiyonu calistir (referans veriyoruz)
+        )
+    }
+
+    private fun handleResponse() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
     fun delete(view: View) {
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
 
 }

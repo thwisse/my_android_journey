@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Test"
+        android:id="@+id/tvRvPlace"
         android:textSize="22sp"
         android:textColor="@android:color/holo_blue_dark"
         android:layout_margin="6sp"
