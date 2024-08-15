@@ -29,6 +29,7 @@ class FifthActivity : AppCompatActivity(), View.OnClickListener {
         // android yerine tools kullanabiliriz. veri strings.xml'in icinden, backend'den vs gelecekse
         // tools kullanarak oraya rasgele bir sey yazip testini tasarimini yaparsin. uygulama
         // calisirsa da gozukmez. veri geldiginde ise senin tasariminla gozukur. sikinti olmamis olur.
+        // SettingsActivity bu konu icin yaratilmistir.
 
         val btnOpenSettingsActivity = findViewById<Button>(R.id.btnOpenSettingsActivity)
 
@@ -94,12 +95,8 @@ class FifthActivity : AppCompatActivity(), View.OnClickListener {
         //android:onClick="openSettingsActivity2"
         // bu onerilmeyen bir sey. zaten deprecated olmus. digerlerini kullan.
         // zaten fonksiyon da public oldugu icin mantikli bir yol degil.
-
-        //////////////////////////////////////////////
-        // backstack
-
-        // single activity pattern: tek aktivite multiple fragment
-
+		
+		// bu projedeki calismalarimiz bitti. LaunchMode projesine geciyorum.
     }
 
     override fun onClick(v: View?) {
