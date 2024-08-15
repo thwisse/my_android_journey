@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragmentMaMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_mainmenu"
+        android:title="Anasayfa" />
+    <item
+        android:id="@+id/fragmentCate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_categories"
+        android:title="Kategoriler" />
+    <item
+        android:id="@+id/fragmentProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_profile"
+        android:title="Profil" />
+    <item
+        android:id="@+id/fragmentWebPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_webpage"
+        android:title="Web Sayfamiz" />
+    <item
+        android:id="@+id/fragmentPictures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_pictures"
+        android:title="Gorseller" />
+    <item
+        android:id="@+id/fragmentVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_video"
+        android:title="Video" />
+    <item
+        android:id="@+id/fragmentScroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_scroll"
+        android:title="Kaydir" />
+    <item
+        android:id="@+id/fragmentSetTheDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_setthedate"
+        android:title="Tarih Belirle" />
+    <item
+        android:id="@+id/fragmentSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_spinner"
+        android:title="Spinner" />
+</menu>

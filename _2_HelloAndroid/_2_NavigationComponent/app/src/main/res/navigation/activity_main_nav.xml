@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_nav"
+    app:startDestination="@id/fragmentMain">
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="com.example.mynewnonameapp.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_goToMenu"
+            app:destination="@id/fragmentMenu"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMenu"
+        android:name="com.example.mynewnonameapp.FragmentMenu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_goToCategories"
+            app:destination="@id/fragmentCategories"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="person"
+            app:argType="com.example.mynewnonameapp.Categories" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCategories"
+        android:name="com.example.mynewnonameapp.FragmentCategories"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
+</navigation>
