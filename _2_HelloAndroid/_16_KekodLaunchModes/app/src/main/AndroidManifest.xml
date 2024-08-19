@@ -14,18 +14,49 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".singletask.SecondActivitySingleTask"
-            android:exported="false"
-            android:launchMode="singleTask"/>
+            android:name=".singleinstancepertask.ThirdActivitySingleInstancePerTask"
+            android:exported="false" />
 
         <activity
-            android:name=".singletask.MainActivitySingleTask"
+            android:name=".singleinstancepertask.SecondActivitySingleInstancePerTask"
+            android:exported="false"
+            android:launchMode="singleInstancePerTask"/>
+
+        <activity
+            android:name=".singleinstancepertask.MainActivitySingleInstancePerTask"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".singleinstance.ThirdActivitySingleInstance"
+            android:exported="false" />
+
+        <activity
+            android:name=".singleinstance.SecondActivitySingleInstance"
+            android:exported="false"
+            android:launchMode="singleInstance"/>
+
+        <activity
+            android:name=".singleinstance.MainActivitySingleInstance"
+            android:exported="true" >
+
+        </activity>
+
+        <activity
+            android:name=".singletask.SecondActivitySingleTask"
+            android:exported="false"
+            android:taskAffinity=".singletask.MainActivitySingleTask"
+            android:launchMode="singleTask"/>
+
+        <activity
+            android:name=".singletask.MainActivitySingleTask"
+            android:exported="true" >
+
         </activity>
 
         <activity
@@ -36,6 +67,7 @@
         <activity
             android:name=".singletop.MainActivitySingleTop"
             android:exported="true" >
+
         </activity>
 
         <activity

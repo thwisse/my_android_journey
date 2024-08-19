@@ -44,13 +44,9 @@ class SecondActivitySingleTop : AppCompatActivity() {
         // second tekrar acilmaz, new intente girer. yani son activity ne ise, eger ekranda acik
         // olmasina ragmen tekrar acilmaya calisirsa onNewIntent calisir, activity tekrar acilmaz.
         ///* Hist  #3: ActivityRecord{3264e4d u0 io...singletop.SecondActivitySingleTop t7941}
-        ///  keysPaused=false inHistory=true idle=true
         ///* Hist  #2: ActivityRecord{f23a984 u0 io...singletop.MainActivitySingleTop t7941}
-        ///  keysPaused=false inHistory=true idle=true
         ///* Hist  #1: ActivityRecord{de20cb6 u0 io...singletop.SecondActivitySingleTop t7941}
-        ///  keysPaused=false inHistory=true idle=true
         ///* Hist  #0: ActivityRecord{f3c5c1d u0 io...singletop.MainActivitySingleTop t7941}
-        ///  keysPaused=false inHistory=true idle=true
 
         // tekrar acilmaya calisan instance acilmaz, en tepedeki (singleTop) instance'in onNewIntent
         // fonskiyonu calisir. onnewintent, bu activity'nin yeni bir intent ile tekrar acilmak
@@ -70,9 +66,10 @@ class SecondActivitySingleTop : AppCompatActivity() {
         // modda calismasini istedigimizde o mod'un flagini bir yerde kullanabiliriz.
 
         //btnOpenSecondActivityAgain.setOnClickListener {
-        //    startActivity(Intent(this, SecondActivitySingleTop::class.java)).apply {
+        //    val intent = Intent(this, SecondActivitySingleTop::class.java).apply {
         //        flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         //    }
+        //    startActivity(intent)
         //}
     }
 
