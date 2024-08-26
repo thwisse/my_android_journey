@@ -6,7 +6,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         // ucuncul olarak da defaultNavHost attribute'unu eklemeliyiz.
         //app:defaultNavHost="true"
         // bu defaultNavHost true ise graph'in backstack'i takip edilir, false ise bildigimiz activity'nin
-        // backstacki takip edilir.
+        // backstacki takip edilir. true vermediginde jetpack navigation'in backstack'i takip edilemez.
         // id'sini de navHostFragment verdik.
 
         // bu 1. yontemin asil kullanim amaci: ekranda tek bir fragment olacaksa ve yerine baska
@@ -133,11 +135,6 @@ class MainActivity : AppCompatActivity() {
         // Not: Oluşturduğunuz her NavHost'un kendine karşılık gelen bir NavController'ı vardır.
         // NavController, NavHost'un grafiğine erişim sağlar.
 
-        // navcontroller'a 3 sekilde erisilebilir:
-        // Fragment.findNavController()
-        // View.findNavController()
-        // Activity.findNavController(viewId: Int)
-
         // asagida getNavController fonskiyonlari ile navcontroller'i elde etme yollarini gorecegiz.
 
         // nav controller graph'in ekranda gorunmesiyle alakali degil. graph icindeki destination'larin
@@ -163,27 +160,117 @@ class MainActivity : AppCompatActivity() {
         // bu etiket editor uzerinde fragmentlari incelerken gormek icindir, inanilmaz onemli bir sey degil.
         // tools:layout attribute'u ile de graph uzerinde o fragment'in preview'ini gorebiliriz.
 
-        getNavController1()
+        ///////////////////////////////
+        // navcontroller'i kullanma
+
+        // navcontroller'a 3 sekilde erisilebilir:
+        // fragment uzerinden:  Fragment.findNavController()
+        // view uzerinden:      View.findNavController()
+        // activity uzerinden:  Activity.findNavController(viewId: Int)
+
+        // 1. yol
+        //getNavControllerViaFragment()
+        //getNavControllerViaView()
+        // ister fragment ister view kullan, en az hata ile karsilasagin yontem bu.
+        // onCreate'de iki yapi da sorunsuz calisir.
+
+        // 2. yol
+        //getNavControllerViaFragment2()
+        //getNavControllerViaView2()  // bu burada crash veriyor.
+        // onCreate'de fragment sorunsuz calisir. ancak view crash verir. onResume'da kullanabilirsin.
+
+        // 3. yol
+        //getNavControllerViaFragment3()
+        //getNavControllerViaView3()  // bu burada crash veriyor.
+        // onCreate'de fragment sorunsuz calisir. ancak view crash verir. onResume'da kullanabilirsin.
+
+        // best practices: FragmentContainerView kullanmak ve :
+        getNavControllerViaView() // bu fonksiyondaki gibi erismek.
+
+        //////////////////////////////////////
+        // navgraph fragment'lari baglama
+
+        // eskiden supportFragmentManager ve Fragment transaction kullanarak add yaparak bunlari
+        // bagliyorlarmis. manuel yontem buymus. cok ugrastiriciymis. ancak artik tum bunlar action
+        // ile yapiliyor.
+
+        // fragment'larda cizdirme islemi activity'lerin aksine onCreate'de degil onCreateView'de
+        // yapilir. fragment'larin da onCreate fonksiyonu vardir ancak asil islemleri orada yapmayacagiz.
+        // ekstra olarak onViewCreated fonksiyonunu da kullanacagiz.
+        // gereken islemler burada yapilacak:
+        if (false) { DashboardFragment() }
+        // dashboardFragment'imiza bir fragment, bir dialogFragment, bir placeholder, bir activity
+        // baglamayi ogrendik.
+
+        /////////////////////////////////////
+        // navGraph'da argument tanimlama
+        // ornegini nav_graph.xmlde fragment profile icinde yaptim.
+
 
 
     }
 
-    // FragmentContainerView kullaniyorsan ve OnCreate'de navController'a ihtiyacin varsa:
-    fun getNavController1() {
+    override fun onResume() {
+        super.onResume()
 
-        // fragment:
+        //getNavControllerViaView2()
 
-        // view ile calissaydik findViewById kullanirdik. fragment ile calisacagimiz icin
-        // ve findFragmentById kullanmak istersek supportFragmentManager'a ihtiyacimiz var.
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        //getNavControllerViaView3()
+    }
+
+    fun getNavControllerViaFragment() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
+        // sorunsuz calisti.
 
-        // view (FragmentContainerView):
+        // fragment'a casting yapilacaksa erisme yontemi kesinlikle findFragmentById olmali.
+        // aksi taktirde typecast hatasi alirsin.
+    }
 
-        // supportFragmentManager yok.
-        val navHostFragmentView = findViewById<View>(R.id.navHostFragmentView) as NavHostFragment
+    // best practices:
+    private fun getNavControllerViaView() {
+        val navHostFragmentView =
+            supportFragmentManager.findFragmentById(R.id.navHostFragmentView) as NavHostFragment
         val navControllerView = navHostFragmentView.navController
+        // navHostFragmentView.navController kismindaki navController bir property'dir.
+    }
 
+    fun getNavControllerViaFragment2() {
+        val navHostFragment = findViewById<View>(R.id.navHostFragment)
+        val navController = navHostFragment.findNavController()
+        // fragment'in kendisine eristigimiz icin sorunsuz navController'a erisebildik.
+    }
 
+    private fun getNavControllerViaView2() {
+        val navHostFragmentView = findViewById<View>(R.id.navHostFragmentView)
+        val navController = navHostFragmentView.findNavController()
+        // navHostFragmentView.findNavController() kismindaki findNavController() bir extension function'dir.
+        // 1. yoldakinden farkli olarak bu bir property degil. eger bunu kullanacak olursan
+        // view ile calisirken findViewById kullanirsan onCreate'de crash yersin. istersen
+        // bu fonksiyonu onresume'da calistirarak crash'i engelleyebilirsin.
+        // eger su sekilde
+        //val navHostFragmentView = findViewById<View>(R.id.navHostFragmentView) as NavHostFragment
+        //val navController = navHostFragmentView.navController
+        // yapmaya calissaydik, onResume'da bile crash yerdik. yani cunku fragment'i view'e cast edemeyiz.
+        // iki class'in birbirine cast edilebilmesi icin ortak atadan turemesi gerekir. fragment'in
+        // uzerinde bir View class'i bulunmuyor.
+        // cast etmeye calismayip, findNavController()'i View extension'u olarak kullaninca
+        // sorunsuz calisiyor.
+        // fragment'a casting yapilacaksa erisme yontemi kesinlikle findFragmentById olmali.
+        // aksi taktirde typecast hatasi alirsin.
+    }
+
+    fun getNavControllerViaFragment3() {
+        findNavController(R.id.navHostFragment)
+        // sorunsuz calisiyor.
+    }
+
+    fun getNavControllerViaView3() {
+        findNavController(R.id.navHostFragmentView)
+        // bu da onCreate'de crash veriyor. ama onResume'da calisiyor.
+        // aslinda bu bir lifecycle problemi. fragment henuz ayaga kaldirilmadigi icin onCreate'de
+        // navController'a sahip olamiyoruz. ama ayaga kaldirma islemi vs onCreate islemleri bitince
+        // onResume'da cagirinca calisiyor. onStart'da da calisir.
     }
 }
