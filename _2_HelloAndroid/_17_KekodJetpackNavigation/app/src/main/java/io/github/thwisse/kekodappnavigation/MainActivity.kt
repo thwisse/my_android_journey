@@ -206,7 +206,8 @@ class MainActivity : AppCompatActivity() {
         // navGraph'da argument tanimlama
         // ornegini nav_graph.xmlde fragment profile icinde yaptim.
 
-
+        /////////////////////////////////////
+        // nested graphs
 
     }
 
