@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KekodAppNavigation"
+rootProject.name = "KekodJetpackNavigation"
 include(":app")
- 

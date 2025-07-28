@@ -1,4 +1,4 @@
-package io.github.thwisse.kekodappnavigation
+package io.github.thwisse.kekodjetpacknavigation
 
 import org.junit.Test
 
