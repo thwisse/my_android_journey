@@ -4,8 +4,9 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Cannonball" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/Cannonball" />
@@ -14,8 +15,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/CannonballTown" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/CannonballTown" />
@@ -24,8 +26,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/Halaskargazi" />
@@ -34,8 +37,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/MaterialDesign3" />
@@ -44,8 +48,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/MyFirstApp" />
@@ -54,8 +59,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/MyNewNoNameApp" />
@@ -64,8 +70,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Passions" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/Passions" />
@@ -74,8 +81,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/Pomegranate" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/Pomegranate" />
@@ -84,8 +92,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/TabLayoutEg" />
@@ -94,8 +103,9 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/_2_HelloAndroid/TahminEt" />
-        <option name="gradleJvm" value="corretto-19" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/_2_HelloAndroid/TahminEt" />
