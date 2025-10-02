@@ -1,7 +1,8 @@
 package projects_1_
+
 // parametre olarak girilen sayinin faktoriyelini geri donduren fonksiyonu yazin.
 
-fun fact (number: Int): Int {
+fun fact(number: Int): Int {
     var sonuc = 1
     for (i in number downTo 1) {
         sonuc *= i
@@ -9,6 +10,6 @@ fun fact (number: Int): Int {
     return sonuc
 }
 
-fun main () {
+fun main() {
     println(fact(4))
 }

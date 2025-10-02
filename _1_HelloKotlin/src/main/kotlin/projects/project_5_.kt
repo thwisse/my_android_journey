@@ -1,19 +1,19 @@
 package projects_1_
 
-import java.util.Scanner
+import java.util.*
 import kotlin.random.Random
 
 // Bir okul kayit uygulamasi yap. Ogrencinin isimSoyisim'ni kullanici girsin. Ogrencinin okulNo'sunu
 // 100 ile 1000 arasindaki degerlerden sen rastgele olarak belirle.
 
-class Ogrenci (var isimSoyisim: String, var okulNo: Int)
+class Ogrenci(var isimSoyisim: String, var okulNo: Int)
 
 fun main() {
     var secim: Int
 
     val ogrenciList = ArrayList<Ogrenci>()
 
-    fun okulNoYarat (): Int {
+    fun okulNoYarat(): Int {
         val yeniNo = Random.nextInt(100, 1000)
         return yeniNo
     }
@@ -26,7 +26,7 @@ fun main() {
         println("1- Yeni Kayit\n2- Ogrencileri Sirala\n3- Okul Mevcudunu Goruntule\n4- Ogrenci Sil\n5- Cikis Yap")
         print("Yapmak istediginiz secimi giriniz: ")
 
-        tekrardene@do {
+        tekrardene@ do {
             try {
                 secim = girdi.next().toInt()
                 girdi.nextLine() // fflush islemi
@@ -64,6 +64,7 @@ fun main() {
                 // ona atayip ondan sonra add yapabilirdim. ben nesneyi direkt isleme soktum.
                 // bu program icin ikisi de yapilabilir. fark etmedi.
             }
+
             2 -> {
                 //TODO ogrenci listesini okul numarasina gore mi yoksa isme gore mi sirala diye sor
                 //TODO ogr listesi bossa bos desin
@@ -74,15 +75,17 @@ fun main() {
                     println("Ogrenci adi soyadi: ${i.isimSoyisim}")
                 }
             }
+
             3 -> {
                 println("Okul mevcudu: ${ogrenciList.size}")
             }
+
             4 -> {
                 //TODO burayi yarim biraktim. tamamlanmali. bide ogrenci nolari ayni olan ogrenci olusmasini engelle
 
                 var silNo: Int
 
-                tekrardene3@do {
+                tekrardene3@ do {
                     print("Silinmesini istediginiz ogrencinin numarasini giriniz: ")
 
                     try {
@@ -94,8 +97,7 @@ fun main() {
                                 ogrenciList.remove(nesne)
                                 println("Ogrenci basariyla silindi.")
                                 break
-                            }
-                            else {
+                            } else {
                                 println("Ogrenci bulunamadi.")
                             }
                         }
@@ -106,10 +108,12 @@ fun main() {
                     break
                 } while (true)
             }
+
             5 -> {
                 println("Cikis yapiliyor...")
                 break
             }
+
             else -> {
                 println("Hatali giris. Tekrar deneyin.")
             }

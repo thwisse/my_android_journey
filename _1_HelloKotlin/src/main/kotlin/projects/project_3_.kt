@@ -1,7 +1,8 @@
 package projects_1_
+
 // parametre olarak girilen kelime ve harf icin harfin kelime icinde kac adet oldugunu gosteren fonksiyonu yazin.
 
-fun func (kelime: String, harf: Char): Int {
+fun func(kelime: String, harf: Char): Int {
     var count: Int = 0
     if (kelime.contains(harf)) {
         for (i in 0 until kelime.length) {
@@ -14,7 +15,7 @@ fun func (kelime: String, harf: Char): Int {
 }
 
 // daha kolay bir yolu varmis
-fun func2 (kelime: String, harf: Char): Int {
+fun func2(kelime: String, harf: Char): Int {
     var count = 0
 
     for (h in kelime) {
@@ -30,8 +31,8 @@ fun func3(kelime: String, harf: Char): Int {
     return kelime.count { it == harf }
 }
 
-fun main () {
-    println(func("abbasa",'a'))
-    println(func2("abbasa",'a'))
-    println(func3("abbasa",'a'))
+fun main() {
+    println(func("abbasa", 'a'))
+    println(func2("abbasa", 'a'))
+    println(func3("abbasa", 'a'))
 }

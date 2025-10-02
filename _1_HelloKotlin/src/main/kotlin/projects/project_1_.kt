@@ -6,12 +6,12 @@ import java.util.*
 // T(F) = T(C) x 1.8 + 32
 
 class convert {
-    fun CtoF (C: Double): Double {
+    fun CtoF(C: Double): Double {
         return C * 1.8 + 32
     }
 }
 
-fun main () {
+fun main() {
     print("Fahrenheit'a donusturmek istediginiz degeri girin: ")
     val input = Scanner(System.`in`)
     val c = input.next().toDouble()

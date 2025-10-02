@@ -47,4 +47,91 @@ fun main() {
     // longun deger araligindan da daha buyuk bir sayi kullanacak olsan sayiyi string olarak degiskene atayip
     // kullanabilirsin. yani araligin disinda olsan bile string olarak istedigini yapabilirsin.
 
+    // sayi iceren iki degiskenle islem yapildiginda esitlenen degiskenin tipi, tipi buyuk olan degiskenin tipiyle
+    // ayni olacaktir. sonuc bunu etkilemez. eger tipin araligi yeterli olmazsa da yanlis bir sonuc olabilir ancak
+    // uygulama hata vermez.
+
+    //////////////
+
+    // smart casting (akilli tur donusumu)
+
+    // bir degiskenin tipinin degisebilecegi durumlarda kosullu sekilde is yaptirmak daha mantikli.
+
+    var x: Any?
+
+    x = 43
+    x = "Helloooooo"
+
+    if (x is String) { // eger x string ise
+        println(x.length) // uzunlugunu yazdir (toString() kullanmak zorunda kalmadik)
+    } else if (x is Int) { // eger x int ise
+        println(x.plus(26)) // su sayiyla topla (toInt() kullanmak zorunda kalmadik)
+    }
+    // yani Stringse sunu yap Int ise sunu yap diyebiliyoruz.
+    // bir ornek daha:
+
+    val age: Number?
+
+    age = 35345L // diyelim bu sunucudan gelen bir bilgi
+
+    when (age) {
+        is Short -> println("this is Short")
+        is Long -> println("this is Long")
+        is Int -> println("this is Int")
+        else -> println("unknown type")
+    }
+
+    //////////////
+
+    // edge case'ler icin uygulamaya performans kaybi yasatmak: defansif programlama
+    // ornegin: nadiren yasanacak bir case icin, diger siradan caselerin de bundan etkilenecegi bir if yaratmak.
+    // yani o if kontrolu mantikli olsa bile nadiren yasanacagi icin diger case'lerin de bu if ile gereksiz yere
+    // kontrol edilmesi performansi olumsuz etkileyecektir. bu gibi durumlar icin daha ozel islemler yapmak, test
+    // yazmak vs. daha mantikli olacaktir.
+
+    //////////////
+
+    // back slash (ters egik cizgi) = \
+
+    val exampleString =  "satir atlamak icin = \n" +
+            "\t ile bir tab bosluk birak \n" +
+            "\b ile bir karakter sil (backspace) \n" +
+            "\r ile satir basina don \n" +
+            "\' ile tek tirnak karakterini kullan \n" +
+            "\" ile cift tirnak karakterini kullan \n" +
+            "\\ ile backslash kullan \n" +
+            "\$ ile dolar isaretini kullan \n"
+
+    println(exampleString)
+
+    //////////////
+
+    // char tipi unicode karakterleri de atamak icin kullanilabilir.
+
+    val heart = '\u2665'
+    println("First commit with $heart")
+
+    //////////////
+
+    // || (veya, or) - && (ve, and) - ! (degil, not) operatorleri
+
+    // && (ve) için: Eğer ilk koşul false ise, ikinci koşul hiç kontrol edilmez (çünkü sonuç zaten $false$ olacaktır)
+    // || (veya) için: Eğer ilk koşul true ise, ikinci koşul hiç kontrol edilmez (çünkü sonuç zaten $true$ olacaktır)
+    // bunlar optimizasyon amacli yapilmistir.
+
+    val zeki: Boolean = true
+    val caliskan: Boolean = true
+
+    if (zeki && caliskan) {}
+    if (zeki and caliskan) {}
+    if (zeki.and(caliskan))
+
+    if (zeki || caliskan) {}
+    if (zeki or caliskan) {}
+    if (zeki.or(caliskan)) {}
+
+    if (zeki.not()) {}
+    if (!zeki) {}
+
+
 }
