@@ -1,5 +1,7 @@
 package notes_4_kekod
 
+import java.util.Locale
+
 fun main() {
     val long = 8348L // kucuk l kullanilamaz 1'e benzedigi icin.
     val float1 = 2.34F
@@ -115,9 +117,9 @@ fun main() {
 
     // || (veya, or) - && (ve, and) - ! (degil, not) operatorleri
 
-    // && (ve) için: Eğer ilk koşul false ise, ikinci koşul hiç kontrol edilmez (çünkü sonuç zaten $false$ olacaktır)
-    // || (veya) için: Eğer ilk koşul true ise, ikinci koşul hiç kontrol edilmez (çünkü sonuç zaten $true$ olacaktır)
-    // bunlar optimizasyon amacli yapilmistir.
+    // && (ve) icin: eger ilk kosul false ise, ikinci kosul hic kontrol edilmez (cunku sonuc zaten false olacak)
+    // || (veya) icin: eger ilk kosul true ise, ikinci kosul hic kontrol edilmez (cunku sonuc zaten true olacak)
+    // bunlar optimizasyon amacli yapilmistir. (buna lazily calisma mekanizmasi denir)
 
     val zeki: Boolean = true
     val caliskan: Boolean = true
@@ -130,8 +132,95 @@ fun main() {
     if (zeki or caliskan) {}
     if (zeki.or(caliskan)) {}
 
-    if (zeki.not()) {}
+    if (zeki.not()) {} // bunu kullanmak oneriliyor. alttakini gormesi zor oldugu icin.
     if (!zeki) {}
 
+    //////////////
 
+    // nullable olmayan icin:
+    val thw: Boolean = false
+    if (thw == true) {}     // gereksiz
+    if (thw) {}             // dogru olan bu
+
+    // nullable olan icin:
+    val isse: Boolean? = null
+    if (isse == true) {}       // dogru olan bu
+    //if (isse)                // buna izin vermez bile
+
+    //////////////
+
+    // stringler yaklasik olarak her karakter basina 2 byte yer kaplar. UTF-16 encoding kullanir.
+
+    // stringler immutable'dir. bir string ilk deger atamasi yapildiktan sonra degerini degistiremez ya da
+    // yeni bir deger set edilemez. val ya da var olmasi fark etmez.
+    // string uzerinde yapilacak tum islemler bize yeni bir string object'i donecektir.
+    // stringin heapte saklanan ilk hali degismeyecektir.
+    // kullanilmayacak string degerleri garbage collector tarafindan toplanacak ve silinecektir.
+    // bu yalnizca string icin boyledir. diger tiplerde gecerli degildir.
+
+    var surname = "yilmaz" // ilk deger
+    surname = "tutucu"     // sonradan atanan deger
+    // ilk deger yok olmaz. toplanmasi gereken zamana kadar bellekte yer etmeye devam edecektir.
+
+    //////////////
+
+    // string bir ifade + farkli tipte bir ifade = string ifade
+    // farkli tipte bir ifade + string ifade = calismaz. derlenmez. hatta ide bile hata veriyor
+    // plus() ya da + operatoru ilk ifade stringse diger ifadenin ne olduguna bakmadan kabul eder.
+    // ama ilk ifadenin de string olma zorunlulugu vardir.
+
+    //////////////
+
+    // raw strings """ """
+
+    val camAgaci = """
+    .       *
+           ***
+          *****
+         *******
+            |
+    """.trimIndent() // trimIndent, su koydugum noktanin oncesindeki bosluklari silmek icin. tum satirlara uygular.
+    // ha istersen nokta kullanma burada kayma olmaz ama trimIndent'i anlamak icin yaptik.
+    println(camAgaci)
+
+    // raw strings icinde escape karakter kullanmak icin ${' '} yapisini kullanabiliriz.
+    val camAgaci2 = """
+        
+    .${'\b'}        *
+           ***
+          *****
+         *******
+            |
+    """.trimIndent() // bu sekilde noktayi backspace ile silip noktasizini yapabildim.
+    println(camAgaci2)
+
+    //////////////
+
+    // string format
+
+    // %s string
+    // %d tam sayi
+    // %f float/double
+    // %n yeni bir satira gecmek icin (platform bagimsiz)
+
+    val yas = 25
+    val gano = 2.2086
+    val mesaj = String.format("Yas: %d, Gano: %.2f", yas, gano) // .2 ile 2 ondalik basamakla yazdirir.
+    //TODO bu format extension function'u icinde stringden sonra birden fazla farkli tipte degisken girme
+    // olayini ilerde ogrenecegiz. vararg konusu.
+    println(mesaj)
+
+    // baska bi olay:
+    val sayi = 1754639.65
+
+    val usformat = String.format(Locale.US, "%,.2f", sayi)
+    println(usformat) ///1,754,639.65
+
+    val localeTR = Locale("tr", "TR") // turkce icin locale nesnesi olusturduk cunku yokmus.
+    val trformat = String.format(localeTR, "%,.2f", sayi)
+    println(trformat) ///1.754.639,65
+    // .2f yine sonu 2 basamakli oldu. ama biri virgullu biri noktali oldu. onu da formattan ogrendi.
+    // en sondaki isaretin ne olacagini locale seciyor. ayrac olacagini da virgul koyarak belirttik.
+    // baska bir dilde ornegin _ isaretiyle bolunuyor olsaydi yine biz ,.2f yazardik ama locale'ini degistirdigimiz
+    // icin sayilar arasinda _ olurdu.
 }

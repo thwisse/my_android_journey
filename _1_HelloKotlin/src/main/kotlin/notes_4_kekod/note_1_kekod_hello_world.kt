@@ -1,6 +1,10 @@
 package notes_4_kekod
 
 fun main() {
+    // bu yorum satiridir. notlarimi bu sekilde alirim.
+    //bu sekildeyse bi kodu yorum satirina almisim demektir.
+    ///bu sekildeyse konsol ciktisidir.
+
     //////////////
     // type inference (tip cikarimi)
 

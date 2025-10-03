@@ -1,4 +1,4 @@
-package projects
+package problems
 
 // ascii tabloya gore bir metni donusturen iki ayri fonksiyon yap. biri metni koda donustursun, biri kodu metne.
 // kullanicidan da istedigi metni girmesini iste, ardindan ciktiyi ver.
